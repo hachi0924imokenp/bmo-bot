@@ -1,4 +1,9 @@
 exports.run = (client, message, args) => {
+  if(message.author.id !== config.ownerID) { 
+    message.channel.send("Vous n'avez pas la permission nécessaire <:BMOsad:699766556879618078>")
+    return;
+  }
+  
   if(!args || args.length < 1) return message.reply("Must provide a command name to reload.");
   const commandName = args[0];
   if(!client.commands.has(commandName)) {
