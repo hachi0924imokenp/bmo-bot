@@ -18,13 +18,13 @@ fs.readdir("./events/", (err, files) => {
 
 client.commands = new Enmap();
 
-fs.readdir("./Commands/", (err, files) => {
+fs.readdir("./commands/", (err, files) => {
   if (err) return console.error(err);
   files.forEach(file => {
     if (!file.endsWith(".js")) return;
-    let props = require(`./Commands/${file}`);
+    let props = require(`./commands/${file}`);
     let commandName = file.split(".")[0];
-    console.log(`Tentative de chargement de la commande : ${commandName} \n ------------------------`);
+    console.log(`Tentative de chargement de la commande : ${commandName}`);
     client.commands.set(commandName, props);
   });
 });
