@@ -17,7 +17,8 @@
   "author": "ありがと ございます#9878",
   "license": "MIT",
   "dependencies": {
-    "discord.js": "^12.2.0"
-    "forever": "^3.0.0"
+    "discord.js": "^12.2.0",
+    "forever": "^3.0.0",
+    "moment": "^2.26.0"
   }
 }
