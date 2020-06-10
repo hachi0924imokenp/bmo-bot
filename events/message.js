@@ -13,9 +13,11 @@ module.exports = (client) => {
     // Récupère les données dela commande du client.commands Enmap
     const cmd = client.commands.get(command);
   
-    // Si la commande n'existe pas, il ignore et ne dis rien
-    if (!cmd) return;
-    
+    // Si la commande n'existe pas, il ignore et envoie un message
+    if (!cmd) {
+      message.channel.send("Commande introuvable, s'il vous plait utiliser b!help pour la liste des commandes !")
+      return;
+  }
     // Ignorer les DM /!\
     if(message.channel.type==="dm") {
     message.channel.send("Impossible d'exécuter une commande en DM ! :BMOuh:")
