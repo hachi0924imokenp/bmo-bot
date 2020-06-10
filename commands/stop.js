@@ -14,10 +14,10 @@ moment.locale("fr");
     raison = msg.substring(0, index);
     msg = prevMessage + msg.substring(index + 1);
     if(raison === null){
-      raison = "raison inconnue";
+      raison = "Raison inconnue";
     }
   } else {
-    raison = "raison inconnue";
+    raison = "Raison inconnue";
   } if (msg.indexOf("note=") !== -1) {
       var prevMessage = msg.substring(0, msg.indexOf("note="));
       var msg = msg.substring(msg.indexOf("note=") + 5);
@@ -25,18 +25,18 @@ moment.locale("fr");
       note = msg.substring(0, index);
       msg = prevMessage + msg.substring(index + 1);
       if(note === null){
-        note = "aucune note";
+        note = "Aucune note";
       }
   } else {
-      note = "aucune note";
+      note = "Aucune note";
   }
-  console.log("restart en cours...")
-  message.channel.send({embed: {
+  console.log("Arrêt en cours...")
+   message.channel.send({embed});
       title: "Évenement",
       color: 1752220,
       description: `**Évenement** : Restart  \n\n**Le :** ${temps}\n\n**Par :** ${message.author}\n\n**Raison :** ${raison}\n **Notes :** ${note}`,
       footer: {
-        text:  "KiZz Bot" 
+        text:  "BMO" 
       }}})
   setTimeout(function() { process.exit(1); }, 1000);
   } else {message.channel.send({embed: {
