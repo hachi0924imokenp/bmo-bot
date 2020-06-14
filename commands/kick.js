@@ -12,9 +12,12 @@ exports.run = async (client, message, args) => {
     let reason = args.slice(1).join(' ');
         if(!reason) reason = "Aucune raison ajouter";
 
+    
+    let kicked = message.mentions.members.first();
+    
     await member.kick(reason)
         .catch(error => message.channel.send(`Désolé, je ne peux pas kické cette utilisateur à cause de : ${error}`));
     message.channel.send(`${member.user.tag} a été kické par ${message.author.tag}`);
-    message.member.send(`Vous avez été kické par ${message.author.tag} ===> ${reason}`);
+    message.kicked.send(`Vous avez été kické par ${message.author.tag} ===> ${reason}`);
   
 }
