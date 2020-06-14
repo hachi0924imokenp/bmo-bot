@@ -16,7 +16,7 @@ exports.run = async (client, message, args) => {
         .catch(error => message.channel.send(`Désolé, je ne peux pas kické cette utilisateur à cause de : ${error}`));
     message.channel.send(`${member.user.tag} a été kické par ${message.author.tag}`);
 
-    let destinataire = message.guild.member(message.mentions.users.first());
-    destinataire.sendMessage(`Vous avez été kické par ${message.author.tag} ===> ${reason}`);
+    let kicked = message.guild.member(message.mentions.users.first());
+    kicked.sendMessage(`Vous avez été kické par ${message.author.tag} ===> ${reason}`);
   
 }
