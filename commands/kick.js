@@ -1,4 +1,5 @@
 exports.run = (client, message, args, async) => {
+async function declaredAsAsync() {
     if(!message.member.roles.cache.some(r=>["🛡️ P'tit Modo Test 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"]).includes(r.name))
         return message.channel.send(`Désolé <@${message.author.id}, vous n'avez pas la permission à l'utilistion nécessaire de cette commande.`);
 
@@ -16,4 +17,5 @@ exports.run = (client, message, args, async) => {
         .catch(error => message.channel.send(`Désolé, je ne peux pas kické cette utilisateur à cause de : ${error}`));
     message.channel.send(`${member.user.tag} à été kické par ${message.author.tag} (${reason})`);
   
+    }
 }
