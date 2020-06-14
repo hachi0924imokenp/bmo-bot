@@ -15,6 +15,6 @@ exports.run = async (client, message, args) => {
     await member.kick(reason)
         .catch(error => message.channel.send(`Désolé, je ne peux pas kické cette utilisateur à cause de : ${error}`));
     message.channel.send(`${member.user.tag} à été kické par ${message.author.tag}`);
-    message.user.send(`Vous avez été kické par ${message.author.tag} ===> ${reason}`)
+    message.user.send(`Vous avez été kické par ${message.author.tag} ===> ${reason}`);
   
 }
