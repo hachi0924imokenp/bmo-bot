@@ -1,6 +1,6 @@
 exports.run = async (client, message, args) => {
-    if(!message.member.roles.cache.filter(r => ["🛡️ P'tit Modo Test 🛡️",], ["🌟 Modo T'chat  🌟"], ["👑 Fondateurs 👑"], ["👑 Fondateur Principal 👑"].includes(r.name)))[0] === undefined)
-        return message.channel.send(`Désolé <@${message.author.id}, vous n'avez pas la permission à l'utilistion nécessaire de cette commande.`);
+    if(!message.member.roles.cache.filter(r => ["🛡️ P'tit Modo Test 🛡️",], ["🌟 Modo T'chat  🌟"], ["👑 Fondateurs 👑"], ["👑 Fondateur Principal 👑"].includes(r.name))[0] === undefined)
+        return message.channel.send(`Désolé <@${message.author.id}>, vous n'avez pas la permission à l'utilistion nécessaire de cette commande.`);
 
     let member = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
     if(!member)
@@ -14,6 +14,7 @@ exports.run = async (client, message, args) => {
 
     await member.kick(reason)
         .catch(error => message.channel.send(`Désolé, je ne peux pas kické cette utilisateur à cause de : ${error}`));
-    message.channel.send(`${member.user.tag} à été kické par ${message.author.tag} (${reason})`);
+    message.channel.send(`${member.user.tag} à été kické par ${message.author.tag}`);
+    message.user.send(`Vous avez été kické par ${message.author.tag} ===> ${reason}`)
   
 }
