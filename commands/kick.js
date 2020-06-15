@@ -10,11 +10,11 @@ exports.run = async (client, message, args) => {
         return message.channel.send("Je ne ne peux pas kické cette utilisateur, ai-je la permissions nécessaire ? Suis-je assez haut ?");
 
     let reason = args.slice(1).join(' ');
-        if(!reason) reason = "Vous avez commis une infraction, un modérateurs vous a donc kické";
+        if(!reason) reason = "Tu as commis une infraction, un modérateurs t'a donc kické";
     
     const kicked = message.mentions.members.first() ||  message.guild.members.cache.get(args[0]);
     client.users.cache.get(kicked);
-    kicked.send(`Vous avez été kické par ${message.author.tag} ===> ${reason}`);
+    kicked.send(`Tu as été kické par ${message.author.tag} ===> ${reason}`);
     
     await member.kick(reason)
         .catch(error => message.channel.send(`Désolé, je ne peux pas kické cette utilisateur à cause de : ${error}`));
