@@ -43,7 +43,7 @@ moment.locale("fr");
       color: 1752220,
       description: `**Évenement** : Restart  \n\n**Le :** ${temps}\n\n**Par :** ${message.author}\n\n**Raison :** ${raison}\n **Notes :** ${note}`,
       footer: {
-        text:  "KiZz Bot" 
+        text:  "BMO" 
       }}})
   setTimeout(function() { process.exit(1); }, 1000);
   } else {message.channel.send({embed: {
