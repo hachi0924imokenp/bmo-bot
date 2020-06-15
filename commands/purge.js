@@ -10,7 +10,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send("Merci d'entrer un nombre entre 1 et 100");
     
     
-    const fetched = await message.channel.fetchMessages({limit: deleteCount});
+    const fetched = await message.channel.fetch({limit: deleteCount});
     message.channel.bulkDelete(fetched)
       .catch(error => message.reply(`Je ne peux pas supprimer les messages à cause d'une erreur : ${error}`));
     message.channel.send(`${deleteCount} messages ont été supprimer dans ce salon`)
