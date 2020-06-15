@@ -4,7 +4,7 @@ exports.run = async (client, message, args) => {
 
     let member = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
     if(!member)
-        return message.channel.send(`S\'il vous plaît @{message.author.tag}, merci de mentionner un membre valide sur ce serveur`);
+        return message.channel.send(`S\'il vous plaît` "<@" + message.author.id + `>, merci de mentionner un membre valide sur ce serveur`);
 
     if(!member.kickable)
         return message.channel.send("Je ne ne peux pas kické cette utilisateur, ai-je la permissions nécessaire ? Suis-je assez haut ?");
