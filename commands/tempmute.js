@@ -18,7 +18,7 @@ exports.run = async (client, message, args) => {
         tomute.roles.remove(muteRole);
     }, MUTE_TIME);
     
-     message.channel.send(`${tomute.author.username} a été mis en prison ${message.author.username}`);
+     message.channel.send(`${tomute.username} a été mis en prison ${message.author.username}`);
      client.users.cache.get(tomute);
      tomute.send(`Vous avez été mis en prison par ${message.author.tag} ===> ${MUTE_TIME / 60}`)
      return;
