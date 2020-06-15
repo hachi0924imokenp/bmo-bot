@@ -30,14 +30,14 @@ exports.run = async (client, message, args) => {
   let reason = args.slice(2).join(' ');
         if(!reason) reason = "Vous avez commis une infraction, un modérateurs vous a donc envoyé(e) en prison";
   
-  await(tomute.role.add(muterole.id));
+  await(tomute.roles.add(muterole.id));
   message.channel.send(`<@${tomute.id}> a été mis en prison par {message.author.tag}`);
   client.users.cache.get(tomute);
     tomute.send(`${message.author.tag} t'envoie en prison ===> ${ms(ms(mutetime))} {reason}`)
   
   
   setTimeout(function(){
-    tomute.role.remove(muterole.id);
+    tomute.roles.remove(muterole.id);
     message.channel.send(`<@${tomute.id}> a purgé sa peine de prison !`);
   }, ms(mutetime));
 }
