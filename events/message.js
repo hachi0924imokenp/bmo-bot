@@ -24,7 +24,7 @@ module.exports = (client) => {
     return false;
 
 }
-    message.channel.send("Impossible d'exécuter une commande en DM ! :BMOuh:")
+    message.channel.send("Impossible d'exécuter une commande en DM ! :BMOuh:") {
     return false;
   }
   
