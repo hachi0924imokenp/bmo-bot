@@ -4,7 +4,7 @@ exports.run = async (client, message, args) => {
 
     let member = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
     if(!member)
-        return message.channel.send(`S\'il vous plaît <@` + message.author.id + `>, merci de mentionner un membre valide sur ce serveur`).then(msg => {
+        return message.channel.send(`S\'il vous plaît <@` + message.author.id + `>, merci de mentionner un membre valide sur ce serveur`).then(message => {
          message.delete({ timeout: 10000})
     }).catch(error => message.send(`Désolé ${message.author}, L'erreur suivante s'est produite durant l'exécution : ${error}`));
         
