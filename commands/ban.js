@@ -30,19 +30,6 @@ exports.run = async (client, message, args) => {
     
   if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !logs) { 
     console.log('Le salon des logs n\'existe pas, et j\'ai essayer de le crée mais je manque de permissions !')
-  }
-      
-   const log = new Discord.MessageEmbed()
-   .setColor('#02f689')
-   .setTitle('Titre')
-   .setURL('https://github.com/Cleaner-Discord/bmo-bot')
-   .setAuthor('BMO', 'https://vignette.wikia.nocookie.net/adventuretime/images/1/1b/BMOGAME.png', 'https://github.com/Cleaner-Discord/bmo-bot'
-   .setDescription(`Ban Hammer !`)
-   .addFields(
-       { name: 'Utilisateur', value: `${member.user.tag}`, inline: true},
-       { name: 'Bannis par', value: `${message.author.tag}`, inline: true},
-       { name: 'Raison', value: `Tu as été bannis par ${message.author.tag} ===> ${reason}`, inline: true},
-    )
-   .setFooter('Logs are cool');
-message.channel.send(log)
+    }
+
 }
