@@ -10,7 +10,7 @@ exports.run = async (client, message, args) => {
      if(!muteRole)
          return message.channel.send("Impossible de trouver le rôle 🏝️ No Man\'s Land");
     
-      if(tomute.roles.has(muteRole)) return message.channel.send("That user is already muted!.");
+      if(tomute.roles.cache.has(muteRole)) return message.channel.send("That user is already muted!.");
       tomute.addRole(muteRole);
      
      const MUTE_TIME = 60 * 1000;
