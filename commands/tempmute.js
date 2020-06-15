@@ -10,6 +10,9 @@ exports.run = async (client, message, args) => {
      if(!muteRole)
          return message.channel.send("Impossible de trouver le rôle 🏝️ No Man\'s Land");
     
+      let reason = args.slice(2).join(' ');
+          if(!reason) reason = "Vous avez commis une infraction, un modérateurs vous a donc mis en prison";
+      
       if(tomute.roles.cache.has(muteRole)) return message.channel.send("Cette utilisateur est déjà en prison !.");
       tomute.roles.add(muteRole);
      
@@ -20,6 +23,6 @@ exports.run = async (client, message, args) => {
     
      message.channel.send(`${tomute.username} a été mis en prison ${message.author.username}`);
      client.users.cache.get(tomute);
-     tomute.send(`Vous avez été mis en prison par ${message.author.tag} ===> ${MUTE_TIME / 60}`)
+     tomute.send(`Vous avez été mis en prison par ${message.author.tag} ===> ${MUTE_TIME / 60} secondes {reason}`)
      return;
 }
