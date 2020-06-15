@@ -6,7 +6,7 @@ exports.run = async (client, message, args) => {
     if(!member)
         return message.channel.send(`S\'il vous plaît <@` + message.author.id + `>, merci de mentionner un membre valide sur ce serveur`).then(msg => {
          msg.delete(10000)
-    }).catch(console.log(e.stack));
+    }).catch(error => message.reply(`Désolé ${message.author}, L'erreur suivante s'est produite durant l'exécution : ${error}`));
         
      let reason = args.slice(1).join(' ');
         if(!reason) reason = "Attention ! Tu as eu un comportement incorrecte, si cela se reproduit tu seras sanctionné !";
