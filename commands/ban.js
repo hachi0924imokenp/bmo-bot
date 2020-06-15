@@ -30,6 +30,6 @@ exports.run = async (client, message, args) => {
     
   if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !logs) { 
     console.log('Le salon des logs n\'existe pas, et j\'ai essayer de le crée mais je manque de permissions !')
-    }
+  }
 
 }
