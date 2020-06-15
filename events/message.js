@@ -31,4 +31,4 @@ module.exports = (client) => {
     // Démarre la commande
     cmd.run(client, message, args);
   }
-};
+}
