@@ -46,8 +46,5 @@ moment.locale("fr");
         text:  "BMO" 
       }}})
   setTimeout(function() { process.exit(1); }, 1000);
-  } else {message.channel.send({embed: {
-      title: "Erreur:",
-      color: 0xFFFFFF,
-      description: `:no_entry_sign: Vous n'avez pas la permission ${message.author} :no_entry_sign:`,
-}})}}
+}
+   }
