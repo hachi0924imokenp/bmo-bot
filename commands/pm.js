@@ -12,3 +12,4 @@ exports.run = async (client, message, args) => {
     const target = message.mentions.members.first() ||  message.guild.members.cache.get(args[0]);
     client.users.cache.get(target);
     target.send(`${message.author.tag} ===> ${reason}`);
+}
