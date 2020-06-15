@@ -1,16 +1,16 @@
 exports.run = async (client, message, args) => {
     if(!message.member.roles.cache.some(r=>["🛡️ P'tit Modo Test 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name)))
-        return message.channel.send(`Désolé <@${message.author.id}>, vous n'avez pas la permission à l'utilistion nécessaire de cette commande.`);
+        return message.channel.send(`Désolé @${message.author.tag}, vous n'avez pas la permission à l'utilistion nécessaire de cette commande.`);
 
     let member = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
     if(!member)
-        return message.channel.send(`S\'il vous plait <@{message.author.id}>, merci de mentionner un membre valide sur ce serveur`);
+        return message.channel.send(`S\'il vous plaît @{message.author.tag}, merci de mentionner un membre valide sur ce serveur`);
 
     if(!member.kickable)
-        return message.channel.send("Je ne ne peux pas kické cette utilisateur, avez vous les permissions nécessaire ?");
+        return message.channel.send("Je ne ne peux pas kické cette utilisateur, ai-je la permissions nécessaire ? Suis-je assez haut ?");
 
     let reason = args.slice(1).join(' ');
-        if(!reason) reason = "Aucune raison ajouter";
+        if(!reason) reason = "Vous avez commis une infraction, un modérateurs vous a donc kické";
     
     const kicked = message.mentions.members.first() ||  message.guild.members.cache.get(args[0]);
     client.users.cache.get(kicked);
