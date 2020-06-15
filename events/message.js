@@ -17,6 +17,7 @@ module.exports = (client) => {
     // Si la commande n'existe pas, il ignore et envoie un message
     if (!cmd) {
       message.channel.send("Commande introuvable, s'il vous plait utiliser b!help pour la liste des commandes !")
+      message.delete(200)
  }
     
     // Supprime le message de l'utilisateur avant d'exécuter la commande
