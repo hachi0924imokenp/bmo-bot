@@ -18,7 +18,7 @@ module.exports = (client) => {
       message.channel.send("Commande introuvable, s'il vous plait utiliser b!help pour la liste des commandes !")
       return false;
  }
-    
+    // Supprime le message de l'utilisateur avant d'exécuter la commande
     if (cmd) {
       message.delete()
  }
