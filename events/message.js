@@ -17,15 +17,21 @@ module.exports = (client) => {
     if (!cmd) {
       message.channel.send("Commande introuvable, s'il vous plait utiliser b!help pour la liste des commandes !")
       return false;
-  }
+ }
+    
+    if (cmd) {
+      delete.message()
+ }
+    
     // Ignorer les DM /!\
-    if(message.channel.type ==="dm"||message.channel.type==="group") {
-    message.channel.send("Je ne suis pas fait pour fonctionner en DM/Groupes")
-    return false;
-
-}
+    if (message.channel.type ==="dm"||message.channel.type==="group") {
+       message.channel.send("Je ne suis pas fait pour fonctionner en DM/Groupes")
+       return false;
+ }
+    
     
     // Démarre la commande
     cmd.run(client, message, args);
-  }
+ }
+
 }
