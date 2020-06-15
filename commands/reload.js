@@ -4,7 +4,7 @@ exports.run = (client, message, args) => {
     return;
   }
   
-  if(!args || args.length < 1) return message.reply("Must provide a command name to reload.");
+  if(!args || args.length < 1) return message.reply("Vous devez donner le nom d'une commande à recharger.");
   const commandName = args[0];
   if(!client.commands.has(commandName)) {
     return message.reply("That command does not exist");
@@ -14,5 +14,5 @@ exports.run = (client, message, args) => {
   client.commands.delete(commandName);
   const props = require(`./${commandName}.js`);
   client.commands.set(commandName, props);
-  message.reply(`The command ${commandName} has been reloaded`);
+  message.reply(`La commande ${commandName} a bien été recharger.`);
 };
