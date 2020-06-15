@@ -1,5 +1,11 @@
 exports.run = async (client, message, args) => {
-const deleteCount = parseInt[0], 10);
+
+    if(!message.member.roles.cache.some(r=>["🛡️ P'tit Modo Test 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name)))
+        return message.channel.send(`Désolé`+"<@" + message.author.id + ">, vous n'avez pas la permission à l'utilistion nécessaire de cette commande.`);
+
+    
+    
+    const deleteCount = parseInt[0], 10);
 
 
     if(!deleteCount || deleteCount < 2 || deleteCount > 100)
