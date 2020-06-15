@@ -6,13 +6,15 @@ exports.run = async (client, message, args) => {
     let member = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
     if(!member)
         return message.channel.send(`S\'il vous plaît <@` + message.author.id + `>, merci de mentionner un membre valide sur ce serveur`);
-
+   
+    if(member.roles.cache.some(r=>["🐹 Modo T'chat Test 🐹", "🛡️ P'tit Modo 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name)))
+        return message.channel.send("Impossible de bannir un modérateur !");
+  
     if(!member.bannable)
         return message.channel.send("Je ne ne peux pas bannir cette utilisateur, Ais-je la permissions nécessaire ? Suis-je assez haut ?");
 
-    
      let logchannel = message.guild.channels.cache.find("𝐦𝐨𝐝-𝐥𝐨𝐠𝐬");
-    
+ 
      let reason = args.slice(1).join(' ');
         if(!reason) reason = "Tu as commis une infraction, un modérateur t'a donc bannis";
     
