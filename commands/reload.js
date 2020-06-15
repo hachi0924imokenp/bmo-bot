@@ -1,5 +1,4 @@
 exports.run = (client, message, args) => {
-  message.delete();
   
   if(message.author.id !== "251455597738721280") { 
     message.channel.send("Vous n'avez pas la permission nécessaire <:BMOsad:699766556879618078>")
