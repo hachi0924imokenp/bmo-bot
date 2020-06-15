@@ -17,7 +17,6 @@ module.exports = (client) => {
     // Si la commande n'existe pas, il ignore et envoie un message
     if (!cmd) {
       message.channel.send("Commande introuvable, s'il vous plait utiliser b!help pour la liste des commandes !")
-      message.delete()
  }
     
     // Supprime le message de l'utilisateur avant d'exécuter la commande
@@ -30,7 +29,6 @@ module.exports = (client) => {
        message.channel.send("Je ne suis pas fait pour fonctionner en DM/Groupes")
        return false;
  }
-    
     
     // Démarre la commande
     cmd.run(client, message, args);
