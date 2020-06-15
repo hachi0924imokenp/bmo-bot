@@ -13,5 +13,5 @@ exports.run = async (client, message, args) => {
     const fetched = await message.channel.fetchMessages({limit: deleteCount});
     message.channel.bulkDelete(fetched)
       .catch(error => message.reply(`Je ne peux pas supprimer les messages à cause d'une erreur : ${error}`));
-    message.channel.send(`${delete.count} on été supprimer dans ce salon`)
+    message.channel.send(`${deleteCount} on été supprimer dans ce salon`)
 }
