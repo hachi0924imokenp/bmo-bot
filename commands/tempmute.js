@@ -3,7 +3,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`Désolé <@` + message.author.id + `>, vous n'avez pas la permission à l'utilistion nécessaire de cette commande.`);
 
     let tomute = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
-    if(!member)
+    if(!tomute)
         return message.channel.send(`S\'il vous plaît <@` + message.author.id + `>, merci de mentionner un membre valide sur ce serveur`);
 
      const muteRole = message.guild.roles.cache.find(r=>["🏝️ No Man's Land"].includes(r.name));
