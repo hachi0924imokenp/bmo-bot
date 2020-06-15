@@ -10,7 +10,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send("Je ne ne peux pas bannir cette utilisateur, Ais-je la permissions nécessaire ? Suis-je assez haut ?");
 
     let reason = args.slice(1).join(' ');
-        if(!reason) reason = "Vous avez commis une infraction, un modérateurs vous a donc bannis";
+        if(!reason) reason = "Vous avez commis une infraction, un modérateur vous a donc bannis";
     
     const banned = message.mentions.members.first() ||  message.guild.members.cache.get(args[0]);
     client.users.cache.get(banned);
