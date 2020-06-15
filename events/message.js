@@ -20,7 +20,7 @@ module.exports = (client) => {
  }
     
     if (cmd) {
-      delete.message()
+      message.delete()
  }
     
     // Ignorer les DM /!\
