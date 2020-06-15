@@ -3,7 +3,7 @@ exports.run = async (client, message, args) => {
   if(!tomute) return message.reply("Je ne peux pas trouver cette utilisateur.");
   if(tomute.hasPermission("MANAGE_MESSAGES")) return message.reply("Impossible de mute cette utilisateur !");
   
-  let muterole = message.roles.cache.has(r=> [""].includes(r.name));
+  let muterole =  message.guild.cache.find(r => ["🏝️ No Man's Land"].includes(r.name));
   if(!muterole){
     try{
       muterole = await message.guild.createRole({
