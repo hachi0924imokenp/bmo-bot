@@ -14,6 +14,6 @@ exports.run = async (client, message, args) => {
 
     const target = message.mentions.members.first() ||  message.guild.members.cache.get(args[0]);
     client.users.cache.get(target);
-    target.send(`MODO ${message.author.tag} ===> ${reason}`);
+    target.send(`MODO ${message.author.tag} ===> ${reason}`).catch(error => message.author.send(`Désolé, L'erreur suivante s'est produite durant l'exécution : ${error}`));
     message.author.send("PM Envoyé !")
 }
