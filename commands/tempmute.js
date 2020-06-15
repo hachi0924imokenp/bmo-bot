@@ -40,6 +40,5 @@ exports.run = async (client, message, args) => {
   
   setTimeout(function(){
     tomute.roles.remove(muterole.id);
-    message.channel.send(`<@${tomute.id}> a purgé sa peine de prison !`);
   }, ms(mutetime));
 }
