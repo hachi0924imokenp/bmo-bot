@@ -11,11 +11,11 @@ exports.run = async (client, message, args) => {
          return message.channel.send("Impossible de trouver le rôle 🏝️ No Man\'s Land");
     
       if(tomute.roles.cache.has(muteRole)) return message.channel.send("Cette utilisateur est déjà en prison !.");
-      tomute.addRole(muteRole);
+      tomute.roles.add(muteRole);
      
      const MUTE_TIME = 60 * 1000;
      setTimeout(() => {
-        tomute.removeRole(muteRole);
+        tomute.roles.remove(muteRole);
     }, MUTE_TIME);
     
      message.channel.send(`*${message.author.username} forcechockes ${tomute.user.username} for ${MUTE_TIME / 60} secondes*`);
