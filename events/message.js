@@ -19,11 +19,6 @@ module.exports = (client) => {
       message.channel.send("Commande introuvable, s'il vous plait utiliser b!help pour la liste des commandes !")
  }
     
-    // Supprime le message de l'utilisateur avant d'exécuter la commande
-    if (cmd) {
-      message.delete()
- }
-    
     // Ignorer les DM /!\
     if (message.channel.type ==="dm"||message.channel.type==="group") {
        message.channel.send("Je ne suis pas fait pour fonctionner en DM/Groupes")
