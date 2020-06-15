@@ -22,6 +22,6 @@ if (message.author.id === "231956829159161856") {
       console.log("Je ne peux pas envoyer de messages sur : (few) guild(s)!");
     }
   } else {
-    message.send("Tu ne peux pas faire ça !")
+    message.channel.send("Tu ne peux pas faire ça !")
    }
  }
