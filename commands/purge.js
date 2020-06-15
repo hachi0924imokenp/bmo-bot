@@ -1,9 +1,7 @@
 exports.run = async (client, message, args) => {
 
     if(!message.member.roles.cache.some(r=>["🛡️ P'tit Modo Test 🛡️", "🐹 Modo T'chat Test 🐹", "🛡️ P'tit Modo 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name)))
-        return message.channel.send(`Désolé`+"<@" + message.author.id + ">, vous n'avez pas la permission à l'utilistion nécessaire de cette commande.`);
-
-    
+        return message.channel.send(`Désolé <@` + message.author.id + `>, vous n'avez pas la permission à l'utilistion nécessaire de cette commande.`);
     
     const deleteCount = parseInt[0], 10);
 
