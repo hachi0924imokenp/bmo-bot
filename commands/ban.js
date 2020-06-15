@@ -9,7 +9,10 @@ exports.run = async (client, message, args) => {
     if(!member.bannable)
         return message.channel.send("Je ne ne peux pas bannir cette utilisateur, Ais-je la permissions nécessaire ? Suis-je assez haut ?");
 
-    let reason = args.slice(1).join(' ');
+    
+     let logchannel = message.guild.channel.cache.find("𝐦𝐨𝐝-𝐥𝐨𝐠𝐬");
+    
+     let reason = args.slice(1).join(' ');
         if(!reason) reason = "Tu as commis une infraction, un modérateur t'a donc bannis";
     
     const banned = message.mentions.members.first() ||  message.guild.members.cache.get(args[0]);
@@ -20,4 +23,26 @@ exports.run = async (client, message, args) => {
         .catch(error => message.channel.send(`Désolé, je ne peux pas bannir cette utilisateur à cause de : ${error}`));
     message.channel.send(`${member.user.tag} a été bannis par ${message.author.tag}`);
 
+  const logs = message.guild.channel.find.cache("𝐦𝐨𝐝-𝐥𝐨𝐠𝐬");
+  if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !logs) {
+    message.guild.channel.create('𝐦𝐨𝐝-𝐥𝐨𝐠𝐬').catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"𝐦𝐨𝐝-𝐥𝐨𝐠𝐬\" : ${error}`);
+  }
+    
+  if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !logs) { 
+    console.log('Le salon des logs n\'existe pas, et j\'ai essayer de le crée mais je manque de permissions !').
+  }
+      
+   const log = new Discord.MessageEmbed()
+   .setColor('')
+   .setTitle('Titre')
+   .setURL('https://github.com/Cleaner-Discord/bmo-bot')
+   .setAuthor('BMO', 'https://vignette.wikia.nocookie.net/adventuretime/images/1/1b/BMOGAME.png', 'https://github.com/Cleaner-Discord/bmo-bot'
+   .setDescription(`Ban Hammer !`)
+   .addField,(
+       { name: 'Utilisateur', `${member.user.tag}`, inline: true},
+       { name: 'Bannis par', `${message.author.tag}`, inline: true},
+       { name: 'Raison', `Tu as été bannis par ${message.author.tag} ===> ${reason}`, inline: true},
+    )
+   .setFooter('Logs are cool');
+message.channel.send(log)
 }
