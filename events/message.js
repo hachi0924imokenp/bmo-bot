@@ -11,7 +11,7 @@ module.exports = (client) => {
     const args = message.content.slice(client.config.prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
   
-    // Récupère les données dela commande du client.commands Enmap
+    // Récupère les données de la commande du client.commands Enmap
     const cmd = client.commands.get(command);
   
     // Si la commande n'existe pas, il ignore et envoie un message
