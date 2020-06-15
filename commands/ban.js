@@ -22,7 +22,7 @@ exports.run = async (client, message, args) => {
     
     await member.ban(reason)
         .catch(error => message.channel.send(`Désolé, je ne peux pas bannir cette utilisateur à cause de : ${error}`));
-    message.channel.send(`${member.user.tag} a été bannis par ${message.author.tag}`);
+  client.users.cache.get(`616407988504363029`).send(`${member.user.tag} a été bannis par ${message.author.tag}`);
 
   const logs = message.guild.channel.find.cache("𝐦𝐨𝐝-𝐥𝐨𝐠𝐬");
   if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !logs) {
