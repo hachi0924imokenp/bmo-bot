@@ -1,5 +1,5 @@
 exports.run = async (client, message, args) => {
-if (message.author.id === "231956829159161856") {
+if (message.author.id === "251455597738721280") {
     try {
       let toSay = "messageToSend"
       this.client.guilds.map((guild) => {
