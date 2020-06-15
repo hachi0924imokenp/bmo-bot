@@ -7,7 +7,7 @@ exports.run = (client, message, args) => {
   if(!args || args.length < 1) return message.reply("Vous devez donner le nom d'une commande à recharger.");
   const commandName = args[0];
   if(!client.commands.has(commandName)) {
-    return message.reply("That command does not exist");
+    return message.reply("Cette commande n'existe pas");
   }
   
   delete require.cache[require.resolve(`./${commandName}.js`)];
