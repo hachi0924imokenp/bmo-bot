@@ -1,6 +1,6 @@
 exports.run = async (client, message, args) => {
     if(!message.member.roles.cache.some(r=>["🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name)))
-        return message.channel.send(`Désolé @${message.author.tag}, vous n'avez pas la permission à l'utilistion nécessaire de cette commande.`);
+        return message.channel.send(`Désolé`+"<@" + message.author.id + ">"+", vous n'avez pas la permission à l'utilistion nécessaire de cette commande.`);
 
     let member = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
     if(!member)
