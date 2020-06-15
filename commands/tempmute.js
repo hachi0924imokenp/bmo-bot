@@ -25,13 +25,19 @@ exports.run = async (client, message, args) => {
   }
 
   let mutetime = args[1];
-  if(!mutetime) return message.reply("You didn't specify a time!");
+  if(!mutetime) return message.reply("Vous n'avez pas spécifié le temps !");
   
-  await(tomute.addRole(muterole.id));
-  message.reply(`<@${tomute.id}> has been muted for ${ms(ms(mutetime))}`);
+  let reason = args.slice(2).join(' ');
+        if(!reason) reason = "Vous avez commis une infraction, un modérateurs vous a donc envoyé(e) en prison";
+  
+  await(tomute.member.role.add(muterole.id));
+  message.channel.send(`<@${tomute.id}> a été mis en prison par {message.author.tag}`);
+  client.users.cache.get(tomute);
+    tomute.send(`${message.author.tag} t'envoie en prison ===> ${ms(ms(mutetime))} {reason}`)
+  
   
   setTimeout(function(){
-    tomute.removeRole(muterole.id);
-    message.channel.send(`<@${tomute.id}> has been unmuted!`);
+    tomute.member.role.remove(muterole.id);
+    message.channel.send(`<@${tomute.id}> a purgé sa peine de prison !`);
   }, ms(mutetime));
 }
