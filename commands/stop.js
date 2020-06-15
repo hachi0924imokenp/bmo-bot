@@ -1,18 +1,15 @@
 exports.run = (client, message, args) => {
 const moment = require("moment");
  
-if(message.author.id !== config.ownerID) { 
+if(message.author.id !== 251455597738721280) { 
   message.channel.send("Vous n'avez pas la permission nécessaire <:BMOsad:699766556879618078>")
     return;
   }
+ 
 moment.locale("fr");
     var temps = moment(message.createdTimestamp).format('DD/MM/YYYY \n à HH:mm:ss');
       console.log(temps)
   
-  
-    if(message.author.id === "251455597738721280"){
-      message.delete(message.author);
-    
     var msg = message.content.substr(9);
     var raison;
     var note;
@@ -26,8 +23,7 @@ moment.locale("fr");
    
     if(raison === null){
       raison = "Raison inconnue";
-    }
-  } else {
+    } else {
     raison = "Raison inconnue";
   } if (msg.indexOf("note=") !== -1) {
         var prevMessage = msg.substring(0, msg.indexOf("note:"));
