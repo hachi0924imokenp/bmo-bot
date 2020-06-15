@@ -38,7 +38,7 @@ exports.run = async (client, message, args) => {
    .setURL('https://github.com/Cleaner-Discord/bmo-bot')
    .setAuthor('BMO', 'https://vignette.wikia.nocookie.net/adventuretime/images/1/1b/BMOGAME.png', 'https://github.com/Cleaner-Discord/bmo-bot'
    .setDescription(`Ban Hammer !`)
-   .addField,(
+   .addFields(
        { name: 'Utilisateur', value: `${member.user.tag}`, inline: true},
        { name: 'Bannis par', value: `${message.author.tag}`, inline: true},
        { name: 'Raison', value: `Tu as été bannis par ${message.author.tag} ===> ${reason}`, inline: true},
