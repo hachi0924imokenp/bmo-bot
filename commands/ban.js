@@ -25,7 +25,7 @@ exports.run = async (client, message, args) => {
 
   const logs = message.guild.channel.find.cache("𝐦𝐨𝐝-𝐥𝐨𝐠𝐬");
   if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !logs) {
-    message.guild.channel.create('𝐦𝐨𝐝-𝐥𝐨𝐠𝐬').catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"𝐦𝐨𝐝-𝐥𝐨𝐠𝐬\" : ${error}`);
+    message.guild.channel.create('𝐦𝐨𝐝-𝐥𝐨𝐠𝐬').catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"𝐦𝐨𝐝-𝐥𝐨𝐠𝐬\" : ${error}`));
   }
     
   if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !logs) { 
