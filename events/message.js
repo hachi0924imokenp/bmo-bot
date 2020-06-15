@@ -21,7 +21,7 @@ module.exports = (client) => {
  }
     // Supprime le message de l'utilisateur avant d'exécuter la commande
     if (cmd) {
-      message.delete()
+      message.delete(200)
  }
     
     // Ignorer les DM /!\
