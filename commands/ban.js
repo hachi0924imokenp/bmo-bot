@@ -33,7 +33,7 @@ exports.run = async (client, message, args) => {
   }
       
    const log = new Discord.MessageEmbed()
-   .setColor('')
+   .setColor('#02f689')
    .setTitle('Titre')
    .setURL('https://github.com/Cleaner-Discord/bmo-bot')
    .setAuthor('BMO', 'https://vignette.wikia.nocookie.net/adventuretime/images/1/1b/BMOGAME.png', 'https://github.com/Cleaner-Discord/bmo-bot'
