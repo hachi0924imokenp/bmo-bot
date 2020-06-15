@@ -6,7 +6,7 @@ exports.run = async (client, message, args) => {
     if(!member)
         return message.channel.send(`S\'il vous plaît <@` + message.author.id + `>, merci de mentionner un membre valide sur ce serveur`);
 
-     const muteRole = message.guild.roles.cache.find(r=>["🏝️ No Man's Land"].includes(r.name);
+     const muteRole = message.guild.roles.cache.find(r=>["🏝️ No Man's Land"].includes(r.name));
      member.addRole(muteRole);
      
      const MUTE_TIME = 60 * 1000;
