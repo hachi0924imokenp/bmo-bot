@@ -1,4 +1,5 @@
-  if (message.author.id === "231956829159161856") {
+exports.run = async (client, message, args) => {
+if (message.author.id === "231956829159161856") {
     try {
       let toSay = "messageToSend"
       this.client.guilds.map((guild) => {
@@ -22,4 +23,5 @@
     }
   } else {
     message.send("Tu ne peux pas faire ça !")
-}
+   }
+ }
