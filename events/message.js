@@ -19,15 +19,12 @@ module.exports = (client) => {
       return false;
   }
     // Ignorer les DM /!\
-    if(message.channel.type==="dm"||message.channel.type==="group") {
+    if(message.channel.type ==="dm"||message.channel.type==="group") {
     message.channel.send("Je ne suis pas fait pour fonctionner en DM/Groupes")
     return false;
 
 }
-    message.channel.send("Impossible d'exécuter une commande en DM ! :BMOuh:") {
-    return false;
-  }
-  
+    
     // Démarre la commande
     cmd.run(client, message, args);
   }
