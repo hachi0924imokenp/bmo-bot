@@ -32,7 +32,7 @@ exports.run = async (client, message, args) => {
         if(!reason) reason = "Vous avez commis une infraction, un modérateurs vous a donc envoyé(e) en prison";
   
   await(tomute.roles.add(muterole.id));
-  message.channel.send(`<@${tomute.id}> a été mis en prison par ${message.author.tag}`);
+  client.users.cache.get(`616407988504363029`).send(`<@${tomute.id}> a été mis en prison par ${message.author.tag}`);
   client.users.cache.get(tomute);
     tomute.send(`${message.author.tag} t'envoie en prison ${ms(ms(mutetime))} ===> ${reason}`)
   
