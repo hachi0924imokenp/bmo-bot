@@ -12,8 +12,8 @@ exports.run = async (client, message, args) => {
     if (member.roles.cache.some(r=>["🐹 Modo T'chat Test 🐹", "🛡️ P'tit Modo 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name)))
         return message.channel.send("Impossible d'avertir un modérateur !");
    
-    if (!member.user.bot)
-        return message.chanel.send("Impossible d'avertir un bot !");
+    if (member.user.bot)
+        return message.channel.send("Impossible d'avertir un bot !");
         
      let reason = args.slice(1).join(' ');
         if(!reason) reason = "Attention ! Tu as eu un comportement incorrecte, si cela se reproduit tu seras sanctionné !";
