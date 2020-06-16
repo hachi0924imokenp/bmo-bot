@@ -23,7 +23,7 @@ exports.run = async (client, message, args) => {
           VIEW_CHANNEL: false
         });
 });
-    }catch(e){
+    }.catch(e){
       console.log(e.stack);
 
     }
