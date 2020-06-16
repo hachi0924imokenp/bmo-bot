@@ -25,7 +25,7 @@ exports.run = (client, message, args) => {
           console.log("Exiting Success")
           process.exit(1);
       } else {
-          message.channel.sendMessage({embed: {
+          message.channel.send({embed: {
             title: "Erreur:",
             color: 0xFFFFFF,
             description: ` :no_entry_sign: Vous n'avez pas la permission ${message.author} :no_entry_sign: `,
