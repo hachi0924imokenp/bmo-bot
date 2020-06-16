@@ -13,7 +13,10 @@ exports.run = async (client, message, args) => {
         permissions:[]
       })
 
-      client.guild.cache.forEach(async (channel, id) => {
+      const textChannels = message.guild.channel.filter(channel => channel.type === 'text');
+      if (!textChannels.every(channel => channel.permissionOverwrites.get(role.id)))
+        {
+      textChannels.forEach(async (channel, id) => {
         await channel.overwritePermissions(muterole, {
           SEND_MESSAGES: false,
           ADD_REACTIONS: false,
@@ -26,6 +29,9 @@ exports.run = async (client, message, args) => {
     }
   }
 
+  if (tomute.roles.has(role.id))
+    return message.channel.send("Cette utilisateur est déjà mute !");
+    
   let mutetime = args[1];
   if(!mutetime) return message.reply("Vous n'avez pas spécifié le temps !");
   
