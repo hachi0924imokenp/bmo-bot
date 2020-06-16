@@ -76,4 +76,4 @@ exports.run = async (client, message, args, msg, title, options, timeout = 30, e
     		.setTitle(`Poll - ${title}`)
     		.setFooter(`Poll created by ${author}`);
 	}
-}
+
