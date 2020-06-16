@@ -17,6 +17,6 @@ exports.run = async (client, message, args) => {
 
     const target = message.mentions.members.first() ||  message.guild.members.cache.get(args[0]);
     client.users.cache.get(target);
-    target.send(`MODO ${message.author.tag} ===> ${reason}`).catch(() => message.reply("Je n'ai pas plus envoyer de DM à votre utilisateur !"));
     message.author.send(`DM Envoyé à ${member.user.tag} !`).catch(() => message.channel.send(`DM Envoyé à ${member.user.tag} !`));
+    target.send(`MODO ${message.author.tag} ===> ${reason}`).catch(() => message.reply("Je n'ai pas plus envoyer de DM à votre utilisateur !"));
 }
