@@ -22,8 +22,7 @@ exports.run = async (client, message, args) => {
           ADD_REACTIONS: false,
           VIEW_CHANNEL: false
         });
- });
-    }
+     });
  }
 
   if (tomute.roles.has(role.id))
