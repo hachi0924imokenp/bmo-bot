@@ -75,6 +75,5 @@ exports.run = async (client, message, args, msg, title, options, timeout = 30, e
     	return new MessageEmbed()
     		.setTitle(`Poll - ${title}`)
     		.setFooter(`Poll created by ${author}`);
-};
-
+	}
 }
