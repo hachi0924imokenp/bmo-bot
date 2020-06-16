@@ -7,7 +7,7 @@ exports.run = async (client, message, args) => {
   let muterole =  message.guild.roles.cache.find(r => ["🏝️ No Man's Land"].includes(r.name));
   if(!muterole){
     try{
-      muterole = await guild.roles.create({
+      muterole = await message.guild.roles.create({
         name: "🏝️ No Man's Land",
         color: "#000000",
         permissions:[]
