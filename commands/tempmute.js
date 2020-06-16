@@ -13,10 +13,11 @@ exports.run = async (client, message, args) => {
         permissions:[]
       })
 
-      message.guild.channels.forEach(async (channel, id) => {
+      client.guild.cache.forEach(async (channel, id) => {
         await channel.overwritePermissions(muterole, {
           SEND_MESSAGES: false,
-          ADD_REACTIONS: false
+          ADD_REACTIONS: false,
+          VIEW_CHANNEL: false
         });
 });
     }catch(e){
