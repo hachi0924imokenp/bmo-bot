@@ -14,19 +14,16 @@ exports.run = async (client, message, args) => {
       })
 
       const textChannels = message.guild.channel.filter(channel => channel.type === 'text');
-      if (!textChannels.every(channel => channel.permissionOverwrites.get(role.id)))
-        {
+      if (!textChannels.every(channel => channel.permissionOverwrites.get(role.id))) {
       textChannels.forEach(async (channel, id) => {
         await channel.overwritePermissions(muterole, {
           SEND_MESSAGES: false,
           ADD_REACTIONS: false,
           VIEW_CHANNEL: false
         });
-     });
- } catch(e) {
-   console.log(e.stack);
+      });
 }
-
+      
   if (tomute.roles.has(role.id))
     return message.channel.send("Cette utilisateur est déjà mute !");
     
