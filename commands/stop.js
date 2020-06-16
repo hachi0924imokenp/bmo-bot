@@ -21,7 +21,7 @@ exports.run = (client, message, args) => {
 
   message.delete(message.author)
       if(message.author.id == "251455597738721280"){
-          channel.send({retour});
+          message.channel.send({ embed: retour });
           console.log("Exiting Success")
           process.exit(1);
       } else {
