@@ -1,3 +1,6 @@
+const Discord = require("discord.js");
+const ms = require("ms");
+
 exports.run = (client, message, args) => {
 
   const retour = new Discord.MessageEmbed()
