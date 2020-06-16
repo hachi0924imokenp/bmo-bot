@@ -22,7 +22,7 @@ exports.run = async (client, message, args) => {
           VIEW_CHANNEL: false
         });
       });
-}
+} catch
       
   if (tomute.roles.has(role.id))
     return message.channel.send("Cette utilisateur est déjà mute !");
