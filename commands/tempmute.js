@@ -7,7 +7,7 @@ exports.run = async (client, message, args) => {
     if(!tomute) return message.channel.send("Merci de mentionner un utilisateur sous la forme suivante:\n\nMention : ``@user#1234``\nDiscord ID : ``251455597738721280``");
 
     if (member.user.bot)
-        return message.channel.send("Impossible d'avertir un bot !");
+        return message.channel.send("Impossible d'envoyer un bot en prison !");
 
     if (tomute.roles.cache.some(r=>["🐹 Modo T'chat Test 🐹", "🛡️ P'tit Modo 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name)))
         return message.channel.send("Impossible d'envoyer un modérateur en prison !");
