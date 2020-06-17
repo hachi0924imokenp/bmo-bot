@@ -34,7 +34,7 @@ exports.run = async (client, message, args) => {
   
   await(tomute.roles.add(muterole.id));
   
-  const channel = client.channels.cache.get(`616407988504363029`);
+  const channel = client.users.cache.find(`616407988504363029`);
   channel.send(`<@${tomute.id}> a été mis en prison par ${message.author.tag}`);
   
   client.users.cache.get(tomute);
