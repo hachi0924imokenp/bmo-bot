@@ -2,6 +2,9 @@ const ms = require("ms");
 
 exports.run = async (client, message, args) => {
   
+if(!message.member.roles.cache.some(r=>["🛡️ P'tit Modo Test 🛡️", "🐹 Modo T'chat Test 🐹", "🛡️ P'tit Modo 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name)))
+       Return message.channel.send(`Désolé <@` + message.author.id + `>, vous n'avez pas la permission à l'utilistion nécessaire de cette commande.`);
+    
 let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]));
   if(!tomute) return message.channel.send("Merci de mentionner un utilisateur sous la forme suivante:\n\nMention : ``@user#1234``\nDiscord ID : ``251455597738721280``");
   if(tomute.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Impossible d'envoyer cette utilisateur en prison !");
