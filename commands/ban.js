@@ -23,10 +23,10 @@ exports.run = async (client, message, args) => {
     await member.ban(reason)
         .catch(error => message.channel.send(`Désolé, je ne peux pas bannir cette utilisateur à cause de : ${error}`));
   
-  const target = message.guild.channel.find.cache(`616407988504363029`);
+  const target = message.guild.channels.find.cache(`616407988504363029`);
   target.send(`${member.user.tag} a été bannis par ${message.author.tag}`);
 
-  const logs = message.guild.channel.find.cache("𝐦𝐨𝐝-𝐥𝐨𝐠𝐬");
+  const logs = message.guild.channels.find.cache("𝐦𝐨𝐝-𝐥𝐨𝐠𝐬");
   if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !logs) {
     message.guild.channel.create('𝐦𝐨𝐝-𝐥𝐨𝐠𝐬').catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"𝐦𝐨𝐝-𝐥𝐨𝐠𝐬\" : ${error}`));
   }
