@@ -50,7 +50,7 @@ exports.run = async (client, message, args) => {
      .first();
   }
 
-  const channel = getDefaultChannel(member.guild);
+  const channel = getDefaultChannel(tomute.guild);
     channel.send(`${tomute.tag} a été mis en prison par ${message.author.tag}`);
   
   client.users.cache.get(tomute);
