@@ -30,7 +30,7 @@ let tomute = message.guild.member(message.mentions.users.first() || message.guil
     }
   }
   
-  if(tomute.guild.roles.cache.find(r => ["🏝️ No Man's Land"].includes(r.name)))
+  if(tomute.roles.has(r => ["🏝️ No Man's Land"].includes(r.name)))
     return message.channel.send("Cette utilisateur est déjà mute !")
    
   let mutetime = args[1];
