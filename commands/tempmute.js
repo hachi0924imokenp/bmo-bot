@@ -34,24 +34,8 @@ exports.run = async (client, message, args) => {
   
   await(tomute.roles.add(muterole.id));
   
-  const getDefaultChannel = (guild) => {
-    if(guild.channels.has(guild.id))
-      return guild.channels.get(guild.id)
-  
-    const generalChannel = guild.channels.find(channel => channel.name === "general");
-    if (generalChannel)
-      return generalChannel;
-
-    return guild.channels
-     .filter(c => c.type === "text" &&
-       c.permissionsFor(guild.client.user).has("SEND_MESSAGES"))
-     .sort((a, b) => a.position - b.position ||
-       Long.fromString(a.id).sub(Long.fromString(b.id)).toNumber())
-     .first();
-  }
-
-  const channel = getDefaultChannel(tomute.guild);
-    channel.send(`${tomute.tag} a été mis en prison par ${message.author.tag}`);
+  const channel = client.channels.cache.get("616407988504363029");
+    channel.send(`${tomute.tag}> a été mis en prison par ${message.author.tag}`);
   
   client.users.cache.get(tomute);
     tomute.send(`${message.author.tag} t'envoie en prison ${ms(ms(mutetime))} ===> ${reason}`)
