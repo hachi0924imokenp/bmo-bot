@@ -25,7 +25,7 @@ exports.run = async (client, message, args) => {
     }
   }
   
-  if (tomute.roles.has(muterole.id))
+    if(message.guild.roles.cache.find(r => ["🏝️ No Man's Land"].includes(r.name));
     return message.channel.send("Cette utilisateur est déjà mute !");
    
   let mutetime = args[1];
