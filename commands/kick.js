@@ -22,6 +22,6 @@ exports.run = async (client, message, args) => {
         .catch(error => message.channel.send(`Désolé, je ne peux pas kické cette utilisateur à cause de : ${error}`));
    
     const channel = client.users.cache.get(`616407988504363029`);
-    message.channel.send(`${member.user.tag} a été kické par ${message.author.tag}`);
+    channel.send(`${member.user.tag} a été kické par ${message.author.tag}`);
 
 }
