@@ -4,7 +4,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`Désolé`+"<@" + message.author.id + `>, vous n'avez pas la permission à l'utilistion nécessaire de cette commande.`);
 
     let member = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]));
-    if(!member) return message.channel.send("Merci de mentionner un utilisateur sous la forme suivante:\n\nMention : ``@user#1234``\nDiscord ID : ``251455597738721280");
+    if(!member) return message.channel.send("Merci de mentionner un utilisateur sous la forme suivante:\n\nMention : ``@user#1234``\nDiscord ID : ``251455597738721280``");
     if(member.roles.cache.some(r=>["🐹 Modo T'chat Test 🐹", "🛡️ P'tit Modo 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name)))
         return message.channel.send("Impossible de bannir un modérateur !");
   
