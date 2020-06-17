@@ -1,4 +1,4 @@
-export.run = (client, message, args) => {
+exports.run = (client, message, args) => {
 
     if(!message.author.id !== 251455597738721280) {
         message.channel.send("Vous n'êtes pas mon créateur !");
