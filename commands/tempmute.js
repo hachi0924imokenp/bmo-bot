@@ -2,7 +2,7 @@ const ms = require("ms");
 
 exports.run = async (client, message, args) => {
   
-let tomute = message.guild.member(message.mentions.users.first() || message.guild.member.cache.get(args[0]));
+let tomute = message.guild.member(message.mentions.users.first() || message.guild.member.cache.get(args[0])));
   if(!tomute) return message.channel.send("Merci de mentionner un utilisateur sous la forme suivante:\nMention : ``@user#1234``\nDiscord ID : ``251455597738721280``");
   if(tomute.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Impossible d'envoyer cette utilisateur en prison !");
   
