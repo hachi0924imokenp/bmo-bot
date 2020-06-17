@@ -27,7 +27,7 @@ exports.run = async (client, message, args) => {
   const channel = client.channels.cache.get("616407988504363029");
     channel.send(`${member.user.tag} a été bannis par ${message.author.tag}`);
 
-  const logs = message.guild.channel.find.cache("𝐦𝐨𝐝-𝐥𝐨𝐠𝐬");
+  const logs = client.channels.cache.get("𝐦𝐨𝐝-𝐥𝐨𝐠𝐬");
   if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !logs) {
     message.guild.channel.create('𝐦𝐨𝐝-𝐥𝐨𝐠𝐬').catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"𝐦𝐨𝐝-𝐥𝐨𝐠𝐬\" : ${error}`));
   }
