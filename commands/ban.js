@@ -18,14 +18,14 @@ exports.run = async (client, message, args) => {
         if(!reason) reason = "Tu as commis une infraction, un modérateur t'a donc bannis";
     
     const banned = message.mentions.members.first() ||  message.guild.members.cache.get(args[0]);
-    client.users.cache.get(banned);
-    banned.send(`Tu as été bannis par ${message.author.tag} ===> ${reason}`);
+        client.users.cache.get(banned);
+        banned.send(`Tu as été bannis par ${message.author.tag} ===> ${reason}`);
     
     await member.ban(reason)
         .catch(error => message.channel.send(`Désolé, je ne peux pas bannir cette utilisateur à cause de : ${error}`));
   
-  const channel = client.users.cache.find("616407988504363029");
-  channel.send(`${member.user.tag} a été bannis par ${message.author.tag}`);
+  const channel = client.channels.cache.get("616407988504363029");("616407988504363029");
+    channel.send(`${member.user.tag} a été bannis par ${message.author.tag}`);
 
   const logs = message.guild.channel.find.cache("𝐦𝐨𝐝-𝐥𝐨𝐠𝐬");
   if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !logs) {
