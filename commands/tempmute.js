@@ -27,8 +27,11 @@ let tomute = message.guild.member(message.mentions.users.first() || message.guil
     }
   }
   
+  if(!tomute.length)
+    return message.channel.send("Merci de mentionner un utilisateur sous la forme suivante:\nMention : ``@user#1234``\nDiscord ID : ``251455597738721280``");
+
   if(tomute.guild.roles.cache.find(r => ["🏝️ No Man's Land"].includes(r.name)))
-    return message.channel.send("Cette utilisateur est déjà mute !");
+    return message.channel.send("Cette utilisateur est déjà mute !")
    
   let mutetime = args[1];
     if(!mutetime) return message.reply("Vous n'avez pas spécifié le temps !");
