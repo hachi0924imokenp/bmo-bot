@@ -1,6 +1,8 @@
 const ms = require("ms");
+
 exports.run = async (client, message, args) => {
-  let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+  
+let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
   if(!tomute) return message.reply("Je ne peux pas trouver cette utilisateur.");
   if(tomute.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Impossible d'envoyer cette utilisateur en prison !");
   
@@ -26,18 +28,18 @@ exports.run = async (client, message, args) => {
   }
   
   if(tomute.guild.roles.cache.find(r => ["🏝️ No Man's Land"].includes(r.name))
-    return message.channel.send("Cette utilisateur est déjà mute !");
+    channel.send("Cette utilisateur est déjà mute !");
    
   let mutetime = args[1];
     if(!mutetime) return message.reply("Vous n'avez pas spécifié le temps !");
   
   let reason = args.slice(2).join(' ');
-        if(!reason) reason = "Vous avez commis une infraction, un modérateurs vous a donc envoyé(e) en prison";
+    if(!reason) reason = "Vous avez commis une infraction, un modérateurs vous a donc envoyé(e) en prison";
   
   await(tomute.roles.add(muterole.id));
   
   const channel = client.channels.cache.get(`616407988504363029`);
-  channel.send(`<@${tomute.id}> a été mis en prison par ${message.author.tag}`);
+    channel.send(`<@${tomute.id}> a été mis en prison par ${message.author.tag}`);
   
   client.users.cache.get(tomute);
     tomute.send(`${message.author.tag} t'envoie en prison ${ms(ms(mutetime))} ===> ${reason}`)
