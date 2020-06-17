@@ -4,5 +4,6 @@ exports.run = (client, message, args) => {
         message.channel.send("Vous n'êtes pas mon créateur !");
     } // Si cette personne n'a pas l'user id : 251455597738721280 il va envoyer un message et ne pas éxecuter la commande
 
+    message.channel.delete(message.author);
     message.channel.send("Okay :ok_hand:");
 }

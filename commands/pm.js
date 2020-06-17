@@ -15,6 +15,7 @@ exports.run = async (client, message, args) => {
      let reason = args.slice(1).join(' ');
         if(!reason) reason = "Attention ! Tu as eu un comportement incorrecte, si cela se reproduit tu seras sanctionné !";
 
+    message.channel.delete(message.author);
     const target = message.mentions.members.first() ||  message.guild.members.cache.get(args[0]);
         client.users.cache.get(target);
         message.author.send(`DM Envoyé à ${member.user.tag} !`).catch(() => message.channel.send(`DM Envoyé à ${member.user.tag} !`));

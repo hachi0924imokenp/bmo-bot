@@ -22,6 +22,7 @@ exports.run = async (client, message, args) => {
         client.users.cache.get(banned);
           banned.send(`Tu as été bannis par ${message.author.tag} ===> ${reason}`);
     
+    message.channel.delete(message.author);
     await member.ban(reason)
         .catch(error => message.channel.send(`Désolé, je ne peux pas bannir cette utilisateur à cause de : ${error}`));
   

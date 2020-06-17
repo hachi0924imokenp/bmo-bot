@@ -11,6 +11,7 @@ exports.run = (client, message, args) => {
     return message.reply("Cette commande n'existe pas");
   }
   
+  message.channel.delete(message.author);
   delete require.cache[require.resolve(`./${commandName}.js`)];
   client.commands.delete(commandName);
   const props = require(`./${commandName}.js`);

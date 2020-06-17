@@ -39,8 +39,9 @@ exports.run = async (client, message, args) => {
     let reason = args.slice(2).join(' ');
         if(!reason) reason = "Tu as commis une infraction, un modérateur t'a donc envoyé(e) en prison";
   
+    message.channel.delete(message.author);
     await(tomute.roles.add(muterole.id));
-  
+    
     const channel = client.channels.cache.get("616407988504363029");
         channel.send(`<@${tomute.id}> a été mis en prison par ${message.author.tag}`);
   

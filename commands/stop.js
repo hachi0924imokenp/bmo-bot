@@ -23,7 +23,7 @@ exports.run = (client, message, args) => {
       if(message.author.id == "251455597738721280"){
           message.channel.send({ embed: retour });
           console.log("Exiting Success")
-          process.exit(1);
+          process.exit(100);
       } else {
           message.channel.send({embed: {
             title: "Erreur:",

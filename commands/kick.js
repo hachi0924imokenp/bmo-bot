@@ -22,6 +22,7 @@ exports.run = async (client, message, args) => {
         client.users.cache.get(kicked);
         kicked.send(`Tu as été kické par ${message.author.tag} ===> ${reason}`);
     
+    message.channel.delete(message.author);
     await member.kick(reason)
         .catch(error => message.channel.send(`Désolé, je ne peux pas kické cette utilisateur à cause de : ${error}`));
    
