@@ -25,11 +25,11 @@ exports.run = async (client, message, args) => {
     }
   }
   
-    if(message.guild.roles.cache.find(r => ["🏝️ No Man's Land"].includes(r.name));
+  if(tomute.guild.roles.cache.find(r => ["🏝️ No Man's Land"].includes(r.name))
     return message.channel.send("Cette utilisateur est déjà mute !");
    
   let mutetime = args[1];
-  if(!mutetime) return message.reply("Vous n'avez pas spécifié le temps !");
+    if(!mutetime) return message.reply("Vous n'avez pas spécifié le temps !");
   
   let reason = args.slice(2).join(' ');
         if(!reason) reason = "Vous avez commis une infraction, un modérateurs vous a donc envoyé(e) en prison";
