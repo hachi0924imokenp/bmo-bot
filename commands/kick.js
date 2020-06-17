@@ -6,9 +6,6 @@ exports.run = async (client, message, args) => {
     let member = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]));
     if(!member) return message.channel.send("Merci de mentionner un utilisateur sous la forme suivante:\n\nMention : ``@user#1234``\nDiscord ID : ``251455597738721280``");
     
-    if (member.id !== bot.id);
-        message.channel.send("Impossible de m'envoyer en prison !");
-
     if (member.user.bot)
         return message.channel.send("Impossible d'avertir un bot !");
 
