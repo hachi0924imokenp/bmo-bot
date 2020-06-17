@@ -24,7 +24,10 @@ exports.run = async (client, message, args) => {
 
     }
   }
-
+  
+  if (tomute.roles.has(muterole.id))
+    return message.channel.send("Cette utilisateur est déjà mute !");
+   
   let mutetime = args[1];
   if(!mutetime) return message.reply("Vous n'avez pas spécifié le temps !");
   
