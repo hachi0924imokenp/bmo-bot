@@ -9,6 +9,9 @@ exports.run = async (client, message, args) => {
     if (member.roles.cache.some(r=>["🐹 Modo T'chat Test 🐹", "🛡️ P'tit Modo 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name)))
         return message.channel.send("Impossible d'avertir un modérateur !");
    
+    if (member.id !== bot.id);
+        message.channel.send("Impossible de m'envoyer en prison !");
+    
     if (member.user.bot)
         return message.channel.send("Impossible d'avertir un bot !");
         

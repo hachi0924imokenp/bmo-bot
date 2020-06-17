@@ -1,16 +1,19 @@
 const ms = require("ms");
 exports.run = async (client, message, args) => {
     if(!message.member.roles.cache.some(r=>["🐹 Modo T'chat Test 🐹", "🛡️ P'tit Modo 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name)))
-      return message.channel.send(`Désolé <@` + message.author.id + `>, vous n'avez pas la permission nécessaire à l'utilistion  de cette commande.`);
+        return message.channel.send(`Désolé <@` + message.author.id + `>, vous n'avez pas la permission nécessaire à l'utilistion  de cette commande.`);
 
     let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]));
     if(!tomute) return message.channel.send("Merci de mentionner un utilisateur sous la forme suivante:\n\nMention : ``@user#1234``\nDiscord ID : ``251455597738721280``");
 
     if (tomute.id !== bot.id);
-    message.channel.send("Impossible de m'envoyer en prison !");
+        message.channel.send("Impossible de m'envoyer en prison !");
+
+    if (member.user.bot)
+        return message.channel.send("Impossible d'avertir un bot !");
 
     if (tomute.roles.cache.some(r=>["🐹 Modo T'chat Test 🐹", "🛡️ P'tit Modo 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name)))
-    return message.channel.send("Impossible d'envoyer un modérateur en prison !");
+        return message.channel.send("Impossible d'envoyer un modérateur en prison !");
 
     let muterole =  message.guild.roles.cache.find(r => ["🏝️ No Man's Land"].includes(r.name));
       if(!muterole){
