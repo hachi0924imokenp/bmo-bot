@@ -6,7 +6,7 @@ exports.run = async (client, message, args) => {
   let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]));
     if(!tomute) return message.channel.send("Merci de mentionner un utilisateur sous la forme suivante:\n\nMention : ``@user#1234``\nDiscord ID : ``251455597738721280``");
 
-    if (member.roles.cache.some(r=>["🐹 Modo T'chat Test 🐹", "🛡️ P'tit Modo 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name)))
+    if (tomute.roles.cache.some(r=>["🐹 Modo T'chat Test 🐹", "🛡️ P'tit Modo 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name)))
     return message.channel.send("Impossible de kické un modérateur !");
 
   let muterole =  message.guild.roles.cache.find(r => ["🏝️ No Man's Land"].includes(r.name));
@@ -39,7 +39,7 @@ exports.run = async (client, message, args) => {
   await(tomute.roles.add(muterole.id));
   
   const channel = client.channels.cache.get("616407988504363029");
-    channel.send(`${tomute.tag}> a été mis en prison par ${message.author.tag}`);
+    channel.send(`${tomute.id}> a été mis en prison par ${message.author.tag}`);
   
   client.users.cache.get(tomute);
     tomute.send(`${message.author.tag} t'envoie en prison ${ms(ms(mutetime))} ===> ${reason}`)
