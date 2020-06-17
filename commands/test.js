@@ -1,6 +1,8 @@
-exports.run = (client, message, args) => {
 const moment = require("moment");
 require("moment-duration-format");
+
+exports.run = (client, message, args) => {
+message.delete(message.author);
 
 const duration = moment.duration(client.uptime).format(" D [Jours], H [heures], m [minutes], s [secondes]");
     message.channel.send({embed: {

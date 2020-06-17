@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 const ms = require("ms");
 
 exports.run = (client, message, args) => {
+  message.delete(message.author);
 
   const retour = new Discord.MessageEmbed()
     .setTitle("Shutdown")
@@ -19,11 +20,10 @@ exports.run = (client, message, args) => {
     .setTimestamp()
     .setFooter(`Crée par ありがと ございます#9878`, "https://cdn.discordapp.com/avatars/251455597738721280/9fcab661f0a8391d5ab53453370fe1fe.png")
 
-  message.delete(message.author)
       if(message.author.id == "251455597738721280"){
           message.channel.send({ embed: retour });
           console.log("Exiting Success")
-          process.exit(100);
+          process.exit(1000);
       } else {
           message.channel.send({embed: {
             title: "Erreur:",

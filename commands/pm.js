@@ -1,4 +1,5 @@
 exports.run = async (client, message, args) => {
+    message.delete(message.author);
     
     if(!message.member.roles.cache.some(r=>["🐹 Modo T'chat Test 🐹", "🛡️ P'tit Modo 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name)))
         return message.channel.send(`Désolé <@` + message.author.id + `>, vous n'avez pas la permission à l'utilistion nécessaire de cette commande.`);
@@ -15,7 +16,6 @@ exports.run = async (client, message, args) => {
      let reason = args.slice(1).join(' ');
         if(!reason) reason = "Attention ! Tu as eu un comportement incorrecte, si cela se reproduit tu seras sanctionné !";
 
-    message.channel.delete(message.author);
     const target = message.mentions.members.first() ||  message.guild.members.cache.get(args[0]);
         client.users.cache.get(target);
         message.author.send(`DM Envoyé à ${member.user.tag} !`).catch(() => message.channel.send(`DM Envoyé à ${member.user.tag} !`));

@@ -1,5 +1,7 @@
 exports.run = async (client, message, args) => {
-  
+    
+    message.delete(message.author);
+    
     if(!message.member.roles.cache.some(r=>["🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name)))
         return message.channel.send(`Désolé`+"<@" + message.author.id + `>, vous n'avez pas la permission nécessaire à l'utilistion de cette commande.`);
 
@@ -22,7 +24,6 @@ exports.run = async (client, message, args) => {
         client.users.cache.get(banned);
           banned.send(`Tu as été bannis par ${message.author.tag} ===> ${reason}`);
     
-    message.channel.delete(message.author);
     await member.ban(reason)
         .catch(error => message.channel.send(`Désolé, je ne peux pas bannir cette utilisateur à cause de : ${error}`));
   

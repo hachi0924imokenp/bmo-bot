@@ -1,5 +1,7 @@
 const ms = require("ms");
 exports.run = async (client, message, args) => {
+    message.delete(message.author);
+
     if(!message.member.roles.cache.some(r=>["🐹 Modo T'chat Test 🐹", "🛡️ P'tit Modo 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name)))
         return message.channel.send(`Désolé <@` + message.author.id + `>, vous n'avez pas la permission nécessaire à l'utilistion  de cette commande.`);
 
@@ -38,8 +40,7 @@ exports.run = async (client, message, args) => {
   
     let reason = args.slice(2).join(' ');
         if(!reason) reason = "Tu as commis une infraction, un modérateur t'a donc envoyé(e) en prison";
-  
-    message.channel.delete(message.author);
+
     await(tomute.roles.add(muterole.id));
     
     const channel = client.channels.cache.get("616407988504363029");

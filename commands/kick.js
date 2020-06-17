@@ -1,5 +1,6 @@
 exports.run = async (client, message, args) => {
-    
+    message.delete(message.author);
+
     if(!message.member.roles.cache.some(r=>["🐹 Modo T'chat Test 🐹", "🛡️ P'tit Modo 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name)))
         return message.channel.send(`Désolé <@` + message.author.id + `>, vous n'avez pas la permission nécessaire à l'utilistion  de cette commande.`);
 
@@ -21,8 +22,7 @@ exports.run = async (client, message, args) => {
     const kicked = message.mentions.members.first() ||  message.guild.members.cache.get(args[0]);
         client.users.cache.get(kicked);
         kicked.send(`Tu as été kické par ${message.author.tag} ===> ${reason}`);
-    
-    message.channel.delete(message.author);
+
     await member.kick(reason)
         .catch(error => message.channel.send(`Désolé, je ne peux pas kické cette utilisateur à cause de : ${error}`));
    
