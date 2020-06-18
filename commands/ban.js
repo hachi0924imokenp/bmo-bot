@@ -30,7 +30,7 @@ exports.run = async (client, message, args) => {
     const channel = client.channels.cache.get("616407988504363029");
         channel.send(`${member.user.tag} a été bannis par ${message.author.tag}`);
 
-    const logs = client.channels.cache.find(c=>["𝐦𝐨𝐝-𝐥𝐨𝐠𝐬"].includes(c.name))
+    const logs = message.guild.channels.cache.find(c=>["𝐦𝐨𝐝-𝐥𝐨𝐠𝐬"].includes(c.name))
         if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !logs) {
             message.guild.channels.create('𝐦𝐨𝐝-𝐥𝐨𝐠𝐬').catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"𝐦𝐨𝐝-𝐥𝐨𝐠𝐬\" : ${error}`));
     }
@@ -76,9 +76,14 @@ exports.run = async (client, message, args) => {
             inline: true,
         },
         {
+			name: '\u200b',
+			value: '\u200b',
+			inline: false,
+		},
+        {
             name: "Raison",
             value: `Tu as été bannis par ${message.author.tag} ===> ${reason}`,
-            inline: true,
+            inline: false,
         }
     ],
         timestamp: new Date(),
