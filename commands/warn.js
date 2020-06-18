@@ -114,7 +114,7 @@ exports.run = async (client, message, args) => {
     if(!muterole) return message.reply("Impossible de trouver le rôle '🏝️ No Man's Land', vous devez le crée !");
     
     let mutetime = "1h";
-        await(wUser.addRole(muterole.id));
+        await(wUser.roles.add(muterole.id));
         message.channel.send(`<@${wUser.id}> a été temporairement mute `);
         
     setTimeout(function(){
@@ -126,5 +126,54 @@ exports.run = async (client, message, args) => {
     if(warns[wUser.id].warns == 10){
         message.guild.member(wUser).ban(reason);
         message.channel.send(`<@${wUser.id}> a été bannis`)
+        logchan.send({embed: {
+            color: '#fc0703',
+            author: {
+            name: member.user.tag,
+            icon_url: "https://cdn.discordapp.com/avatars/"+member.user.id+ "/"+member.user.avatar+".png"
+        },
+            title: "Bannissement",
+            description: "Le Ban Hammer est tombé !",
+            thumbnail: {
+                url:"https://cdn.discordapp.com/avatars/"+message.author.id+ "/"+message.author.avatar+".png",
+            },
+            fields: [{
+                name: "Action",
+                value: `Ban`,
+                inline: false,
+            },
+            {
+                name: "Nom d'utilisateur",
+                value: `${member.user.tag}`,
+                inline: false,
+            },
+            {
+                name: "ID",
+                value: `${member.user.id}`,
+                inline: false,
+            },
+            {
+                name: "Bannis par",
+                value: `${message.author.tag}`,
+                inline: false,
+            },
+            {
+                name: "ID du Modérateur",
+                value: `${message.author.id}`,
+                inline: false,
+            },
+            {
+                name: "Raison",
+                value: `${reason}`,
+                inline: false,
+            }
+        ],
+            timestamp: new Date(),
+            footer: {
+            icon_url: "https://cdn.discordapp.com/avatars/548209665092091904/0a0054900dc4827350258c01ffc08470.png?size=128",
+            text: "© BMO"
+            }
+        }
+        });
     }
 }
