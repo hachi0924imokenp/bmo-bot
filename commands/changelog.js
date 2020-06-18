@@ -19,11 +19,11 @@ exports.run = async (client, message, args) => {
     },
     fields: [{
         name: "Mise à jour du 18/06/20",
-        value: "On m'a ajouter un changelog, c'est plus pratique non pour suivre les mises à jour du bot sans passer par Github <:BMOhappy:701199670466052246>\n\n-------------------\n\nLes logs ont été mis sur les commandes de modérations (kick, ban, purge, mute)\n\n-------------------\n\nMon créateur m'a fait ajouter les warns avec logs !"
+        value: "On m'a ajouter un changelog, c'est plus pratique non pour suivre les mises à jour du bot sans passer par Github <:BMOhappy:701199670466052246>\n-------------------\n\nLes logs ont été mis sur les commandes de modérations (kick, ban, purge, mute)\n-------------------\n\nMon créateur m'a fait ajouter les warns avec logs !"
       },
       {
         name: "Mise à jour du 17/06/20",
-        value: "Correctif des problèmes au niveau des arguments sur certaines commandes !\n\n-------------------\n\nCertains textes de réponses on été changer car c'était pas beau à voir <:BMOsad:699766556879618078>"
+        value: "Correctif des problèmes au niveau des arguments sur certaines commandes !\n-------------------\n\nCertains textes de réponses on été changer car c'était pas beau à voir <:BMOsad:699766556879618078>"
       },
       {
         name: "Dernière mise à jour effectué il y'a",
