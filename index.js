@@ -4,7 +4,7 @@ const fs = require("fs");
 const ms = require("ms")
 
 const client = new Discord.Client();
-const config = require("./config.json");
+const config = require("./modules/config.json");
 // Nous devons également nous assurer que nous attachons la configuration au CLIENT pour qu'elle soit accessible partout!
 client.config = config;
 
