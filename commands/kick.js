@@ -21,12 +21,84 @@ exports.run = async (client, message, args) => {
     
     const kicked = message.mentions.members.first() ||  message.guild.members.cache.get(args[0]);
         client.users.cache.get(kicked);
-        kicked.send(`Tu as été kické par ${message.author.tag} ===> ${reason}`);
+            kicked.send(`Tu as été kické par ${message.author.tag} ===> ${reason}`);
 
     await member.kick(reason)
         .catch(error => message.channel.send(`Désolé, je ne peux pas kické cette utilisateur à cause de : ${error}`));
    
-    const channel = client.channels.cache.get("616407988504363029");
-        channel.send(`${member.user.tag} a été kické par ${message.author.tag}`);
+        const info = message.guild.channels.cache.find(c=>["informations"].includes(c.name))
+        setTimeout(function () {
+            if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !info) {
+                message.guild.channels.create('informations').catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"informations\" : ${error}`));
+        
+            }   
+        }, 2000);
+    
+            if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !info) { 
+                console.log('Le salon des informations n\'existe pas, et j\'ai essayer de le crée mais je manque de permissions !')
+            }
+    
+        const logchan = message.guild.channels.cache.find(c=>["𝐦𝐨𝐝-𝐥𝐨𝐠𝐬"].includes(c.name))
+        setTimeout(function () {
+            if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !logchan) {
+                message.guild.channels.create('𝐦𝐨𝐝-𝐥𝐨𝐠𝐬').catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"𝐦𝐨𝐝-𝐥𝐨𝐠𝐬\" : ${error}`));
+      
+            }
+        }, 2000);
+    
+            if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !logchan) { 
+                console.log('Le salon des logs n\'existe pas, et j\'ai essayer de le crée mais je manque de permissions !')
+            }   
+        
+        info.send(`${member.user.tag} a été kické par ${message.author.tag}`);
+        logchan.send({embed: {
+            color: '#fc0703',
+            author: {
+            name: member.user.tag,
+            icon_url: "https://cdn.discordapp.com/avatars/"+member.user.id+ "/"+member.user.avatar+".png"
+        },
+            title: "Kick",
+            description: "Aïe, coup de pied au fesses !",
+            thumbnail: {
+                url:"https://cdn.discordapp.com/avatars/"+message.author.id+ "/"+message.author.avatar+".png",
+            },
+            fields: [{
+                name: "Action",
+                value: `Kick`,
+                inline: false,
+            },
+            {
+                name: "Nom d'utilisateur",
+                value: `${member.user.tag}`,
+                inline: false,
+            },
+            {
+                name: "ID",
+                value: `${member.user.id}`,
+                inline: false,
+            },
+            {
+                name: "Kické par",
+                value: `${message.author.tag}`,
+                inline: false,
+            },
+            {
+                name: "ID du Modérateur",
+                value: `${message.author.id}`,
+                inline: false,
+            },
+            {
+                name: "Raison",
+                value: `${reason}`,
+                inline: false,
+            }
+        ],
+            timestamp: new Date(),
+            footer: {
+            icon_url: "https://cdn.discordapp.com/avatars/548209665092091904/0a0054900dc4827350258c01ffc08470.png?size=128",
+            text: "© BMO"
+            }
+        }
+        });
 
 }
