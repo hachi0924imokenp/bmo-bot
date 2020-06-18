@@ -37,7 +37,7 @@ exports.run = (client, message, args) => {
         color: '#fc0703',
         author: {
         name: wUser.user.tag,
-        icon_url: "https://cdn.discordapp.com/avatars/"+member.user.id+ "/"+member.user.avatar+".png"
+        icon_url: "https://cdn.discordapp.com/avatars/"+wUser.user.id+ "/"+wUser.user.avatar+".png"
     },
         title: "Warn",
         description: "Attention c'est le warn !",
@@ -110,7 +110,7 @@ exports.run = (client, message, args) => {
             color: '#fc0703',
             author: {
             name: wUser.user.tag,
-            icon_url: "https://cdn.discordapp.com/avatars/"+tomute.user.id+ "/"+tomute.user.avatar+".png"
+            icon_url: "https://cdn.discordapp.com/avatars/"+wUser.user.id+ "/"+wUser.user.avatar+".png"
         },
             title: "Mute",
             description: "Get Jailed B*tch :D",
@@ -179,15 +179,15 @@ exports.run = (client, message, args) => {
         }
     }, 2000);
   
-        if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !logchan) { 
-            console.log('Le salon des logs n\'existe pas, et j\'ai essayer de le crée mais je manque de permissions !')
-        }    
+    if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !logchan) { 
+        console.log('Le salon des logs n\'existe pas, et j\'ai essayer de le crée mais je manque de permissions !')
+    }    
 
         logchan.send({embed: {
             color: '#fc0703',
             author: {
             name: wUser.user.tag,
-            icon_url: "https://cdn.discordapp.com/avatars/"+member.user.id+ "/"+member.user.avatar+".png"
+            icon_url: "https://cdn.discordapp.com/avatars/"+wUser.user.id+ "/"+wUser.user.avatar+".png"
         },
             title: "Bannissement",
             description: "Le Ban Hammer est tombé !",
