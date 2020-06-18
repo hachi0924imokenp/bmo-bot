@@ -4,7 +4,7 @@ require("moment-duration-format");
 exports.run = async (client, message, args) => {
     message.delete(message.author);
 
-    const duration = moment.duration(client.uptime).format(" D [Jours], H [heures], m [minutes], s [seconds]");
+    const duration = moment.duration(client.uptime).format(" D [Jours], H [heures], m [minutes], s [es]");
     message.channel.send({embed: {
     color: '34eb80',
     author: {
@@ -13,14 +13,14 @@ exports.run = async (client, message, args) => {
     },
     title: "Changelog",
     url: "https://github.com/Cleaner-Discord/bmo-bot/commits/masterhttps://github.com/Cleaner-Discord/bmo-bot/commits/master",
-    description: "Suivez ici les mises à jour de mon chère créateur ! <:BMOdance:704463259570405447>",
+    description: "Suivez ici les mises à jour de mon chère créateur ! <:BMOhappy:701199670466052246>",
     fields: [{
         name: "Mise à jour du 18/06/20",
-        value: "On a ajouter le changelog, c'est plus pratique non ? pour suivre les mises à jour du bot sans passer par Github <:BMOdance:704463259570405447>"
+        value: "On a ajouter le changelog, c'est plus pratique non ? pour suivre les mises à jour du bot sans passer par Github <:BMOhappy:701199670466052246>"
       },
       {
         name: "Mise à jour du 17/06/20",
-        value: "Correctif des problèmes au niveau des arguments sur certaines commandes ! \nCertains textes de réponses on été changer car c'était pas beau à voir <:BMOsad:699766556879618078>"
+        value: "Correctif des problèmes au niveau des arguments sur certaines commandes ! \n\nCertains textes de réponses on été changer car c'était pas beau à voir <:BMOsad:699766556879618078>"
       },
       {
         name: "Dernière mise à jour effectué il y'a",
