@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const fs = require("fs");
 const ms = require("ms");
-let warns = JSON.parse(fs.readFileSync("./modules/warnings.json", "utf8"));
+let warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
 
 exports.run = async (client, message, args) => {
     message.delete(message.author);
@@ -18,7 +18,7 @@ exports.run = async (client, message, args) => {
     if(member.roles.cache.some(r=>["🐹 Modo T'chat Test 🐹", "🛡️ P'tit Modo 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name)))
         return message.channel.send("Impossible de warn un modérateur !");
 
-    let wUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
+    let wUser = message.guild.member(message.mentions.users.first()) || message.guild.members.cache.get(args[0])
         if(!wUser) return message.channel.send("Merci de mentionner un utilisateur sous la forme suivante:\n\nMention : ``@user#1234``\nDiscord ID : ``251455597738721280``");
     
         let reason = args.join(" ").slice(22);
