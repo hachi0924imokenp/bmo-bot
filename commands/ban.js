@@ -30,14 +30,63 @@ exports.run = async (client, message, args) => {
     const channel = client.channels.cache.get("616407988504363029");
         channel.send(`${member.user.tag} a été bannis par ${message.author.tag}`);
 
-  const logs = client.channels.cache.get("𝐦𝐨𝐝-𝐥𝐨𝐠𝐬");
-      if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !logs) {
-        message.guild.channel.create('𝐦𝐨𝐝-𝐥𝐨𝐠𝐬').catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"𝐦𝐨𝐝-𝐥𝐨𝐠𝐬\" : ${error}`));
-  }
-    
-  if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !logs) { 
-      console.log('Le salon des logs n\'existe pas, et j\'ai essayer de le crée mais je manque de permissions !')
-  }
+    const logs = client.channels.cache.get("𝐦𝐨𝐝-𝐥𝐨𝐠𝐬");
+        if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !logs) {
+            message.guild.channels.create('𝐦𝐨𝐝-𝐥𝐨𝐠𝐬').catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"𝐦𝐨𝐝-𝐥𝐨𝐠𝐬\" : ${error}`));
+    }
+  
+      if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !logs) { 
+        console.log('Le salon des logs n\'existe pas, et j\'ai essayer de le crée mais je manque de permissions !')
+    }
 
+    logs.send({embed: {
+        color: '#fc0703',
+        author: {
+        name: member.user.tag,
+        icon_url: "https://cdn.discordapp.com/avatars/"+member.user.id+ "/"+member.user.avatar+".png"
+    },
+        title: "Ban",
+        description: "Le ban hammer est tombé !",
+        thumbnail: {
+            url:"https://cdn.discordapp.com/avatars/"+message.author.id+ "/"+message.author.avatar+".png",
+        },
+        fields: [{
+            name: "Nom d'utilisateur",
+            value: `${member.user.tag}`,
+            inline: true,
+        },
+        {
+            name: "ID",
+            value: `${member.user.id}`,
+            inline: true,
+        },
+        {
+			name: '\u200b',
+			value: '\u200b',
+			inline: false,
+		},
+        {
+            name: "Bannis par",
+            value: `${message.author.tag}`,
+            inline: true,
+        },
+        {
+            name: "ID du Modérateur",
+            value: `${message.author.id}`,
+            inline: true,
+        },
+        {
+            name: "Raison",
+            value: `Tu as été bannis par ${message.author.tag} ===> ${reason}`,
+            inline: true,
+        }
+    ],
+        timestamp: new Date(),
+        footer: {
+        icon_url: "https://cdn.discordapp.com/avatars/548209665092091904/0a0054900dc4827350258c01ffc08470.png?size=128",
+        text: "© BMO"
+        }
+    }
+    });
   
 }
