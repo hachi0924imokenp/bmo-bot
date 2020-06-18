@@ -27,7 +27,14 @@ exports.run = async (client, message, args) => {
     await member.ban(reason)
         .catch(error => message.channel.send(`Désolé, je ne peux pas bannir cette utilisateur à cause de : ${error}`));
   
-    const channel = client.channels.cache.get("616407988504363029");
+    const channel = message.guild.channels.cache.find(c=>["informations"].includes(c.name))
+        if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !logs) {
+            message.guild.channels.create('𝐦𝐨𝐝-𝐥𝐨𝐠𝐬').catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"informations\" : ${error}`));
+        }   
+
+        if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !logs) { 
+            console.log('Le salon des informations n\'existe pas, et j\'ai essayer de le crée mais je manque de permissions !')
+        }
         channel.send(`${member.user.tag} a été bannis par ${message.author.tag}`);
 
     const logs = message.guild.channels.cache.find(c=>["𝐦𝐨𝐝-𝐥𝐨𝐠𝐬"].includes(c.name))
@@ -61,11 +68,6 @@ exports.run = async (client, message, args) => {
             inline: true,
         },
         {
-			name: '\u200b',
-			value: '\u200b',
-			inline: false,
-		},
-        {
             name: "Bannis par",
             value: `${message.author.tag}`,
             inline: true,
@@ -75,11 +77,6 @@ exports.run = async (client, message, args) => {
             value: `${message.author.id}`,
             inline: true,
         },
-        {
-			name: '\u200b',
-			value: '\u200b',
-			inline: false,
-		},
         {
             name: "Raison",
             value: `Tu as été bannis par ${message.author.tag} ===> ${reason}`,
