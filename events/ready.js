@@ -8,7 +8,6 @@ module.exports = (client) => {
       "le code secret !", 
       "mon créateur !"
       ]; 
-    client.user.setActivity(`b!help`, {type: "LISTENING"});
     setInterval(() => {
       const index = Math.floor(Math.random() * (activities_list.length - 1) + 1); 
       client.user.setActivity(activities_list[index], {type: "LISTENING"}); 
