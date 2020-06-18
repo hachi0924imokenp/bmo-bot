@@ -37,16 +37,16 @@ exports.run = async (client, message, args) => {
         }
         info.send(`${member.user.tag} a été bannis par ${message.author.tag}`);
 
-    const logs = message.guild.channels.cache.find(c=>["𝐦𝐨𝐝-𝐥𝐨𝐠𝐬"].includes(c.name))
-        if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !logs) {
+    const logchan = message.guild.channels.cache.find(c=>["𝐦𝐨𝐝-𝐥𝐨𝐠𝐬"].includes(c.name))
+        if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !logchan) {
             message.guild.channels.create('𝐦𝐨𝐝-𝐥𝐨𝐠𝐬').catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"𝐦𝐨𝐝-𝐥𝐨𝐠𝐬\" : ${error}`));
         }
   
-      if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !logs) { 
-        console.log('Le salon des logs n\'existe pas, et j\'ai essayer de le crée mais je manque de permissions !')
-    }
+        if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !logchan) { 
+            console.log('Le salon des logs n\'existe pas, et j\'ai essayer de le crée mais je manque de permissions !')
+        }   
 
-    logs.send({embed: {
+    logchan.send({embed: {
         color: '#fc0703',
         author: {
         name: member.user.tag,
