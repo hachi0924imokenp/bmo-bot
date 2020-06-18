@@ -15,7 +15,7 @@ exports.run = async (client, message, args) => {
     url: "https://github.com/Cleaner-Discord/bmo-bot/commits/masterhttps://github.com/Cleaner-Discord/bmo-bot/commits/master",
     description: "Suivez ici les mises à jour de mon chère créateur ! <:BMOhappy:701199670466052246>",
     thumbnail: {
-        url: client.user.avatarURL,
+        url:"https://cdn.discordapp.com/avatars/"+message.author.id+ "/"+message.author.avatar+".png",
     },
     fields: [{
         name: "Mise à jour du 18/06/20",
