@@ -30,9 +30,9 @@ exports.run = async (client, message, args) => {
         
         warns[wUser.id].warns++;
 
-        fs.writeFile("./modules/warnings.json", JSON.stringify(warns), (err) => {
+    fs.writeFile("./modules/warnings.json", JSON.stringify(warns), (err) => {
             if (err) console.log(err)
-          });
+    });
 
     const info = message.guild.channels.cache.find(c=>["informations"].includes(c.name))
         setTimeout(function () {

@@ -3,7 +3,7 @@ const fs = require("fs");
 const ms = require("ms");
 let warns = JSON.parse(fs.readFileSync("./modules/warnings.json", "utf8"));
 
-module.exports.run = async (bot, message, args) => {
+exports.run = async (bot, message, args) => {
 
   if(!warns[wUser.id]) warns[wUser.id] = {
     warns: 0
