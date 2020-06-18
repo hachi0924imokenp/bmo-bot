@@ -70,12 +70,12 @@ exports.run = async (client, message, args) => {
                 console.log('Le salon des logs n\'existe pas, et j\'ai essayer de le crée mais je manque de permissions !')
             }   
         
-        info.send(`${member.user.tag} a été mis en prison par ${message.author.tag}`);
+        info.send(`${tomute.user.tag} a été mis en prison par ${message.author.tag}`);
         logchan.send({embed: {
             color: '#fc0703',
             author: {
             name: member.user.tag,
-            icon_url: "https://cdn.discordapp.com/avatars/"+member.user.id+ "/"+member.user.avatar+".png"
+            icon_url: "https://cdn.discordapp.com/avatars/"+tomute.user.id+ "/"+tomute.user.avatar+".png"
         },
             title: "Mute",
             description: "Get Jailed B*tch :D",
@@ -89,12 +89,12 @@ exports.run = async (client, message, args) => {
             },
             {
                 name: "Nom d'utilisateur",
-                value: `${member.user.tag}`,
+                value: `${tomute.user.tag}`,
                 inline: false,
             },
             {
                 name: "ID",
-                value: `${member.user.id}`,
+                value: `${tomute.user.id}`,
                 inline: false,
             },
             {
@@ -107,6 +107,11 @@ exports.run = async (client, message, args) => {
                 value: `${message.author.id}`,
                 inline: false,
             },
+            {
+              name: "Temps",
+              value: `${mutetime}`,
+              inline: false,
+          },
             {
                 name: "Raison",
                 value: `${reason}`,
