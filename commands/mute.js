@@ -74,7 +74,7 @@ exports.run = async (client, message, args) => {
         logchan.send({embed: {
             color: '#fc0703',
             author: {
-            name: member.user.tag,
+            name: tomute.user.tag,
             icon_url: "https://cdn.discordapp.com/avatars/"+tomute.user.id+ "/"+tomute.user.avatar+".png"
         },
             title: "Mute",
