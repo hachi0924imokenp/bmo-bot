@@ -21,7 +21,8 @@ exports.run = async (client, message, args) => {
     let wUser = message.guild.member(message.mentions.users.first()) || message.guild.members.cache.get(args[0])
         if(!wUser) return message.channel.send("Merci de mentionner un utilisateur sous la forme suivante:\n\nMention : ``@user#1234``\nDiscord ID : ``251455597738721280``");
     
-        let reason = args.join(" ").slice(22);
+    let reason = args.join(" ").slice(22);
+        if(!reason) reason = "Tu as commis une infraction, un modérateur t'a donc Warn";
 
         if(!warns[wUser.id]) warns[wUser.id] = {
             warns: 0
