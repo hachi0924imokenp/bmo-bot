@@ -1,6 +1,17 @@
 module.exports = (client) => {
   return () => {
     console.log(`-----------------------\nBMO est prêt à fonctionné !`);
-    client.user.setActivity(`ma série favorite !`, {type: "LISTENING"});
+    
+    const activities_list = [
+      "b!help", 
+      "ma série favorite !",
+      "le code secret !", 
+      "mon créateur !"
+      ]; 
+    client.user.setActivity(`b!help`, {type: "LISTENING"});
+    setInterval(() => {
+      const index = Math.floor(Math.random() * (activities_list.length - 1) + 1); 
+      client.user.setActivity(activities_list[index], {type: "LISTENING"}); 
+  }, 50000); 
   }
 }
