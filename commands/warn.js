@@ -21,7 +21,7 @@ exports.run = (client, message, args) => {
       if (err) console.log(err)
     });
   
-    let warnEmbed = new Discord.RichEmbed()
+    let warnEmbed = new Discord.MessageEmbed()
     .setDescription("Warn !")
     .setAuthor(message.author.username)
     .setColor("#fc6400")
