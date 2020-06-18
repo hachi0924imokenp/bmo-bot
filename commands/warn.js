@@ -21,37 +21,216 @@ exports.run = (client, message, args) => {
       if (err) console.log(err)
     });
   
-    let warnEmbed = new Discord.MessageEmbed()
-    .setDescription("Warn !")
-    .setAuthor(message.author.username)
-    .setColor("#fc6400")
-    .addField(
-        { name: 'Utilisateur Warn', value: `<@${wUser.id}>` },
-        { name:'Warn dans le salon', value: message.channel },
-        { name: 'Nombre de warns', value: warns[wUser.id].warns },
-        { name:"Raison", reason },
-    )
-  
+    const logchan = message.guild.channels.cache.find(c=>["𝐦𝐨𝐝-𝐥𝐨𝐠𝐬"].includes(c.name))
+        setTimeout(function () {
+            if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !logchan) {
+                message.guild.channels.create('𝐦𝐨𝐝-𝐥𝐨𝐠𝐬').catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"𝐦𝐨𝐝-𝐥𝐨𝐠𝐬\" : ${error}`));
+      
+            }
+        }, 2000);
+    
+    if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !logchan) { 
+        console.log('Le salon des logs n\'existe pas, et j\'ai essayer de le crée mais je manque de permissions !')
+    }   
+
+    logchan.send({embed: {
+        color: '#fc0703',
+        author: {
+        name: member.user.tag,
+        icon_url: "https://cdn.discordapp.com/avatars/"+member.user.id+ "/"+member.user.avatar+".png"
+    },
+        title: "Warn",
+        description: "Attention c'est le warn !",
+        thumbnail: {
+            url:"https://cdn.discordapp.com/avatars/"+message.author.id+ "/"+message.author.avatar+".png",
+        },
+        fields: [{
+            name: "Action",
+            value: `Warn`,
+            inline: false,
+        },
+        {
+            name: "Nom d'utilisateur",
+            value: `<@${wUser.id}>`,
+            inline: false,
+        },
+        {
+            name: "ID",
+            value: `${wUser.id}`,
+            inline: false,
+        },
+        {
+            name: "Warn par",
+            value: `${message.author.tag}`,
+            inline: false,
+        },
+        {
+            name: "ID du Modérateur",
+            value: `${message.author.id}`,
+            inline: false,
+        },
+        {
+            name: "Raison",
+            value: `${reason}`,
+            inline: false,
+        }
+    ],
+        timestamp: new Date(),
+        footer: {
+        icon_url: "https://cdn.discordapp.com/avatars/548209665092091904/0a0054900dc4827350258c01ffc08470.png?size=128",
+        text: "© BMO"
+        }
+    }
+    });
+
     let warnchannel = message.guild.channels.cache.find(c=>["𝐦𝐨𝐝-𝐥𝐨𝐠𝐬"].includes(c.name));
     if(!warnchannel) return message.reply("Je ne peux pas trouver le salon \'𝐦𝐨𝐝-𝐥𝐨𝐠𝐬\'");
-  
-    warnchannel.send(warnEmbed);
-  
+    
     if(warns[wUser.id].warns == 4){
-    message.guild.roles.cache.find(r => ["🏝️ No Man's Land"].includes(r.name));
+    let muterole = message.guild.roles.cache.find(r => ["🏝️ No Man's Land"].includes(r.name));
     if(!muterole) return message.reply("Merci de crée un rôle nommée \'🏝️ No Man's Land\'");
   
       let mutetime = "5m";
       await(wUser.addRole(muterole.id));
       message.channel.send(`<@${wUser.id}> a été muté !`);
+      
+      const logchan = message.guild.channels.cache.find(c=>["𝐦𝐨𝐝-𝐥𝐨𝐠𝐬"].includes(c.name))
+        setTimeout(function () {
+            if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !logchan) {
+                message.guild.channels.create('𝐦𝐨𝐝-𝐥𝐨𝐠𝐬').catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"𝐦𝐨𝐝-𝐥𝐨𝐠𝐬\" : ${error}`));
+      
+            }
+        }, 2000);
+    
+        if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !logchan) { 
+            console.log('Le salon des logs n\'existe pas, et j\'ai essayer de le crée mais je manque de permissions !')
+        }  
+
+        logchan.send({embed: {
+            color: '#fc0703',
+            author: {
+            name: tomute.user.tag,
+            icon_url: "https://cdn.discordapp.com/avatars/"+tomute.user.id+ "/"+tomute.user.avatar+".png"
+        },
+            title: "Mute",
+            description: "Get Jailed B*tch :D",
+            thumbnail: {
+                url:"https://cdn.discordapp.com/avatars/"+message.author.id+ "/"+message.author.avatar+".png",
+            },
+            fields: [{
+                name: "Action",
+                value: `Mute`,
+                inline: false,
+            },
+            {
+                name: "Nom d'utilisateur",
+                value: `${tomute.user.tag}`,
+                inline: false,
+            },
+            {
+                name: "ID",
+                value: `${tomute.user.id}`,
+                inline: false,
+            },
+            {
+                name: "Muté par",
+                value: `${message.author.tag}`,
+                inline: false,
+            },
+            {
+                name: "ID du Modérateur",
+                value: `${message.author.id}`,
+                inline: false,
+            },
+            {
+              name: "Temps",
+              value: `${mutetime}`,
+              inline: false,
+          },
+            {
+                name: "Raison",
+                value: `${reason}`,
+                inline: false,
+            }
+        ],
+            timestamp: new Date(),
+            footer: {
+            icon_url: "https://cdn.discordapp.com/avatars/548209665092091904/0a0054900dc4827350258c01ffc08470.png?size=128",
+            text: "© BMO"
+            }
+        }
+        });
   
       setTimeout(function(){
         wUser.removeRole(muterole.id)
         message.reply(`<@${wUser.id}> a été unmute !`)
       }, ms(mutetime))
     }
+
     if(warns[wUser.id].warns == 10){
       message.guild.member(wUser).ban(reason);
       message.reply(`<@${wUser.id}> a été bannis`)
+
+    const logchan = message.guild.channels.cache.find(c=>["𝐦𝐨𝐝-𝐥𝐨𝐠𝐬"].includes(c.name))
+      setTimeout(function () {
+        if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !logchan) {
+            message.guild.channels.create('𝐦𝐨𝐝-𝐥𝐨𝐠𝐬').catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"𝐦𝐨𝐝-𝐥𝐨𝐠𝐬\" : ${error}`));
+    
+        }
+    }, 2000);
+  
+        if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !logchan) { 
+            console.log('Le salon des logs n\'existe pas, et j\'ai essayer de le crée mais je manque de permissions !')
+        }    
+
+        logchan.send({embed: {
+            color: '#fc0703',
+            author: {
+            name: member.user.tag,
+            icon_url: "https://cdn.discordapp.com/avatars/"+member.user.id+ "/"+member.user.avatar+".png"
+        },
+            title: "Bannissement",
+            description: "Le Ban Hammer est tombé !",
+            thumbnail: {
+                url:"https://cdn.discordapp.com/avatars/"+message.author.id+ "/"+message.author.avatar+".png",
+            },
+            fields: [{
+                name: "Action",
+                value: `Ban`,
+                inline: false,
+            },
+            {
+                name: "Nom d'utilisateur",
+                value: `${member.user.tag}`,
+                inline: false,
+            },
+            {
+                name: "ID",
+                value: `${member.user.id}`,
+                inline: false,
+            },
+            {
+                name: "Bannis par",
+                value: `${message.author.tag}`,
+                inline: false,
+            },
+            {
+                name: "ID du Modérateur",
+                value: `${message.author.id}`,
+                inline: false,
+            },
+            {
+                name: "Raison",
+                value: `${reason}`,
+                inline: false,
+            }
+        ],
+            timestamp: new Date(),
+            footer: {
+            icon_url: "https://cdn.discordapp.com/avatars/548209665092091904/0a0054900dc4827350258c01ffc08470.png?size=128",
+            text: "© BMO"
+            }
+        }
+        });
     }  
 }

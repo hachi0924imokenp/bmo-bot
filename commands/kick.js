@@ -46,9 +46,9 @@ exports.run = async (client, message, args) => {
             }
         }, 2000);
     
-            if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !logchan) { 
-                console.log('Le salon des logs n\'existe pas, et j\'ai essayer de le crée mais je manque de permissions !')
-            }   
+        if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !logchan) { 
+            console.log('Le salon des logs n\'existe pas, et j\'ai essayer de le crée mais je manque de permissions !')
+        }   
         
         info.send(`${member.user.tag} a été kické par ${message.author.tag}`);
         logchan.send({embed: {
