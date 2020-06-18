@@ -28,9 +28,12 @@ exports.run = async (client, message, args) => {
         .catch(error => message.channel.send(`Désolé, je ne peux pas bannir cette utilisateur à cause de : ${error}`));
   
     const info = message.guild.channels.cache.find(c=>["informations"].includes(c.name))
+    setTimeout(function () {
         if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !info) {
             message.guild.channels.create('informations').catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"informations\" : ${error}`));
+    
         }   
+    }, 5000);
 
         if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !info) { 
             console.log('Le salon des informations n\'existe pas, et j\'ai essayer de le crée mais je manque de permissions !')
@@ -40,6 +43,7 @@ exports.run = async (client, message, args) => {
     const logchan = message.guild.channels.cache.find(c=>["𝐦𝐨𝐝-𝐥𝐨𝐠𝐬"].includes(c.name))
         if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !logchan) {
             message.guild.channels.create('𝐦𝐨𝐝-𝐥𝐨𝐠𝐬').catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"𝐦𝐨𝐝-𝐥𝐨𝐠𝐬\" : ${error}`));
+  
         }
   
         if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !logchan) { 
