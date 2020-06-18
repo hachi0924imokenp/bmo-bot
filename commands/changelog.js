@@ -13,7 +13,7 @@ exports.run = async (client, message, args) => {
     },
     title: "Changelog",
     url: "https://github.com/Cleaner-Discord/bmo-bot/commits/masterhttps://github.com/Cleaner-Discord/bmo-bot/commits/master",
-    description: "Suivez ici les mise à jour de mon chère créateur ! <:BMOdance:704463259570405447>",
+    description: "Suivez ici les mises à jour de mon chère créateur ! <:BMOdance:704463259570405447>",
     fields: [{
         name: "Mise à jour du 18/06/20",
         value: "On a ajouter le changelog, c'est plus pratique non ? pour suivre les mises à jour du bot sans passer par Github <:BMOdance:704463259570405447>"
@@ -34,7 +34,7 @@ exports.run = async (client, message, args) => {
     ],
     timestamp: new Date(),
     footer: {
-      icon_url: client.user.avatarURL,
+      icon_url: "https://cdn.discordapp.com/avatars/548209665092091904/0a0054900dc4827350258c01ffc08470.png?size=128",
       text: "© BMO"
         }
     }
