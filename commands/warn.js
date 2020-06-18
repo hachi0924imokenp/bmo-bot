@@ -25,10 +25,12 @@ exports.run = (client, message, args) => {
     .setDescription("Warn !")
     .setAuthor(message.author.username)
     .setColor("#fc6400")
-    .addField("Utilisateur Warn", `<@${wUser.id}>`)
-    .addField("Warn dans le salon", message.channel)
-    .addField("Nombre de warns", warns[wUser.id].warns)
-    .addField("Raison", reason);
+    .addField(
+        { name: 'Utilisateur Warn', value: `<@${wUser.id}>` },
+        { name:'Warn dans le salon', value: message.channel },
+        { name: 'Nombre de warns', value: warns[wUser.id].warns },
+        { name:"Raison", reason },
+    )
   
     let warnchannel = message.guild.channels.cache.find(c=>["𝐦𝐨𝐝-𝐥𝐨𝐠𝐬"].includes(c.name));
     if(!warnchannel) return message.reply("Je ne peux pas trouver le salon \'𝐦𝐨𝐝-𝐥𝐨𝐠𝐬\'");
