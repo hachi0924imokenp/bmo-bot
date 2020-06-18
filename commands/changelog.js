@@ -4,7 +4,7 @@ require("moment-duration-format");
 exports.run = async (client, message, args) => {
     message.delete(message.author);
 
-    const duration = moment.duration(client.uptime).format("D [jour(s)], H [heure(s)], m [minute(s)], s [seconde(s)]");
+    const duration = moment.duration(client.uptime).format("D [Jour(s)], H [heure(s)], m [minute(s)], S [seconde(s)]");
     message.channel.send({embed: {
     color: '34eb80',
     author: {
