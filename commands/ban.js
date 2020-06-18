@@ -28,8 +28,8 @@ exports.run = async (client, message, args) => {
         .catch(error => message.channel.send(`Désolé, je ne peux pas bannir cette utilisateur à cause de : ${error}`));
   
     const channel = message.guild.channels.cache.find(c=>["informations"].includes(c.name))
-        if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !logs) {
-            message.guild.channels.create('𝐦𝐨𝐝-𝐥𝐨𝐠𝐬').catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"informations\" : ${error}`));
+        if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !channel) {
+            message.guild.channels.create('informations').catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"informations\" : ${error}`));
         }   
 
         if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !logs) { 
@@ -52,7 +52,7 @@ exports.run = async (client, message, args) => {
         name: member.user.tag,
         icon_url: "https://cdn.discordapp.com/avatars/"+member.user.id+ "/"+member.user.avatar+".png"
     },
-        title: "Ban",
+        title: "Bannissement",
         description: "Le ban hammer est tombé !",
         thumbnail: {
             url:"https://cdn.discordapp.com/avatars/"+message.author.id+ "/"+message.author.avatar+".png",
