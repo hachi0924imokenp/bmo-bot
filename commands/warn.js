@@ -108,15 +108,20 @@ exports.run = async (client, message, args) => {
         }
         }); 
 
+    if(warns[wUser.id].warns == 4){
+    let muterole =  message.guild.roles.cache.find(r => ["🏝️ No Man's Land"].includes(r.name));
+    if(!muterole) return message.reply("Impossible de trouver le rôle '🏝️ No Man's Land', vous devez le crée !");
+    
     let mutetime = "1h";
         await(wUser.addRole(muterole.id));
-        message.channel.send(`<@${wUser.id}> a été temporairement mute`);
+        message.channel.send(`<@${wUser.id}> a été temporairement mute `);
         
     setTimeout(function(){
         wUser.removeRole(muterole.id)
         message.channel.send(`<@${wUser.id}> a été unmute`)
-    }, ms(mutetime))
-      
+        }, ms(mutetime))
+    }
+
     if(warns[wUser.id].warns == 10){
         message.guild.member(wUser).ban(reason);
         message.channel.send(`<@${wUser.id}> a été bannis`)
