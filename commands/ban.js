@@ -59,29 +59,34 @@ exports.run = async (client, message, args) => {
         icon_url: "https://cdn.discordapp.com/avatars/"+member.user.id+ "/"+member.user.avatar+".png"
     },
         title: "Bannissement",
-        description: "Le ban hammer est tombé !",
+        description: "Le Ban Hammer est tombé !",
         thumbnail: {
             url:"https://cdn.discordapp.com/avatars/"+message.author.id+ "/"+message.author.avatar+".png",
         },
         fields: [{
+            name: "Action",
+            value: `Ban`,
+            inline: false,
+        },
+        {
             name: "Nom d'utilisateur",
             value: `${member.user.tag}`,
-            inline: true,
+            inline: false,
         },
         {
             name: "ID",
             value: `${member.user.id}`,
-            inline: true,
+            inline: false,
         },
         {
             name: "Bannis par",
             value: `${message.author.tag}`,
-            inline: true,
+            inline: false,
         },
         {
             name: "ID du Modérateur",
             value: `${message.author.id}`,
-            inline: true,
+            inline: false,
         },
         {
             name: "Raison",
