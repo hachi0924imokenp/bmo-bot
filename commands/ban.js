@@ -27,20 +27,20 @@ exports.run = async (client, message, args) => {
     await member.ban(reason)
         .catch(error => message.channel.send(`Désolé, je ne peux pas bannir cette utilisateur à cause de : ${error}`));
   
-    const channel = message.guild.channels.cache.find(c=>["informations"].includes(c.name))
-        if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !channel) {
+    const info = message.guild.channels.cache.find(c=>["informations"].includes(c.name))
+        if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !info) {
             message.guild.channels.create('informations').catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"informations\" : ${error}`));
         }   
 
-        if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !logs) { 
+        if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !info) { 
             console.log('Le salon des informations n\'existe pas, et j\'ai essayer de le crée mais je manque de permissions !')
         }
-        channel.send(`${member.user.tag} a été bannis par ${message.author.tag}`);
+        info.send(`${member.user.tag} a été bannis par ${message.author.tag}`);
 
     const logs = message.guild.channels.cache.find(c=>["𝐦𝐨𝐝-𝐥𝐨𝐠𝐬"].includes(c.name))
         if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !logs) {
             message.guild.channels.create('𝐦𝐨𝐝-𝐥𝐨𝐠𝐬').catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"𝐦𝐨𝐝-𝐥𝐨𝐠𝐬\" : ${error}`));
-    }
+        }
   
       if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !logs) { 
         console.log('Le salon des logs n\'existe pas, et j\'ai essayer de le crée mais je manque de permissions !')
