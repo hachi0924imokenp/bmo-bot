@@ -29,7 +29,7 @@ exports.run = async (client, message, args) => {
         
         warns[wUser.id].warns++;
 
-        fs.writeFile("./warnings.json", JSON.stringify(warns), (err) => {
+        fs.writeFile("./modules/warnings.json", JSON.stringify(warns), (err) => {
             if (err) console.log(err)
           });
 
@@ -57,7 +57,7 @@ exports.run = async (client, message, args) => {
                 console.log('Le salon des logs n\'existe pas, et j\'ai essayer de le crée mais je manque de permissions !')
             }   
         
-    info.send(`${member.user.tag} a été bannis par ${message.author.tag}`);
+    info.send(`${member.user.tag} a été warn par ${message.author.tag}`);
     logchan.send({embed: {
             color: '#fc0703',
             author: {
@@ -114,11 +114,11 @@ exports.run = async (client, message, args) => {
         
     setTimeout(function(){
         wUser.removeRole(muterole.id)
-        message.reply(`<@${wUser.id}> has been unmuted.`)
+        message.channel.send(`<@${wUser.id}> a été unmute`)
     }, ms(mutetime))
       
-    if(warns[wUser.id].warns == 3){
+    if(warns[wUser.id].warns == 10){
         message.guild.member(wUser).ban(reason);
-        message.reply(`<@${wUser.id}> has been banned.`)
+        message.channel.send(`<@${wUser.id}> a été bannis`)
     }
 }
