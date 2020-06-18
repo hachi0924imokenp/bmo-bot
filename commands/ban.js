@@ -85,7 +85,7 @@ exports.run = async (client, message, args) => {
         },
         {
             name: "Raison",
-            value: `Tu as été bannis par ${message.author.tag} ===> ${reason}`,
+            value: `${reason}`,
             inline: false,
         }
     ],
