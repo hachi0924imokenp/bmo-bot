@@ -36,7 +36,7 @@ exports.run = (client, message, args) => {
     logchan.send({embed: {
         color: '#fc0703',
         author: {
-        name: member.user.tag,
+        name: wUser.user.tag,
         icon_url: "https://cdn.discordapp.com/avatars/"+member.user.id+ "/"+member.user.avatar+".png"
     },
         title: "Warn",
@@ -109,7 +109,7 @@ exports.run = (client, message, args) => {
         logchan.send({embed: {
             color: '#fc0703',
             author: {
-            name: tomute.user.tag,
+            name: wUser.user.tag,
             icon_url: "https://cdn.discordapp.com/avatars/"+tomute.user.id+ "/"+tomute.user.avatar+".png"
         },
             title: "Mute",
@@ -124,12 +124,12 @@ exports.run = (client, message, args) => {
             },
             {
                 name: "Nom d'utilisateur",
-                value: `${tomute.user.tag}`,
+                value: `${wUser.user.tag}`,
                 inline: false,
             },
             {
                 name: "ID",
-                value: `${tomute.user.id}`,
+                value: `${wUser.user.id}`,
                 inline: false,
             },
             {
@@ -186,7 +186,7 @@ exports.run = (client, message, args) => {
         logchan.send({embed: {
             color: '#fc0703',
             author: {
-            name: member.user.tag,
+            name: wUser.user.tag,
             icon_url: "https://cdn.discordapp.com/avatars/"+member.user.id+ "/"+member.user.avatar+".png"
         },
             title: "Bannissement",
@@ -201,12 +201,12 @@ exports.run = (client, message, args) => {
             },
             {
                 name: "Nom d'utilisateur",
-                value: `${member.user.tag}`,
+                value: `${wUser.user.tag}`,
                 inline: false,
             },
             {
                 name: "ID",
-                value: `${member.user.id}`,
+                value: `${wUser.user.id}`,
                 inline: false,
             },
             {
