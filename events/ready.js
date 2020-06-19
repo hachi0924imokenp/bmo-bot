@@ -6,7 +6,8 @@ module.exports = (client) => {
       "b!help", 
       "ma série favorite !",
       "le code secret !", 
-      "mon créateur !"
+      "mon créateur !",
+      "The Last of Us Part II"
       ]; 
     setInterval(() => {
       const index = Math.floor(Math.random() * (activities_list.length - 1) + 1); 
