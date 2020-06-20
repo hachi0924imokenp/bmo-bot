@@ -5,7 +5,6 @@ module.exports = (client) => {
     const activities_list = [
       "b!help", 
       "ma série favorite !",
-      "le code secret !", 
       "mon créateur !",
       "The Last of Us Part II"
       ]; 
