@@ -22,7 +22,7 @@ exports.run = async (client, message, args) => {
     
     const banned = message.mentions.members.first() ||  message.guild.members.cache.get(args[0]);
         client.users.cache.get(banned);
-          banned.send(`Tu as été bannis par ${message.author.tag} ===> ${reason}`);
+          banned.send(`Tu as été bannis par ${message.author.tag} => ${reason}`);
     
     await member.ban(reason)
         .catch(error => message.channel.send(`Désolé, je ne peux pas bannir cette utilisateur à cause de : ${error}`));
