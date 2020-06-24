@@ -44,7 +44,7 @@ exports.run = async (client, message, args) => {
     await(tomute.roles.add(muterole.id));
 
     client.users.cache.get(tomute);
-        tomute.send(`${message.author.tag} t'envoie en prison ${ms(ms(mutetime))} ===> ${reason}`)
+        tomute.send(`${message.author.tag} t'envoie en prison => ${ms(ms(mutetime))} de prison : ${reason}`)
     
         const info = message.guild.channels.cache.find(c=>["informations"].includes(c.name))
         setTimeout(function () {
