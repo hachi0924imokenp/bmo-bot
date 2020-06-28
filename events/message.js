@@ -13,7 +13,7 @@ module.exports = (globalVariables) => {
           color: 3447003,
           author: {
             name: message.author.username,
-            icon_url: message.author.avatarURL
+            icon_url: "https://cdn.discordapp.com/avatars/" + message.author.id + "/" + message.author.avatar + ".png"
         },
           title: "Insultron",
           description: "Un mot suceptible d'être innaproprié a été détecter, merci de choisir une action parmis les possibilitées suivante :\n \n \n \n \n \n",
@@ -49,11 +49,13 @@ module.exports = (globalVariables) => {
           }
       }
      }).then(function (message) {
-      message.react("◀")
-      message.react("▶")
-      message.react("❌")
+      message.react("🛡️")
+      message.react("🔇")
+      message.react("⚔️")
+      message.react("⛔")
+      message.react("🗑️")
 
-      let = ["🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"];
+      let mods = ["🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"];
       const collector = message.createReactionCollector((reaction, user) => 
       user.id === message.guild.members.cache.get(user.id).roles.cache.get(mods.id) &&
       reaction.emoji.name === "🛡️" ||
