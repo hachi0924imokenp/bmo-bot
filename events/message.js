@@ -8,7 +8,6 @@ module.exports = (globalVariables) => {
     if (message.author.bot) return;
 
     const swearWords = ["Fuck", "fuck"];
-    const member = message.guild.member
     if(swearWords.map(n => message.content.includes(n)).filter(n => n !== false)[0]){
       message.channel.send({embed: {
           color: 3447003,
@@ -54,18 +53,27 @@ module.exports = (globalVariables) => {
       message.react("▶")
       message.react("❌")
 
+      const mods = message.member.roles.cache.some(r => ["🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name));
       const collector = message.createReactionCollector((reaction, user) => 
-      user.id === member.id &&
-      reaction.emoji.name === "◀" ||
-      reaction.emoji.name === "▶" ||
-      reaction.emoji.name === "❌"
+      user.id === message.guild.members.cache.get(user.id).roles.cache.get(mods.id) &&
+      reaction.emoji.name === "🛡️" ||
+      reaction.emoji.name === "🔇" ||
+      reaction.emoji.name === "⚔️" ||
+      reaction.emoji.name === "⛔" ||
+      reaction.emoji.name === "🗑️"
       ).once("collect", reaction => {
       const chosen = reaction.emoji.name;
-        if(chosen === "◀"){
-         message.edit("Fonction 1");
+        if(chosen === "🛡️"){
+         message.edit("Warn Message");
         } 
-        else if(chosen === "▶"){
-          message.edit("Fonction 2");
+        else if(chosen === "🔇"){
+          message.edit("Mute message");
+        }
+        else if(chosen === "⚔️"){
+          message.edit("Kick message");
+        }
+        else if(chosen === "⛔"){
+          message.edit("Ban message");
         } else {
           message.edit("Fonction stop");
         }
