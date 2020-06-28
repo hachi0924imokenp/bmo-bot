@@ -55,9 +55,9 @@ module.exports = (globalVariables) => {
       message.react("⛔")
       message.react("🗑️")
 
-      let mods = ["🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"];
+   
       const collector = message.createReactionCollector((reaction, user) => 
-      user.id === message.guild.members.cache.get(user.id).roles.cache.get(mods.id) &&
+      user.id === message.guild.members.cache.get(user.id).roles.cache.some(r => ["🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name)) &&
       reaction.emoji.name === "🛡️" ||
       reaction.emoji.name === "🔇" ||
       reaction.emoji.name === "⚔️" ||
