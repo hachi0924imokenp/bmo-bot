@@ -8,6 +8,7 @@ module.exports = (globalVariables) => {
     if (message.author.bot) return;
 
     const swearWords = ["Fuck", "fuck"];
+    const member = message.guild.member
     if(swearWords.map(n => message.content.includes(n)).filter(n => n !== false)[0]){
       message.channel.send({embed: {
           color: 3447003,
@@ -53,8 +54,8 @@ module.exports = (globalVariables) => {
       message.react("▶")
       message.react("❌")
 
-      const collector = message.createReactionCollector((reaction, role) => 
-      role.name === "🌟 Modo T'chat  🌟" &&
+      const collector = message.createReactionCollector((reaction, user) => 
+      user.id === member.id &&
       reaction.emoji.name === "◀" ||
       reaction.emoji.name === "▶" ||
       reaction.emoji.name === "❌"
