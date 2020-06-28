@@ -7,9 +7,36 @@ module.exports = (globalVariables) => {
 
     if (message.author.bot) return;
 
-    const swearWords = ["Fuck", "Bitch", "bitch", "fuck"];
+    const swearWords = ["Fuck", "fuck"];
     if(swearWords.map(n => message.content.includes(n)).filter(n => n !== false)[0]){
-      message.channel.send("U said a badword :s")
+      message.channel.send({embed: {
+          color: 3447003,
+          author: {
+            name: message.author.username,
+            icon_url: message.author.avatarURL
+        },
+          title: "Insultron",
+          description: "Un mot suceptible d'être innaproprié a été détecter, merci de choisir une action parmis les possibilitées suivante :\n \n \n \n \n \n",
+            fields: [{
+              name: "Pseudo :",
+              value: `${message.author.username}`
+            },
+            {
+              name: "Mot suceptible d'être innaproprié :",
+              value: `${message.content.substr(0)}`
+            },
+            {
+              name: "Mot suceptible d'être innaproprié :",
+              value: `${message.content.substr(0)}`
+            }
+          ],
+          timestamp: new Date(),
+          footer: {
+            icon_url: client.user.avatarURL,
+            text: "© BMO"
+          }
+      }
+     })
     }
 
     if (message.content.indexOf(prefix) !== 0) return;
