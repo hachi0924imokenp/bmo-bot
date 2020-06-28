@@ -22,11 +22,23 @@ module.exports = (globalVariables) => {
               value: `${message.author.username}`
             },
             {
-              name: "Mot suceptible d'être innaproprié :",
-              value: `${message.content.substr(0)}`
+              name: "ID :",
+              value: `${message.author.id}`
             },
             {
-              name: "Mot suceptible d'être innaproprié :",
+              name: "Mention :",
+              value: `<@${message.author.id}>`
+            },
+            {
+              name: "Dans le salon :",
+              value: `<#${message.channel.name}>`
+            },
+            {
+              name: "ID du salon :",
+              value: `${message.channel.id}`
+            },
+            {
+              name: "Message suceptible d'être innaproprié :",
               value: `${message.content.substr(0)}`
             }
           ],
@@ -36,7 +48,25 @@ module.exports = (globalVariables) => {
             text: "© BMO"
           }
       }
-     })
+     }).then()
+      
+    const collector = message.createReactionCollector((reaction, user) => 
+      user.id === message.author.id &&
+      reaction.emoji.name === "◀" ||
+      reaction.emoji.name === "▶" ||
+      reaction.emoji.name === "❌"
+      ).once("collect", reaction => {
+      const chosen = reaction.emoji.name;
+        if(chosen === "◀"){
+         message.edit("Fonction 1");
+        } 
+        else if(chosen === "▶"){
+          message.edit("Fonction 2");
+        } else {
+          message.edit("Fonction stop");
+        }
+        collector.stop();
+      });
     }
 
     if (message.content.indexOf(prefix) !== 0) return;
