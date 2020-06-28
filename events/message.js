@@ -6,6 +6,12 @@ module.exports = (globalVariables) => {
   async function event(message){
 
     if (message.author.bot) return;
+
+    const swearWords = ["Fuck", "Bitch"];
+    if(swearWords.map(n => message.content.includes(n))) {
+      return message.channel.send("Don't use badwords !");
+    }
+
     if (message.content.indexOf(prefix) !== 0) return;
 
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -13,11 +19,6 @@ module.exports = (globalVariables) => {
    
     if (message.channel.type ==="dm" || message.channel.type==="group")
       return message.channel.send("Je ne suis pas fait pour fonctionner en DM/Groupes");
-      const swearWords = ["Fuck", "Bitch"];
-      
-    if(swearWords.map(n => message.content.includes(n))) {
-      return message.channel.send("Don't use badwords !");
-    }
 
     for(let i=0; i<commands.length; i++){
       let command = require(commands[i])(globalVariables);
