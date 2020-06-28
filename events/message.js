@@ -57,7 +57,7 @@ module.exports = (globalVariables) => {
 
       const mod = ["🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"];
       const collector = message.createReactionCollector((reaction, user) => 
-      user.id === message.guild.members.cache.get(user.id).roles.cache.some(r => mod.includes(r.name)) &&
+      user.id !== message.author.bot &&
       reaction.emoji.name === "🛡️" ||
       reaction.emoji.name === "🔇" ||
       reaction.emoji.name === "⚔️" ||
@@ -69,7 +69,7 @@ module.exports = (globalVariables) => {
          message.edit("Warn Message");
         } 
         else if(chosen === "🔇"){
-          message.edit("Mute message");
+          message.edit(`${reaction.message.id}`);
         }
         else if(chosen === "⚔️"){
           message.edit("Kick message");
