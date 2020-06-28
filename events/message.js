@@ -8,8 +8,9 @@ module.exports = (globalVariables) => {
     if (message.author.bot) return;
 
     const swearWords = ["Fuck", "Bitch"];
-    if(swearWords.map(n => message.content.includes(n))) {
-      return message.channel.send("Don't use badwords !");
+    if(swearWords.map(n => message.content.includes(n)).filter(n => n !== false))[0]; {
+      message.delete(message.author)
+      message.channel.send("U said a badword :s")
     }
 
     if (message.content.indexOf(prefix) !== 0) return;
