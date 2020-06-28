@@ -48,7 +48,11 @@ module.exports = (globalVariables) => {
             text: "© BMO"
           }
       }
-     }).then()
+     }).then(function (message) {
+      message.react("◀")
+      message.react("▶")
+      message.react("❌")
+     })
       
     const collector = message.createReactionCollector((reaction, user) => 
       user.id === message.author.id &&
