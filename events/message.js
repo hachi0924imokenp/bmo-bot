@@ -11,7 +11,7 @@ module.exports = (globalVariables) => {
     }
 
     if (message.author.bot) return;
-    if (message.content.indexOf(prefix) !== 0) return;
+    if (message.content.indexOf(prefix) !== 0) return message.channel.send("Commande introuvable ! s'il vous plaît utiliser b!help pour afficher la liste des commandes");
 
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     let commands = getFiles(__dirname+"/../commands").filter(f => f.endsWith(".js"));
