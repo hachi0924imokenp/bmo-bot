@@ -53,7 +53,7 @@ module.exports = (globalVariables) => {
       message.react("▶")
       message.react("❌")
 
-      const mods = message.member.roles.cache.some(r => ["🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name));
+      let = ["🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"];
       const collector = message.createReactionCollector((reaction, user) => 
       user.id === message.guild.members.cache.get(user.id).roles.cache.get(mods.id) &&
       reaction.emoji.name === "🛡️" ||
