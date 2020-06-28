@@ -31,7 +31,7 @@ module.exports = (globalVariables) => {
             },
             {
               name: "Dans le salon :",
-              value: `<#${message.channel.name}>`
+              value: `<#${message.channel.id}>`
             },
             {
               name: "ID du salon :",
@@ -52,9 +52,8 @@ module.exports = (globalVariables) => {
       message.react("◀")
       message.react("▶")
       message.react("❌")
-     })
-      
-    const collector = message.createReactionCollector((reaction, user) => 
+
+      const collector = message.createReactionCollector((reaction, user) => 
       user.id === message.author.id &&
       reaction.emoji.name === "◀" ||
       reaction.emoji.name === "▶" ||
@@ -71,6 +70,7 @@ module.exports = (globalVariables) => {
         }
         collector.stop();
       });
+     })
     }
 
     if (message.content.indexOf(prefix) !== 0) return;
