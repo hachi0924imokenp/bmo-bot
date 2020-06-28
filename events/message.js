@@ -67,17 +67,22 @@ module.exports = (globalVariables) => {
       const chosen = reaction.emoji.name;
         if(chosen === "🛡️"){
          message.edit("Warn Message");
+         reaction.delete()
         } 
         else if(chosen === "🔇"){
           message.edit(`${reaction.message.id}`);
+          reaction.delete()
         }
         else if(chosen === "⚔️"){
           message.edit("Kick message");
+          reaction.delete()
         }
         else if(chosen === "⛔"){
           message.edit("Ban message");
+          reaction.delete()
         } else {
           message.edit("Fonction stop");
+          reaction.delete()
         }
         collector.stop();
       });
