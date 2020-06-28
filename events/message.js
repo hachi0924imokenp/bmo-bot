@@ -53,8 +53,8 @@ module.exports = (globalVariables) => {
       message.react("▶")
       message.react("❌")
 
-      const collector = message.createReactionCollector((reaction, user) => 
-      user.id === message.author.id &&
+      const collector = message.createReactionCollector((reaction, role) => 
+      role.name === "🌟 Modo T'chat  🌟" &&
       reaction.emoji.name === "◀" ||
       reaction.emoji.name === "▶" ||
       reaction.emoji.name === "❌"
