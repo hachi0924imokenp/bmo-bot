@@ -10,7 +10,7 @@ module.exports = (globalVariables) => {
     const swearWords = ["Fuck", "fuck"];
     if(swearWords.map(n => message.content.includes(n)).filter(n => n !== false)[0]){
       const mod = message.member.roles.cache.some(r => ["🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name));
-      const filter = (reaction, user) => [mod].includes(reaction.name) && user.id === message.author.id;
+      const filter = (message, user, roles) => message.guild.members.cache.get(user.id).roles.cache.get(mod.id);
       
       const cmd = message.guild.channels.cache.find(c => ["mod-cmds"].includes(c.name))
       setTimeout(function() {
