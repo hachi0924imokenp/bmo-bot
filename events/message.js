@@ -12,7 +12,17 @@ module.exports = (globalVariables) => {
       const mod = message.member.roles.cache.some(r => ["🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name));
       const filter = (reaction, user) => [mod].includes(reaction.name) && user.id === message.author.id;
       
-      message.channel.send({embed: {
+      const modcmd = message.guild.channels.cache.find(c => ["informations"].includes(c.name))
+      setTimeout(function() {
+        if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !info) {
+          message.guild.channels.create('informations').catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"informations\" : ${error}`));
+        }
+      }, 2000);
+        if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !info) {
+          console.log('Le salon des informations n\'existe pas, et j\'ai essayer de le crée mais je manque de permissions !')
+        }   
+      
+        modcmd.send({embed: {
           color: 3447003,
           author: {
             name: message.author.username,
