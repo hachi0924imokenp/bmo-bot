@@ -66,22 +66,42 @@ module.exports = (globalVariables) => {
       ).once("collect", reaction => {
       const chosen = reaction.emoji.name;
         if(chosen === "🛡️"){
-         message.edit("Warn Message");
-         reaction.delete()
+          const resultembed = new Discord.MessageEmbed()
+          .setTitle('Insultron')
+          .setDescription(`✅ Sanction "PM" appliqué par : ${reaction.message.id} à`);
+
+        message.edit(resultembed);
+        reaction.delete()
         } 
         else if(chosen === "🔇"){
-          message.edit(`${reaction.message.id}`);
+          const resultembed = new Discord.MessageEmbed()
+	          .setTitle('Insultron')
+	          .setDescription(`✅ Sanction "Mute" appliqué par : ${reaction.message.id} (60m) à`);
+
+          message.edit(resultembed);
           reaction.delete()
         }
         else if(chosen === "⚔️"){
-          message.edit("Kick message");
+          const resultembed = new Discord.MessageEmbed()
+	          .setTitle('Insultron')
+	          .setDescription(`✅ Sanction "Kick" appliqué par : ${reaction.message.id} à`);
+
+          message.edit(resultembed);
           reaction.delete()
         }
         else if(chosen === "⛔"){
-          message.edit("Ban message");
-          reaction.delete()
+          const resultembed = new Discord.MessageEmbed()
+          .setTitle('Insultron')
+          .setDescription(`✅ Sanction "Ban" appliqué par : ${reaction.message.id} à`);
+
+        message.edit(resultembed);
+        reaction.delete()
         } else {
-          message.edit("Fonction stop");
+          const resultembed = new Discord.MessageEmbed()
+	          .setTitle('Insultron')
+	          .setDescription(`🗑️ Sanction ignoré par : ${reaction.message.id} à`);
+
+          message.edit(resultembed);
           reaction.delete()
         }
         collector.stop();
