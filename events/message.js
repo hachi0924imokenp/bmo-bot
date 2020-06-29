@@ -12,10 +12,10 @@ module.exports = (globalVariables) => {
       const mod = message.member.roles.cache.some(r => ["🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name));
       const filter = (reaction, user) => [mod].includes(reaction.name) && user.id === message.author.id;
       
-      const modcmd = message.guild.channels.cache.find(c => ["informations"].includes(c.name))
+      const modcmd = message.guild.channels.cache.find(c => ["mod-cmds"].includes(c.name))
       setTimeout(function() {
-        if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !info) {
-          message.guild.channels.create('informations').catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"informations\" : ${error}`));
+        if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !modcmd) {
+          message.guild.channels.create('mod-cmds').catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"informations\" : ${error}`));
         }
       }, 2000);
         if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !info) {
@@ -53,8 +53,7 @@ module.exports = (globalVariables) => {
             {
               name: "Message suceptible d'être innaproprié :",
               value: `${message.content.substr(0)}`
-            }
-          ],
+            }],
           timestamp: new Date(),
           footer: {
             icon_url: client.user.avatarURL,
