@@ -69,7 +69,7 @@ module.exports = (globalVariables) => {
           const resultembed = new Discord.MessageEmbed()
           .setTitle('Insultron')
           .setColor('#00ff0d')
-          .setDescription(`✅ Sanction "PM" appliqué par : ${reaction.message.id} à`);
+          .setDescription(`✅ Sanction "PM" appliqué par : <${reaction.author.id}> à`);
 
         message.edit(resultembed);
         message.reactions.removeAll().catch(error => console.error('Impossible de supprimer les réactions : ', error));
@@ -78,7 +78,7 @@ module.exports = (globalVariables) => {
           const resultembed = new Discord.MessageEmbed()
             .setTitle('Insultron')
             .setColor('#00ff0d')
-            .setDescription(`✅ Sanction "Mute" appliqué par : <@${reaction.message.id}> (60m) à`)
+            .setDescription(`✅ Sanction "Mute" appliqué par : <@${reaction.author.id}> (60m) à`)
             .setFooter('© BMO', client.user.avatarURL)
             .setTimestamp();
 
@@ -89,7 +89,7 @@ module.exports = (globalVariables) => {
           const resultembed = new Discord.MessageEmbed()
             .setTitle('Insultron')
             .setColor('#00ff0d')
-            .setDescription(`✅ Sanction "Kick" appliqué par : <@${reaction.message.id}> à`)
+            .setDescription(`✅ Sanction "Kick" appliqué par : <@${reaction.author.id}> à`)
             .setFooter('© BMO', client.user.avatarURL)
             .setTimestamp();
 
@@ -100,7 +100,7 @@ module.exports = (globalVariables) => {
           const resultembed = new Discord.MessageEmbed()
           .setTitle('Insultron')
           .setColor('#00ff0d')
-          .setDescription(`✅ Sanction "Ban" appliqué par : <@${reaction.message.id}> à`)
+          .setDescription(`✅ Sanction "Ban" appliqué par : <@${reaction.author.id}> à`)
           .setFooter('© BMO', client.user.avatarURL)
           .setTimestamp();
 
@@ -110,7 +110,7 @@ module.exports = (globalVariables) => {
           const resultembed = new Discord.MessageEmbed()
             .setTitle('Insultron')
             .setColor('#ff0000')
-            .setDescription(`🗑️ Sanction ignoré par : <@${reaction.message.id}>`)
+            .setDescription(`🗑️ Sanction ignoré par : <@${reaction.author.id}>`)
             .setFooter('© BMO', client.user.avatarURL)
             .setTimestamp();
 
