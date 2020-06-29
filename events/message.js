@@ -58,7 +58,7 @@ module.exports = (globalVariables) => {
       message.react("⛔")
       message.react("🗑️")
       
-      message.awaiReaction(filter, {
+      message.awaitReaction(filter, {
         max: 1,
         time: 30000,
         errors: ['time']
