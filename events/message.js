@@ -12,9 +12,9 @@ module.exports = (globalVariables) => {
       const mod = message.member.roles.cache.some(r => ["🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name));
       const filter = (reaction, user) => [mod].includes(reaction.name) && user.id === message.author.id;
       
-      const modcmd = message.guild.channels.cache.find(c => ["mod-cmds"].includes(c.name))
+      const cmd = message.guild.channels.cache.find(c => ["mod-cmds"].includes(c.name))
       setTimeout(function() {
-        if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !modcmd) {
+        if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !cmd) {
           message.guild.channels.create('mod-cmds').catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"informations\" : ${error}`));
         }
       }, 2000);
@@ -22,7 +22,7 @@ module.exports = (globalVariables) => {
           console.log('Le salon des informations n\'existe pas, et j\'ai essayer de le crée mais je manque de permissions !')
         }   
       
-        modcmd.send({embed: {
+        cmd.send({embed: {
           color: 3447003,
           author: {
             name: message.author.username,
@@ -83,7 +83,7 @@ module.exports = (globalVariables) => {
             .setFooter('© BMO', client.user.avatarURL)
             .setTimestamp();
 
-            message.edit(resultembed1);
+            messages.first().edit(resultembed1);
             message.reactions.removeAll().catch(error => console.error('Impossible de supprimer les réactions : ', error));         
             break;
 
@@ -95,7 +95,7 @@ module.exports = (globalVariables) => {
             .setFooter('© BMO', client.user.avatarURL)
             .setTimestamp();
 
-            message.edit(resultembed2);
+            messages.first().edit(resultembed2);
             message.reactions.removeAll().catch(error => console.error('Impossible de supprimer les réactions : ', error));
             break;
           
@@ -107,7 +107,7 @@ module.exports = (globalVariables) => {
             .setFooter('© BMO', client.user.avatarURL)
             .setTimestamp();
 
-            message.edit(resultembed3);
+            messages.first().edit(resultembed3);
             message.reactions.removeAll().catch(error => console.error('Impossible de supprimer les réactions : ', error));
             break;
 
@@ -119,7 +119,7 @@ module.exports = (globalVariables) => {
             .setFooter('© BMO', client.user.avatarURL)
             .setTimestamp();
           
-            message.edit(resultembed4);
+            messages.first().edit(resultembed4);
             message.reactions.removeAll().catch(error => console.error('Impossible de supprimer les réactions : ', error));
             break;
           
@@ -131,13 +131,13 @@ module.exports = (globalVariables) => {
             .setFooter('© BMO', client.user.avatarURL)
             .setTimestamp();
 
-            message.edit(resultembed5);
+            messages.first().edit(resultembed5);
             message.reactions.removeAll().catch(error => console.error('Impossible de supprimer les réactions : ', error));
             break;
           }
 
       }).catch(collected => {
-        return message.channel.send("Certaines actions n'ont pas été effectué !")
+        return;
       })
     });
   }
