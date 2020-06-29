@@ -68,41 +68,54 @@ module.exports = (globalVariables) => {
         if(chosen === "🛡️"){
           const resultembed = new Discord.MessageEmbed()
           .setTitle('Insultron')
+          .setColor('#00ff0d')
           .setDescription(`✅ Sanction "PM" appliqué par : ${reaction.message.id} à`);
 
         message.edit(resultembed);
-        reaction.delete()
+        message.reactions.removeAll().catch(error => console.error('Impossible de supprimer les réactions : ', error));
         } 
         else if(chosen === "🔇"){
           const resultembed = new Discord.MessageEmbed()
-	          .setTitle('Insultron')
-	          .setDescription(`✅ Sanction "Mute" appliqué par : ${reaction.message.id} (60m) à`);
+            .setTitle('Insultron')
+            .setColor('#00ff0d')
+            .setDescription(`✅ Sanction "Mute" appliqué par : <@${reaction.message.id}> (60m) à`)
+            .setFooter('© BMO', client.user.avatarURL)
+            .setTimestamp();
 
           message.edit(resultembed);
-          reaction.delete()
+          message.reactions.removeAll().catch(error => console.error('Impossible de supprimer les réactions : ', error));
         }
         else if(chosen === "⚔️"){
           const resultembed = new Discord.MessageEmbed()
-	          .setTitle('Insultron')
-	          .setDescription(`✅ Sanction "Kick" appliqué par : ${reaction.message.id} à`);
+            .setTitle('Insultron')
+            .setColor('#00ff0d')
+            .setDescription(`✅ Sanction "Kick" appliqué par : <@${reaction.message.id}> à`)
+            .setFooter('© BMO', client.user.avatarURL)
+            .setTimestamp();
 
           message.edit(resultembed);
-          reaction.delete()
+          message.reactions.removeAll().catch(error => console.error('Impossible de supprimer les réactions : ', error));
         }
         else if(chosen === "⛔"){
           const resultembed = new Discord.MessageEmbed()
           .setTitle('Insultron')
-          .setDescription(`✅ Sanction "Ban" appliqué par : ${reaction.message.id} à`);
+          .setColor('#00ff0d')
+          .setDescription(`✅ Sanction "Ban" appliqué par : <@${reaction.message.id}> à`)
+          .setFooter('© BMO', client.user.avatarURL)
+          .setTimestamp();
 
         message.edit(resultembed);
-        reaction.delete()
+        message.reactions.removeAll().catch(error => console.error('Impossible de supprimer les réactions : ', error));
         } else {
           const resultembed = new Discord.MessageEmbed()
-	          .setTitle('Insultron')
-	          .setDescription(`🗑️ Sanction ignoré par : ${reaction.message.id} à`);
+            .setTitle('Insultron')
+            .setColor('#ff0000')
+            .setDescription(`🗑️ Sanction ignoré par : <@${reaction.message.id}>`)
+            .setFooter('© BMO', client.user.avatarURL)
+            .setTimestamp();
 
-          message.edit(resultembed);
-          reaction.delete()
+        message.edit(resultembed);
+        message.reactions.removeAll().catch(error => console.error('Impossible de supprimer les réactions : ', error));
         }
         collector.stop();
       });
