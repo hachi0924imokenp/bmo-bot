@@ -67,62 +67,62 @@ module.exports = (globalVariables) => {
         const reaction = collected.first();
         switch (reaction.emoji.name) {
           case '🛡️':
-          const resultembed = new Discord.MessageEmbed()
+          const resultembed1 = new Discord.MessageEmbed()
             .setTitle('Insultron')
             .setColor('#00ff0d')
             .setDescription(`✅ Sanction "PM" appliqué par : <${reaction.user.id}> à`)
             .setFooter('© BMO', client.user.avatarURL)
             .setTimestamp();
 
-            message.edit(resultembed);
+            message.edit(resultembed1);
             message.reactions.removeAll().catch(error => console.error('Impossible de supprimer les réactions : ', error));         
             break;
 
           case '🔇':
-          const resultembed = new Discord.MessageEmbed()
+          const resultembed2 = new Discord.MessageEmbed()
             .setTitle('Insultron')
             .setColor('#00ff0d')
             .setDescription(`✅ Sanction "Mute" appliqué par : <@${reaction.user.id}> (60m) à`)
             .setFooter('© BMO', client.user.avatarURL)
             .setTimestamp();
 
-            message.edit(resultembed);
+            message.edit(resultembed2);
             message.reactions.removeAll().catch(error => console.error('Impossible de supprimer les réactions : ', error));
             break;
           
           case '⚔️':
-          const resultembed = new Discord.MessageEmbed()
+          const resultembed3 = new Discord.MessageEmbed()
             .setTitle('Insultron')
             .setColor('#00ff0d')
             .setDescription(`✅ Sanction "Kick" appliqué par : <@${reaction.user.id}> à`)
             .setFooter('© BMO', client.user.avatarURL)
             .setTimestamp();
 
-            message.edit(resultembed);
+            message.edit(resultembed3);
             message.reactions.removeAll().catch(error => console.error('Impossible de supprimer les réactions : ', error));
             break;
 
           case '⛔':
-          const resultembed = new Discord.MessageEmbed()
+          const resultembed4 = new Discord.MessageEmbed()
             .setTitle('Insultron')
             .setColor('#00ff0d')
             .setDescription(`✅ Sanction "Ban" appliqué par : <@${reaction.user.id}> à`)
             .setFooter('© BMO', client.user.avatarURL)
             .setTimestamp();
           
-            message.edit(resultembed);
+            message.edit(resultembed4);
             message.reactions.removeAll().catch(error => console.error('Impossible de supprimer les réactions : ', error));
             break;
           
           case '🗑️':
-            const resultembed = new Discord.MessageEmbed()
+            const resultembed5 = new Discord.MessageEmbed()
             .setTitle('Insultron')
             .setColor('#ff0000')
             .setDescription(`🗑️ Sanction ignoré par : <@${reaction.user.id}>`)
             .setFooter('© BMO', client.user.avatarURL)
             .setTimestamp();
 
-            message.edit(resultembed);
+            message.edit(resultembed5);
             message.reactions.removeAll().catch(error => console.error('Impossible de supprimer les réactions : ', error));
             break;
           }
