@@ -27,6 +27,6 @@ module.exports = (globalVariables) => {
   if(!globalVariables.hash) globalVariables.hash = require("string-hash");
   
   //configuration
-  globalVariables.prefix = "o!";
+  globalVariables.prefix = "b!";
   globalVariables.ownerID = "251455597738721280";
 }
