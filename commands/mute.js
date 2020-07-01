@@ -8,7 +8,9 @@ module.exports = (globalVariables) => {
     if (!message.member.roles.cache.some(r => ["🐹 Modo T'chat Test 🐹", "🛡️ P'tit Modo 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name))) return message.channel.send(`Désolé <@` + message.author.id + `>, vous n'avez pas la permission nécessaire à l'utilistion  de cette commande.`);
     let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]));
     if (!tomute) return message.channel.send("Merci de mentionner un utilisateur sous la forme suivante:\n\nMention : ``@user#1234``\nDiscord ID : ``251455597738721280``");
+    if(tomute.id === client.user.id) return message.channel.send("Hahaha, bien essayer mais je ne peux pas m\'envoyer en prison !");
     if (tomute.user.bot) return message.channel.send("Impossible d'envoyer un bot en prison !");
+    if(tomute.id === message.author.id) return message.channel.send("Vous ne pouvez pas vous envoyer en prison vous-même");
     if (tomute.roles.cache.some(r => ["🐹 Modo T'chat Test 🐹", "🛡️ P'tit Modo 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name))) return message.channel.send("Impossible d'envoyer un modérateur en prison !");
     let muterole = message.guild.roles.cache.find(r => ["🏝️ No Man's Land"].includes(r.name));
     if (!muterole) {

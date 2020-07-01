@@ -9,17 +9,25 @@ module.exports = (globalVariables) => {
 
     const swearWords = ["Fuck", "fuck"];
     if(swearWords.map(n => message.content.includes(n)).filter(n => n !== false)[0]){
-      const mod = message.member.roles.cache.some(r => ["🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name));
-      const filter = (message, user, roles) => message.guild.members.cache.get(user.id).roles.cache.get(mod.id);
-      
+      if (message.member.roles.cache.some(r => ["🐹 Modo T'chat Test 🐹", "🛡️ P'tit Modo 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name))) return;
+     
       const cmd = message.guild.channels.cache.find(c => ["mod-cmds"].includes(c.name))
       setTimeout(function() {
         if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !cmd) {
           message.guild.channels.create('mod-cmds').catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"informations\" : ${error}`));
         }
       }, 2000);
-        if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !info) {
-          console.log('Le salon des informations n\'existe pas, et j\'ai essayer de le crée mais je manque de permissions !')
+        if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !cmd) {
+          const error = new Discord.MessageEmbed()
+            .setTitle('Erreur')
+            .setColor('#FF0000')
+            .setDescription(`👨‍🔧 Une erreur s'est produite lors de la création du salon "mod-cmds"`)
+            .addField('Erreur :', '\`MISSING PERMISSION \'MANAGE_CHANNELS\'\`', false)
+            .setFooter('© BMO', client.user.avatarURL)
+            .setTimestamp();
+            
+            message.channel.send(error) 
+            return;
         }   
       
         cmd.send({embed: {
@@ -35,7 +43,7 @@ module.exports = (globalVariables) => {
               value: `${message.author.username}`
             },
             {
-              name: "ID :",
+              name: "ID de l'utilisateur :",
               value: `${message.author.id}`
             },
             {
@@ -60,88 +68,41 @@ module.exports = (globalVariables) => {
             text: "© BMO"
           }
       }
-     }).then(async message => {
+    }).then(async message => {
+      message.react("🗑️")
       message.react("🛡️")
       message.react("🔇")
       message.react("⚔️")
       message.react("⛔")
-      message.react("🗑️")
-      
-      message.awaitReactions(filter, {
-        max: 1,
-        time: 30000,
-        errors: ['time']
-      }).then(collected => {
 
-        const reaction = collected.first();
-        switch (reaction.emoji.name) {
-          case '🛡️':
-          const resultembed1 = new Discord.MessageEmbed()
-            .setTitle('Insultron')
-            .setColor('#00ff0d')
-            .setDescription(`✅ Sanction "PM" appliqué par : <${reaction.user.id}> à`)
-            .setFooter('© BMO', client.user.avatarURL)
-            .setTimestamp();
-
-            messages.first().edit(resultembed1);
-            message.reactions.removeAll().catch(error => console.error('Impossible de supprimer les réactions : ', error));         
-            break;
-
-          case '🔇':
-          const resultembed2 = new Discord.MessageEmbed()
-            .setTitle('Insultron')
-            .setColor('#00ff0d')
-            .setDescription(`✅ Sanction "Mute" appliqué par : <@${reaction.user.id}> (60m) à`)
-            .setFooter('© BMO', client.user.avatarURL)
-            .setTimestamp();
-
-            messages.first().edit(resultembed2);
-            message.reactions.removeAll().catch(error => console.error('Impossible de supprimer les réactions : ', error));
-            break;
-          
-          case '⚔️':
-          const resultembed3 = new Discord.MessageEmbed()
-            .setTitle('Insultron')
-            .setColor('#00ff0d')
-            .setDescription(`✅ Sanction "Kick" appliqué par : <@${reaction.user.id}> à`)
-            .setFooter('© BMO', client.user.avatarURL)
-            .setTimestamp();
-
-            messages.first().edit(resultembed3);
-            message.reactions.removeAll().catch(error => console.error('Impossible de supprimer les réactions : ', error));
-            break;
-
-          case '⛔':
-          const resultembed4 = new Discord.MessageEmbed()
-            .setTitle('Insultron')
-            .setColor('#00ff0d')
-            .setDescription(`✅ Sanction "Ban" appliqué par : <@${reaction.user.id}> à`)
-            .setFooter('© BMO', client.user.avatarURL)
-            .setTimestamp();
-          
-            messages.first().edit(resultembed4);
-            message.reactions.removeAll().catch(error => console.error('Impossible de supprimer les réactions : ', error));
-            break;
-          
-          case '🗑️':
-            const resultembed5 = new Discord.MessageEmbed()
-            .setTitle('Insultron')
-            .setColor('#ff0000')
-            .setDescription(`🗑️ Sanction ignoré par : <@${reaction.user.id}>`)
-            .setFooter('© BMO', client.user.avatarURL)
-            .setTimestamp();
-
-            messages.first().edit(resultembed5);
-            message.reactions.removeAll().catch(error => console.error('Impossible de supprimer les réactions : ', error));
-            break;
-          }
-
-      }).catch(collected => {
-        return;
+    const collector = message.createReactionCollector((reaction, user, client) => 
+        user.id === (!client.id) &&
+        reaction.emoji.name === "🗑️" ||
+        reaction.emoji.name === "🛡️" ||
+        reaction.emoji.name === "🔇" ||
+        reaction.emoji.name === "⚔️" ||
+        reaction.emoji.name === "⛔" ||
+        reaction.emoji.name === "❌"
+        ).once("collect", reaction => {
+        const chosen = reaction.emoji.name;
+        if(chosen === "🗑️"){
+        message.edit("test1")
+        }else if(chosen === "🛡️"){
+        message.edit("test2")
+        }else if(chosen === "🔇"){
+        message.edit("test3")
+        }else if(chosen === "⚔️"){
+        message.edit("test4")
+        }else if(chosen === "⛔"){
+        message.edit("test5")
+        }else{
+        message.edit("test6")
+        }
+        collector.stop();
+        });
       })
-    });
-  }
-
+    }
+  
     if (message.content.indexOf(prefix) !== 0) return;
 
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
