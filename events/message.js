@@ -15,7 +15,7 @@ module.exports = (globalVariables) => {
           .setAuthor(`${message.author.username}`, "https://cdn.discordapp.com/avatars/" + message.author.id + "/" + message.author.avatar + ".png")
           .setDescription('Un mot suceptible d\'être innaproprié a été détecter, vous pouvez effectuer une action en utilisant les réactions ci-dessous !')
           .addFields(
-            { name: 'Action possibles', value: '\n🗑️ Détruire le message \n🛡️ Avertir l\'utilisateur en DM \n🔇 Mute (60 minutes) \n⚔️ Kick \n⛔ Bannir Définitivement \n❌ Ignorer',  inline: true},
+            { name: '__**Action possibles**__', value: '\n🗑️ Détruire le message \n🛡️ Avertir l\'utilisateur en DM \n🔇 Mute (60 minutes) \n⚔️ Kick \n⛔ Bannir Définitivement \n❌ Ignorer',  inline: true},
             { name: '\u200B', value: '\u200B',  inline: true},
             { name: '\u200B', value: '__**Informations**__ :' },
             { name: 'Pseudo :', value: message.author.username, inline: true },
@@ -27,7 +27,7 @@ module.exports = (globalVariables) => {
             { name: 'Dans le salon :', value:`<#${message.channel.id}>`, inline: true },
             { name: 'ID du salon :', value: `${message.channel.id}`, inline: true },
             { name: '\u200B', value: '\u200B', inline: true },
-            { name: 'Message suceptible d\'être innaproprié :', value: `${message.content.substr(0)}`, inline: true },
+            { name: 'Message suceptible d\'être innaproprié :', value: `**${message.content.substr(0)}**`, inline: true },
             { name: '\u200B', value: `[Cliquer ici pour afficher le salon](https://discord.com/channels/`+message.guild.id+`/`+message.channel.id+` 'Lien du salon')`},
           )
           .setTimestamp()
@@ -68,6 +68,7 @@ module.exports = (globalVariables) => {
               message.react("🔇")
               message.react("⚔️")
               message.react("⛔")
+              message.react("❌")
       
             const collector = message.createReactionCollector((reaction, user, client) => 
                 user.id === (!client.id) &&
