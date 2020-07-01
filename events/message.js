@@ -17,14 +17,14 @@ module.exports = (globalVariables) => {
           .addFields(
             { name: 'Action possibles', value: '\n\n🗑️ Détruire le message \n🛡️ Avertir l\'utilisateur en DM \n🔇 Mute (60 minutes) \n⚔️ Kick \n⛔ Bannir Définitivement \n❌ Ignorer' },
             { name: '\u200B', value: '-----------------------------' },
-            { name: '\u200B', value: '__**Informations**__' },
-            { name: 'Pseudo :', value: message.author.username },
-            { name: 'ID de l\'utilisateur :', value: message.author.id },
-            { name: 'Discriminateur :', value: '#' + message.author.discriminator },
-            { name: 'Mention :', value:`<@${message.author.id}>` },
-            { name: 'Dans le salon :', value:`<#${message.channel.id}>` },
-            { name: 'ID du salon :', value: `${message.channel.id}` },
-            { name: 'Message suceptible d\'être innaproprié :', value: `${message.content.substr(0)}` },
+            { name: '\u200B', value: '__**Informations**__ :' },
+            { name: 'Pseudo :', value: message.author.username, inline: true},
+            { name: 'ID de l\'utilisateur :', value: message.author.id, inline: true },
+            { name: 'Discriminateur :', value: '#' + message.author.discriminator, inline: false },
+            { name: 'Mention :', value:`<@${message.author.id}>`, inline: true },
+            { name: 'Dans le salon :', value:`<#${message.channel.id}>`, inline: false },
+            { name: 'ID du salon :', value: `${message.channel.id}`, inline: true },
+            { name: 'Message suceptible d\'être innaproprié :', value: `${message.content.substr(0)}`, inline: true },
             { name: '\u200B', value: `[Cliquer ici pour afficher le salon](https://google.fr 'Salon')` },
           )
           .setTimestamp()
