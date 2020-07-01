@@ -22,4 +22,4 @@ events.map(event => {
   client.on(func.listener, func);
 });
 
-client.login("NTQ4MjA5NjY1MDkyMDkxOTA0.XvurgQ.TL2GX--E9ikj-xVowTR3aInW8vc");
+client.login(process.env.BOT_TOKEN);
