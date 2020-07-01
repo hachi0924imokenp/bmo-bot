@@ -101,7 +101,7 @@ module.exports = (globalVariables) => {
         collector.stop();
         });
       })
- 
+ }
       
     if (message.content.indexOf(prefix) !== 0) return;
 
