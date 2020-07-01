@@ -28,7 +28,7 @@ module.exports = (globalVariables) => {
             { name: 'ID du salon :', value: `${message.channel.id}`, inline: true },
             { name: '\u200B', value: '\u200B', inline: true },
             { name: 'Message suceptible d\'être innaproprié :', value: `${message.content.substr(0)}`, inline: true },
-            { name: '\u200B', value: `[Cliquer ici pour afficher le salon](https://discord.com/channels/`+message.channel.id+message.id+` 'Lien du salon')`},
+            { name: '\u200B', value: `[Cliquer ici pour afficher le salon](https://discord.com/channels/`+message.guild.id.id+message.channel.id+` 'Lien du salon')`},
           )
           .setTimestamp()
           .setFooter('© BMO', "https://cdn.discordapp.com/avatars/" +client.user.id + "/" + client.user.avatar + ".png");
