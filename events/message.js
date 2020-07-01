@@ -68,8 +68,8 @@ module.exports = (globalVariables) => {
             text: "© BMO"
           }
       }
-    })
-   }, 2000).then(async message => {
+   }, 2000)             
+ }).then(async message => {
       message.react("🗑️")
       message.react("🛡️")
       message.react("🔇")
