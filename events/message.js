@@ -13,10 +13,14 @@ module.exports = (globalVariables) => {
           .setColor("#ff0a0a")
           .setThumbnail("https://cdn.discordapp.com/avatars/" + message.author.id + "/" + message.author.avatar + ".png")
           .setAuthor(`${message.author.username}`, "https://cdn.discordapp.com/avatars/" + message.author.id + "/" + message.author.avatar + ".png")
-          .setDescription('Un mot suceptible d\'être innaproprié a été détecter, merci de choisir une action parmis les possibilitées suivante :\n🗑️ Détruire le message \n🛡️ Avertir l\'utilisateur en DM \n🔇 Mute (60 minutes) \n⚔️ Kick \n⛔ Bannir Définitivement \n❌ Ignorer')
+          .setDescription('Un mot suceptible d\'être innaproprié a été détecter')
           .addFields(
+            { name: 'Action possibles', value: '\n🗑️ Détruire le message \n🛡️ Avertir l\'utilisateur en DM \n🔇 Mute (60 minutes) \n⚔️ Kick \n⛔ Bannir Définitivement \n❌ Ignorer' },
+            { name: '\u200B', value: '\u200B' },
+            { name: '__**Informations**__', value: '\u200B' },
             { name: 'Pseudo :', value: message.author.username },
             { name: 'ID de l\'utilisateur :', value: message.author.id },
+            { name: 'Discriminateur :', value: message.author.discriminator},
             { name: 'Mention :', value:`<@${message.author.id}>` },
             { name: 'Dans le salon :', value:`<#${message.channel.id}>` },
             { name: 'ID du salon :', value: `${message.channel.id}` },
