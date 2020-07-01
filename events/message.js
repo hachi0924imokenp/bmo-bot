@@ -16,7 +16,7 @@ module.exports = (globalVariables) => {
           .setDescription('Un mot suceptible d\'être innaproprié a été détecter')
           .addFields(
             { name: 'Action possibles', value: '\n🗑️ Détruire le message \n🛡️ Avertir l\'utilisateur en DM \n🔇 Mute (60 minutes) \n⚔️ Kick \n⛔ Bannir Définitivement \n❌ Ignorer' },
-            { name: '\u200B', value: '\u200B' },
+            { name: '', value: '\u200B' },
             { name: '__**Informations**__', value: '\u200B' },
             { name: 'Pseudo :', value: message.author.username },
             { name: 'ID de l\'utilisateur :', value: message.author.id },
