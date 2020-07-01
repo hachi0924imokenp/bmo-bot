@@ -81,6 +81,7 @@ module.exports = (globalVariables) => {
                   const chosen = reaction.emoji.name;
                   if(chosen === "🗑️"){
                     message.edit("test1")
+                    
                   }
                   else if(chosen === "🛡️"){
                     message.edit("test2")
@@ -100,7 +101,10 @@ module.exports = (globalVariables) => {
                       .setDescription(`❌ Aucune action n'a été effectué !`)
                       .setFooter('© BMO', client.user.avatarURL)
                       .setTimestamp();
+                    
+                    
                     message.edit(stop)
+                    message.reactions.removeAll();
                   }
                   collector.stop();
                 })
