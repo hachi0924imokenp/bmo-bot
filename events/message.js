@@ -62,51 +62,51 @@ module.exports = (globalVariables) => {
               return;
           }   
 
-            cmd.send(insultron).then(async message => {
+          cmd.send(insultron).then(async message => {
               await message.react("🗑️");
               await message.react("🛡️");
               await message.react("🔇");
               await message.react("⚔️");
               await message.react("⛔");
-              await message.react("❌").then(async message => {
-            const collector = message.createReactionCollector((reaction, user) => 
-                user.id !== client.id &&
-                reaction.emoji.name === "🗑️" ||
-                reaction.emoji.name === "🛡️" ||
-                reaction.emoji.name === "🔇" ||
-                reaction.emoji.name === "⚔️" ||
-                reaction.emoji.name === "⛔" ||
-                reaction.emoji.name === "❌"
-              ).once("collect", reaction => {
-                const chosen = reaction.emoji.name;
-                if(chosen === "🗑️"){
-                  message.edit("test1")
-                }
-                else if(chosen === "🛡️"){
-                  message.edit("test2")
-                }
-                else if(chosen === "🔇"){
-                  message.edit("test3")
-                }
-                else if(chosen === "⚔️"){
-                  message.edit("test4")
-                }
-                else if(chosen === "⛔"){
-                  message.edit("test5")
-                } else {
-                  const stop = new Discord.MessageEmbed()
-                    .setTitle('Ignorer')
-                    .setColor('#FF0000')
-                    .setDescription(`❌ Aucune action n'a été effectué !`)
-                    .setFooter('© BMO', client.user.avatarURL)
-                    .setTimestamp();
-                  message.edit(stop)
-                }
-                collector.stop();
+              await message.react("❌").then(() => {
+              const collector = message.createReactionCollector((reaction, user) => 
+                  user.id !== message.author.id &&
+                  reaction.emoji.name === "🗑️" ||
+                  reaction.emoji.name === "🛡️" ||
+                  reaction.emoji.name === "🔇" ||
+                  reaction.emoji.name === "⚔️" ||
+                  reaction.emoji.name === "⛔" ||
+                  reaction.emoji.name === "❌"
+                ).once("collect", reaction => {
+                  const chosen = reaction.emoji.name;
+                  if(chosen === "🗑️"){
+                    message.edit("test1")
+                  }
+                  else if(chosen === "🛡️"){
+                    message.edit("test2")
+                  }
+                  else if(chosen === "🔇"){
+                    message.edit("test3")
+                  }
+                  else if(chosen === "⚔️"){
+                    message.edit("test4")
+                  }
+                  else if(chosen === "⛔"){
+                    message.edit("test5")
+                  } else {
+                    const stop = new Discord.MessageEmbed()
+                      .setTitle('Ignorer')
+                      .setColor('#FF0000')
+                      .setDescription(`❌ Aucune action n'a été effectué !`)
+                      .setFooter('© BMO', client.user.avatarURL)
+                      .setTimestamp();
+                    message.edit(stop)
+                  }
+                  collector.stop();
+                })
               })
-            })
-          })     
-        }
+            })     
+          }
          
     if (message.content.indexOf(prefix) !== 0) return;
 
