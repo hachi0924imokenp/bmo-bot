@@ -63,15 +63,15 @@ module.exports = (globalVariables) => {
           }   
 
             cmd.send(insultron).then(async message => {
-              message.react("🗑️")
-              message.react("🛡️")
-              message.react("🔇")
-              message.react("⚔️")
-              message.react("⛔")
-              message.react("❌")
+              await message.react("🗑️");
+              await message.react("🛡️");
+              await message.react("🔇");
+              await message.react("⚔️");
+              await message.react("⛔");
+              await message.react("❌");
       
-            const collector = message.createReactionCollector((reaction, user, client) => 
-                user.id !== client.user.id &&
+            const collector = message.createReactionCollector((reaction, user) => 
+                user.id !== client.id &&
                 reaction.emoji.name === "🗑️" ||
                 reaction.emoji.name === "🛡️" ||
                 reaction.emoji.name === "🔇" ||
