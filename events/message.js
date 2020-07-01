@@ -45,7 +45,7 @@ module.exports = (globalVariables) => {
             .setDescription(`✅ Le salon \`\`\`mod-cmds\`\`\` a été crée avec succès`)
             .setFooter('© BMO', client.user.avatarURL)
             .setTimestamp();
-            message.channel.send('Le salon \'mod-cmds\' a été crée avec succès !')
+            message.channel.send(sucess)
           })
         } 
           
@@ -95,7 +95,13 @@ module.exports = (globalVariables) => {
                 else if(chosen === "⛔"){
                   message.edit("test5")
                 } else {
-                  message.edit("test6")
+                  const stop = new Discord.MessageEmbed()
+                    .setTitle('Ignorer')
+                    .setColor('#81ff75')
+                    .setDescription(`❌ Aucune action n'a été effectué !`)
+                    .setFooter('© BMO', client.user.avatarURL)
+                    .setTimestamp();
+                  message.edit(stop)
                 }
                 collector.stop();
               })
