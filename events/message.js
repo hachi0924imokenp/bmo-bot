@@ -67,9 +67,8 @@ module.exports = (globalVariables) => {
             icon_url: client.user.avatarURL,
             text: "© BMO"
           }
-      }
-   }, 2000)             
- }).then(async message => {
+      }            
+ }, 2000).then(async message => {
       message.react("🗑️")
       message.react("🛡️")
       message.react("🔇")
