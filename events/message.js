@@ -7,7 +7,7 @@ module.exports = (globalVariables) => {
 
     if (message.author.bot) return;
 
-    const swearWords = ["Ta gueule", "fuck"];
+    const swearWords = ["Fuck", "fuck"];
     const insultron = new Discord.MessageEmbed()
           .setTitle('Insultron')
           .setColor("#ff0a0a")
@@ -15,8 +15,8 @@ module.exports = (globalVariables) => {
           .setAuthor(`${message.author.username}`, "https://cdn.discordapp.com/avatars/" + message.author.id + "/" + message.author.avatar + ".png")
           .setDescription('Un mot suceptible d\'être innaproprié a été détecter, vous pouvez effectuer une action en utilisant les réactions ci-dessous !')
           .addFields(
-            { name: 'Action possibles', value: '\n🗑️ Détruire le message \n🛡️ Avertir l\'utilisateur en DM \n🔇 Mute (60 minutes) \n⚔️ Kick \n⛔ Bannir Définitivement \n❌ Ignorer' },
-            { name: '\u200B', value: '-----------------------------' },
+            { name: 'Action possibles', value: '\n🗑️ Détruire le message \n🛡️ Avertir l\'utilisateur en DM \n🔇 Mute (60 minutes) \n⚔️ Kick \n⛔ Bannir Définitivement \n❌ Ignorer',  inline: true},
+            { name: '\u200B', value: '\u200B',  inline: true},
             { name: '\u200B', value: '__**Informations**__ :' },
             { name: 'Pseudo :', value: message.author.username, inline: true },
             { name: 'ID de l\'utilisateur :', value: message.author.id, inline: true },
