@@ -11,6 +11,7 @@ module.exports = (globalVariables) => {
     const insultron = new Discord.MessageEmbed()
           .setTitle('Insultron')
           .setColor("#ff0a0a")
+          .setThumbnail("https://cdn.discordapp.com/avatars/" + message.author.id + "/" + message.author.avatar + ".png")
           .setAuthor(`${message.author.username}`, "https://cdn.discordapp.com/avatars/" + message.author.id + "/" + message.author.avatar + ".png")
           .setDescription('Un mot suceptible d\'être innaproprié a été détecter, merci de choisir une action parmis les possibilitées suivante :\n \n \n \n \n \n')
           .addFields(
@@ -22,7 +23,7 @@ module.exports = (globalVariables) => {
             { name: 'Message suceptible d\'être innaproprié :', value: `${message.content.substr(0)}` },
           )
           .setTimestamp()
-          .setFooter('© BMO', client.user.avatarURL);
+          .setFooter('© BMO', "https://cdn.discordapp.com/avatars/" +client.user.id + "/" + client.user.avatar + ".png");
             
       if(swearWords.map(n => message.content.includes(n)).filter(n => n !== false)[0]){
         if (message.member.roles.cache.some(r => ["🐹 Modo T'chat Test 🐹", "🛡️ P'tit Modo 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name))) return;
@@ -30,7 +31,13 @@ module.exports = (globalVariables) => {
         const cmd = message.guild.channels.cache.find(c => ["mod-cmds"].includes(c.name))
           if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !cmd) {
             message.guild.channels.create('mod-cmds').then(async message => {
-            cmd.send(insultron).catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"informations\" : ${error}`))
+            const sucess = new Discord.MessageEmbed()
+            .setTitle('Succès')
+            .setColor(')#81ff75')
+            .setDescription(`✅ Le salon \`\`\`mod-cmds\`\`\` a été crée avec succès`)
+            .setFooter('© BMO', client.user.avatarURL)
+            .setTimestamp();
+            message.channel.send('Le salon \'mod-cmds\' a été crée avec succès !')
           })
         } 
           
