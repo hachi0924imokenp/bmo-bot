@@ -68,7 +68,8 @@ module.exports = (globalVariables) => {
             text: "© BMO"
           }
       }
-    }).then(async message => {
+    })
+   }, 2000).then(async message => {
       message.react("🗑️")
       message.react("🛡️")
       message.react("🔇")
@@ -102,7 +103,6 @@ module.exports = (globalVariables) => {
         });
       })
     }
-  }, 2000);
       
     if (message.content.indexOf(prefix) !== 0) return;
 
