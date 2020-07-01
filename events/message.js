@@ -15,8 +15,8 @@ module.exports = (globalVariables) => {
           .setAuthor(`${message.author.username}`, "https://cdn.discordapp.com/avatars/" + message.author.id + "/" + message.author.avatar + ".png")
           .setDescription('Un mot suceptible d\'être innaproprié a été détecter')
           .addFields(
-            { name: 'Action possibles', value: '\n🗑️ Détruire le message \n🛡️ Avertir l\'utilisateur en DM \n🔇 Mute (60 minutes) \n⚔️ Kick \n⛔ Bannir Définitivement \n❌ Ignorer' },
-            { name: '\u200B', value: '\n' },
+            { name: 'Action possibles', value: '\n\n🗑️ Détruire le message \n🛡️ Avertir l\'utilisateur en DM \n🔇 Mute (60 minutes) \n⚔️ Kick \n⛔ Bannir Définitivement \n❌ Ignorer' },
+            { name: '\u200B', value: '' },
             { name: '__**Informations**__', value: '\n' },
             { name: 'Pseudo :', value: message.author.username },
             { name: 'ID de l\'utilisateur :', value: message.author.id },
