@@ -16,15 +16,16 @@ module.exports = (globalVariables) => {
           .setDescription('Un mot suceptible d\'être innaproprié a été détecter')
           .addFields(
             { name: 'Action possibles', value: '\n\n🗑️ Détruire le message \n🛡️ Avertir l\'utilisateur en DM \n🔇 Mute (60 minutes) \n⚔️ Kick \n⛔ Bannir Définitivement \n❌ Ignorer' },
-            { name: '\u200B', value: '\n\n' },
-            { name: '__**Informations**__', value: '\n\n' },
+            { name: '\u200B', value: '-----------------------------' },
+            { name: '\u200B', value: '__**Informations**__' },
             { name: 'Pseudo :', value: message.author.username },
             { name: 'ID de l\'utilisateur :', value: message.author.id },
-            { name: 'Discriminateur :', value: message.author.discriminator},
+            { name: 'Discriminateur :', value: '#' + message.author.discriminator },
             { name: 'Mention :', value:`<@${message.author.id}>` },
             { name: 'Dans le salon :', value:`<#${message.channel.id}>` },
             { name: 'ID du salon :', value: `${message.channel.id}` },
             { name: 'Message suceptible d\'être innaproprié :', value: `${message.content.substr(0)}` },
+            { name: '\u200B', value: `[Cliquer ici pour afficher le salon](https://google.fr 'Salon')` },
           )
           .setTimestamp()
           .setFooter('© BMO', "https://cdn.discordapp.com/avatars/" +client.user.id + "/" + client.user.avatar + ".png");
