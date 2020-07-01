@@ -68,8 +68,7 @@ module.exports = (globalVariables) => {
               await message.react("🔇");
               await message.react("⚔️");
               await message.react("⛔");
-              await message.react("❌");
-      
+              await message.react("❌").then(async message => {
             const collector = message.createReactionCollector((reaction, user) => 
                 user.id !== client.id &&
                 reaction.emoji.name === "🗑️" ||
@@ -97,7 +96,7 @@ module.exports = (globalVariables) => {
                 } else {
                   const stop = new Discord.MessageEmbed()
                     .setTitle('Ignorer')
-                    .setColor('#81ff75')
+                    .setColor('#FF0000')
                     .setDescription(`❌ Aucune action n'a été effectué !`)
                     .setFooter('© BMO', client.user.avatarURL)
                     .setTimestamp();
@@ -106,7 +105,8 @@ module.exports = (globalVariables) => {
                 collector.stop();
               })
             })
-    }
+          })     
+        }
          
     if (message.content.indexOf(prefix) !== 0) return;
 
