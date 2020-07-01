@@ -68,7 +68,7 @@ module.exports = (globalVariables) => {
               await message.react("🔇");
               await message.react("⚔️");
               await message.react("⛔");
-              await message.react("❌").then(() => {
+              message.react("❌").then(() => {
               const collector = message.createReactionCollector((reaction, user) => 
                   user.id !== message.author.id &&
                   reaction.emoji.name === "🗑️" ||
