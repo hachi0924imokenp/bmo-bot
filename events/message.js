@@ -20,7 +20,7 @@ module.exports = (globalVariables) => {
             { name: '\u200B', value: '__**Informations**__ :' },
             { name: 'Pseudo :', value: message.author.username, inline: true },
             { name: 'ID de l\'utilisateur :', value: message.author.id, inline: true },
-            { name: '\u200B', value: '\u200B', inline: false },
+            { name: '\u200B', value: '\u200B', inline: true },
             { name: 'Discriminateur :', value: '#' + message.author.discriminator, inline: true },
             { name: 'Mention :', value:`<@${message.author.id}>`, inline: true },
             { name: '\u200B', value: '\u200B', inline: true },
@@ -28,7 +28,7 @@ module.exports = (globalVariables) => {
             { name: 'ID du salon :', value: `${message.channel.id}`, inline: true },
             { name: '\u200B', value: '\u200B', inline: true },
             { name: 'Message suceptible d\'être innaproprié :', value: `${message.content.substr(0)}`, inline: true },
-            { name: '\u200B', value: `[Cliquer ici pour afficher le salon](https://google.fr 'Salon')` },
+            { name: '\u200B', value: `[Cliquer ici pour afficher le salon](https://discord.com/channels/`+message.channel.id+message.id+` 'Lien du salon')`},
           )
           .setTimestamp()
           .setFooter('© BMO', "https://cdn.discordapp.com/avatars/" +client.user.id + "/" + client.user.avatar + ".png");
