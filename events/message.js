@@ -12,11 +12,10 @@ module.exports = (globalVariables) => {
       if (message.member.roles.cache.some(r => ["🐹 Modo T'chat Test 🐹", "🛡️ P'tit Modo 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name))) return;
      
       const cmd = message.guild.channels.cache.find(c => ["mod-cmds"].includes(c.name))
-      setTimeout(function() {
         if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !cmd) {
           message.guild.channels.create('mod-cmds').catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"informations\" : ${error}`));
         }
-      }, 2000);
+
         if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !cmd) {
           const error = new Discord.MessageEmbed()
             .setTitle('Erreur')
@@ -32,7 +31,7 @@ module.exports = (globalVariables) => {
         
         const insultron = new Discord.MessageEmbed()
         .setTitle('Insultron')
-        .setColor('3447003')
+        .setColor("#ff0a0a")
         .setAuthor(`${message.author.username}`, "https://cdn.discordapp.com/avatars/" + message.author.id + "/" + message.author.avatar + ".png")
         .setDescription('Un mot suceptible d\'être innaproprié a été détecter, merci de choisir une action parmis les possibilitées suivante :\n \n \n \n \n \n')
         .addFields(
@@ -87,7 +86,7 @@ module.exports = (globalVariables) => {
         }, 2000);   
     }
          
-      if (message.content.indexOf(prefix) !== 0) return;
+    if (message.content.indexOf(prefix) !== 0) return;
 
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     let commands = getFiles(__dirname+"/../commands").filter(f => f.endsWith(".js"));
