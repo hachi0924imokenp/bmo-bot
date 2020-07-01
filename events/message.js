@@ -7,7 +7,7 @@ module.exports = (globalVariables) => {
 
     if (message.author.bot) return;
 
-    const swearWords = ["Fuck", "fuck"];
+    const swearWords = ["Ta gueule", "fuck"];
     const insultron = new Discord.MessageEmbed()
           .setTitle('Insultron')
           .setColor("#ff0a0a")
