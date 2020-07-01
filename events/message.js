@@ -45,7 +45,8 @@ module.exports = (globalVariables) => {
           .setTimestamp()
           .setFooter('© BMO', client.user.avatarURL);
             
-            await cmd.send(insultron).then(async message => {
+          setTimeout(function(){ 
+            cmd.send(insultron).then(async message => {
               message.react("🗑️")
               message.react("🛡️")
               message.react("🔇")
@@ -82,6 +83,7 @@ module.exports = (globalVariables) => {
                 collector.stop();
               })
             })
+          }, 10000);
     }
          
     if (message.content.indexOf(prefix) !== 0) return;
