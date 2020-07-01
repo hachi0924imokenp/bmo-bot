@@ -8,28 +8,7 @@ module.exports = (globalVariables) => {
     if (message.author.bot) return;
 
     const swearWords = ["Fuck", "fuck"];
-      if(swearWords.map(n => message.content.includes(n)).filter(n => n !== false)[0]){
-        if (message.member.roles.cache.some(r => ["🐹 Modo T'chat Test 🐹", "🛡️ P'tit Modo 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name))) return;
-      
-        const cmd = message.guild.channels.cache.find(c => ["mod-cmds"].includes(c.name))
-          if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !cmd) {
-            message.guild.channels.create('mod-cmds').catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"informations\" : ${error}`));
-          }
-
-          if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !cmd) {
-            const error = new Discord.MessageEmbed()
-              .setTitle('Erreur')
-              .setColor('#FF0000')
-              .setDescription(`👨‍🔧 Une erreur s'est produite lors de la création du salon "mod-cmds"`)
-              .addField('Erreur :', '\`MISSING PERMISSION \'MANAGE_CHANNELS\'\`', false)
-              .setFooter('© BMO', client.user.avatarURL)
-              .setTimestamp();
-              
-              message.channel.send(error) 
-              return;
-          }   
-          
-          const insultron = new Discord.MessageEmbed()
+    const insultron = new Discord.MessageEmbed()
           .setTitle('Insultron')
           .setColor("#ff0a0a")
           .setAuthor(`${message.author.username}`, "https://cdn.discordapp.com/avatars/" + message.author.id + "/" + message.author.avatar + ".png")
@@ -45,7 +24,29 @@ module.exports = (globalVariables) => {
           .setTimestamp()
           .setFooter('© BMO', client.user.avatarURL);
             
-          setTimeout(function(){ 
+      if(swearWords.map(n => message.content.includes(n)).filter(n => n !== false)[0]){
+        if (message.member.roles.cache.some(r => ["🐹 Modo T'chat Test 🐹", "🛡️ P'tit Modo 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name))) return;
+      
+        const cmd = message.guild.channels.cache.find(c => ["mod-cmds"].includes(c.name))
+          if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !cmd) {
+            message.guild.channels.create('mod-cmds').then(async message => {
+            cmd.send(insultron).catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"informations\" : ${error}`))
+          })
+        } 
+          
+          if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !cmd) {
+            const error = new Discord.MessageEmbed()
+              .setTitle('Erreur')
+              .setColor('#FF0000')
+              .setDescription(`👨‍🔧 Une erreur s'est produite lors de la création du salon "mod-cmds"`)
+              .addField('Erreur :', '\`MISSING PERMISSION \'MANAGE_CHANNELS\'\`', false)
+              .setFooter('© BMO', client.user.avatarURL)
+              .setTimestamp();
+              
+              message.channel.send(error) 
+              return;
+          }   
+
             cmd.send(insultron).then(async message => {
               message.react("🗑️")
               message.react("🛡️")
@@ -64,7 +65,7 @@ module.exports = (globalVariables) => {
               ).once("collect", reaction => {
                 const chosen = reaction.emoji.name;
                 if(chosen === "🗑️"){
-                message.edit("test1")
+                  message.edit("test1")
                 }
                 else if(chosen === "🛡️"){
                   message.edit("test2")
@@ -83,7 +84,6 @@ module.exports = (globalVariables) => {
                 collector.stop();
               })
             })
-          }, 10000);
     }
          
     if (message.content.indexOf(prefix) !== 0) return;
