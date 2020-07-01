@@ -69,6 +69,7 @@ module.exports = (globalVariables) => {
               await message.react("⚔️");
               await message.react("⛔");
               message.react("❌").then(() => {
+              setTimeout(function(){ 
               const collector = message.createReactionCollector((reaction, user) => 
                   user.id !== message.author.id &&
                   reaction.emoji.name === "🗑️" ||
@@ -109,9 +110,10 @@ module.exports = (globalVariables) => {
                   collector.stop();
                 })
               })
-            })     
-          }
-         
+            })
+          })     
+        }
+      
     if (message.content.indexOf(prefix) !== 0) return;
 
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
