@@ -35,7 +35,7 @@ module.exports = (globalVariables) => {
           author: {
             name: message.author.username,
             icon_url: "https://cdn.discordapp.com/avatars/" + message.author.id + "/" + message.author.avatar + ".png"
-        },
+          },
           title: "Insultron",
           description: "Un mot suceptible d'être innaproprié a été détecter, merci de choisir une action parmis les possibilitées suivante :\n \n \n \n \n \n",
             fields: [{
@@ -62,46 +62,50 @@ module.exports = (globalVariables) => {
               name: "Message suceptible d'être innaproprié :",
               value: `${message.content.substr(0)}`
             }],
-          timestamp: new Date(),
-          footer: {
-            icon_url: client.user.avatarURL,
-            text: "© BMO"
+            timestamp: new Date(),
+            footer: {
+              icon_url: client.user.avatarURL,
+              text: "© BMO"
+            }
           }
-      }            
- }, 2000).then(async message => {
-      message.react("🗑️")
-      message.react("🛡️")
-      message.react("🔇")
-      message.react("⚔️")
-      message.react("⛔")
+        })            
+      }, 2000).then(async message => {
+          message.react("🗑️")
+          message.react("🛡️")
+          message.react("🔇")
+          message.react("⚔️")
+          message.react("⛔")
 
-    const collector = message.createReactionCollector((reaction, user, client) => 
-        user.id === (!client.id) &&
-        reaction.emoji.name === "🗑️" ||
-        reaction.emoji.name === "🛡️" ||
-        reaction.emoji.name === "🔇" ||
-        reaction.emoji.name === "⚔️" ||
-        reaction.emoji.name === "⛔" ||
-        reaction.emoji.name === "❌"
-        ).once("collect", reaction => {
-        const chosen = reaction.emoji.name;
-        if(chosen === "🗑️"){
-        message.edit("test1")
-        }else if(chosen === "🛡️"){
-        message.edit("test2")
-        }else if(chosen === "🔇"){
-        message.edit("test3")
-        }else if(chosen === "⚔️"){
-        message.edit("test4")
-        }else if(chosen === "⛔"){
-        message.edit("test5")
-        }else{
-        message.edit("test6")
-        }
-        collector.stop();
+          const collector = message.createReactionCollector((reaction, user, client) => 
+            user.id === (!client.id) &&
+            reaction.emoji.name === "🗑️" ||
+            reaction.emoji.name === "🛡️" ||
+            reaction.emoji.name === "🔇" ||
+            reaction.emoji.name === "⚔️" ||
+            reaction.emoji.name === "⛔" ||
+            reaction.emoji.name === "❌"
+            ).once("collect", reaction => {
+              const chosen = reaction.emoji.name;
+              if(chosen === "🗑️"){
+                message.edit("test1")
+              }  
+              else if(chosen === "🛡️"){
+                message.edit("test2")
+              }
+              else if(chosen === "🔇"){
+                message.edit("test3")
+              }
+              else if(chosen === "⚔️"){
+                message.edit("test4")
+              }
+              else if(chosen === "⛔"){
+                message.edit("test5")
+              }else{
+                message.edit("test6")
+              }
+                collector.stop();
+            })
         });
-      })
- }
       
     if (message.content.indexOf(prefix) !== 0) return;
 
@@ -123,3 +127,4 @@ module.exports = (globalVariables) => {
 
   return event;
 }
+  }
