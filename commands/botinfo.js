@@ -9,7 +9,7 @@ module.exports = (globalVariables) => {
       return message.channel.send("Vous n'êtes pas mon créateur !")
     }
     
-    let package = require("../../package.json");
+    let package = require("../package.json");
 
     const infobot = new Discord.MessageEmbed()
       .setTitle('Informations du bot')
