@@ -61,7 +61,7 @@ module.exports = (globalVariables) => {
               message.channel.send(error) 
               return;
           }   
-
+          
           cmd.send(insultron).then(async message => {
               await message.react("🗑️");
               await message.react("🛡️");
@@ -69,9 +69,10 @@ module.exports = (globalVariables) => {
               await message.react("⚔️");
               await message.react("⛔");
               message.react("❌").then(() => {
-              setTimeout(function(){ 
+              setTimeout(function(){
+              const filter = user.id !== client.user.id;
               const collector = message.createReactionCollector((reaction, user) => 
-                  user.id !== message.author.id &&
+                filter &&
                   reaction.emoji.name === "🗑️" ||
                   reaction.emoji.name === "🛡️" ||
                   reaction.emoji.name === "🔇" ||
@@ -81,20 +82,70 @@ module.exports = (globalVariables) => {
                 ).once("collect", reaction => {
                   const chosen = reaction.emoji.name;
                   if(chosen === "🗑️"){
-                    message.edit("test1")
+                    const clear = new Discord.MessageEmbed()
+                    .setTitle('Succès')
+                    .setColor('#FF0000')
+                    .setDescription(`✔️ Le message a été supprimé avec succès !`)
+                    .setFooter('© BMO', client.user.avatarURL)
+                    .setTimestamp();
+                  
+                  
+                    message.delete(message.author)
+                    message.edit(clear)
+                    message.reactions.removeAll();
                     
                   }
                   else if(chosen === "🛡️"){
-                    message.edit("test2")
+                    const warn = new Discord.MessageEmbed()
+                    .setTitle('Succès')
+                    .setColor('#FF0000')
+                    .setDescription(`✔️ L'utilisateur ${messsage.author.id} a été avertis avec succès !`)
+                    .setFooter('© BMO', client.user.avatarURL)
+                    .setTimestamp();
+                  
+                  
+                    message.delete(message.author)
+                    message.edit(warn)
+                    message.reactions.removeAll();
                   }
                   else if(chosen === "🔇"){
-                    message.edit("test3")
+                    const mute = new Discord.MessageEmbed()
+                    .setTitle('Succès')
+                    .setColor('#FF0000')
+                    .setDescription(`✔️ L'utilisateur ${messsage.author.id} a été avertis avec succès !`)
+                    .setFooter('© BMO', client.user.avatarURL)
+                    .setTimestamp();
+                  
+                  
+                    message.delete(message.author)
+                    message.edit(mute)
+                    message.reactions.removeAll();
                   }
                   else if(chosen === "⚔️"){
-                    message.edit("test4")
+                    const kickmsg = new Discord.MessageEmbed()
+                    .setTitle('Succès')
+                    .setColor('#FF0000')
+                    .setDescription(`✔️ L'utilisateur ${messsage.author.id} a été avertis avec succès !`)
+                    .setFooter('© BMO', client.user.avatarURL)
+                    .setTimestamp();
+                  
+                  
+                    message.delete(message.author)
+                    message.edit(kickmsg)
+                    message.reactions.removeAll();
                   }
                   else if(chosen === "⛔"){
-                    message.edit("test5")
+                    const banmsg = new Discord.MessageEmbed()
+                    .setTitle('Succès')
+                    .setColor('#FF0000')
+                    .setDescription(`✔️ L'utilisateur ${messsage.author.id} a été avertis avec succès !`)
+                    .setFooter('© BMO', client.user.avatarURL)
+                    .setTimestamp();
+                  
+                  
+                    message.delete(message.author)
+                    message.edit(banmsg)
+                    message.reactions.removeAll();
                   } else {
                     const stop = new Discord.MessageEmbed()
                       .setTitle('Ignorer')
