@@ -21,13 +21,7 @@ module.exports = (globalVariables) => {
         { name: 'Description', value: `\`\`\`${package.description}\`\`\`` },
         { name: 'Fichier principal (index)', value: `\`\`\`${package.main}\`\`\`` },
         { name: 'Version du bot', value: `\`\`\`${package.version}\`\`\`` },
-        { name: 'Version de discord.js', value: `\`\`\`${package.discord.js}\`\`\`` },
-        { name: 'Version de forever', value: `\`\`\`${package.forever}\`\`\`` },
-        { name: 'Version de moment', value: `\`\`\`${package.moment}\`\`\`` },
-        { name: 'Version de moment-duration-format', value: `\`\`\`${package.moment-duration-format}\`\`\`` },
-        { name: 'npm', value: `\`\`\`${package.npm}\`\`\`` },
-        { name: 'string-hash', value: `\`\`\`${package.string-hash}\`\`\`` },
-        { name: 'ms', value: `\`\`\`${package.ms}\`\`\`` },
+        { name: 'Dependencies', value: `\`\`\`${package.dependencies}\`\`\`` },
         { name: 'License type', value: `\`\`\`${package.license}\`\`\`` },
 
       )
