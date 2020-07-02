@@ -72,7 +72,7 @@ module.exports = (globalVariables) => {
               setTimeout(function(){
               
               const collector = message.createReactionCollector((reaction, user) => 
-                user.id !== message.author.id &&
+                 user.id !== message.author.id &&
                   reaction.emoji.name === "🗑️" ||
                   reaction.emoji.name === "🛡️" ||
                   reaction.emoji.name === "🔇" ||
@@ -90,7 +90,7 @@ module.exports = (globalVariables) => {
                     .setTimestamp();
                   
                   
-                    message.delete(message.author)
+                    message.delete()
                     message.edit(clear)
                     message.reactions.removeAll();
                     
@@ -104,7 +104,7 @@ module.exports = (globalVariables) => {
                     .setTimestamp();
                   
                   
-                    message.delete(message.author)
+                    message.delete()
                     message.edit(warn)
                     message.reactions.removeAll();
                   }
@@ -117,7 +117,7 @@ module.exports = (globalVariables) => {
                     .setTimestamp();
                   
                   
-                    message.delete(message.author)
+                    message.delete()
                     message.edit(mute)
                     message.reactions.removeAll();
                   }
@@ -130,7 +130,7 @@ module.exports = (globalVariables) => {
                     .setTimestamp();
                   
                   
-                    message.delete(message.author)
+                    message.delete()
                     message.edit(kickmsg)
                     message.reactions.removeAll();
                   }
@@ -143,7 +143,7 @@ module.exports = (globalVariables) => {
                     .setTimestamp();
                   
                   
-                    message.delete(message.author)
+                    message.delete()
                     message.edit(banmsg)
                     message.reactions.removeAll();
                   } else {
