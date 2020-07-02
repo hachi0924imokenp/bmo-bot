@@ -176,6 +176,7 @@ module.exports = (globalVariables) => {
                       .setTitle('Ignorer')
                       .setColor('#FF0000')
                       .setDescription(`❌ Aucune action n'a été effectué !`)
+                      .addBlankField()
                       .addField('Contenu du message :', `${content}`, false)
                       .setFooter('© BMO', client.user.avatarURL)
                       .setTimestamp();
