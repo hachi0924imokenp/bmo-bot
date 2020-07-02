@@ -37,6 +37,7 @@ module.exports = (globalVariables) => {
         if (message.member.roles.cache.some(r => ["🐹 Modo T'chat Test 🐹", "🛡️ P'tit Modo 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name))) return;
         
         const author = message.author.id
+        const delauthor = message.author
         const cmd = message.guild.channels.cache.find(c => ["mod-cmds"].includes(c.name))
           if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !cmd) {
             message.guild.channels.create('mod-cmds').then(async message => {
@@ -89,7 +90,8 @@ module.exports = (globalVariables) => {
                     .setDescription(`✅ Le message a été supprimé avec succès !`)
                     .setFooter('© BMO', client.user.avatarURL)
                     .setTimestamp();
-                
+                    
+                    message.delete(delauthor)
                     message.edit(clear)
                     message.reactions.removeAll();
                   }
