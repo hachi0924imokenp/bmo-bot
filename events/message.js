@@ -82,12 +82,6 @@ module.exports = (globalVariables) => {
                 ).once("collect", reaction => {
                   const chosen = reaction.emoji.name;
                   if(chosen === "🗑️"){
-                    message.channel.fetch({
-                      limit: 2,
-                     }).then(message =>{
-                       message.bulkDelete(fetched)
-                     })
-
                     const clear = new Discord.MessageEmbed()
                     .setTitle('Succès')
                     .setColor('#00FF00')
