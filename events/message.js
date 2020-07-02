@@ -37,7 +37,6 @@ module.exports = (globalVariables) => {
         if (message.member.roles.cache.some(r => ["🐹 Modo T'chat Test 🐹", "🛡️ P'tit Modo 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name))) return;
         
         const author = message.author.id
-        const delauthor = message.author
         const cmd = message.guild.channels.cache.find(c => ["mod-cmds"].includes(c.name))
           if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !cmd) {
             message.guild.channels.create('mod-cmds').then(async message => {
@@ -91,7 +90,6 @@ module.exports = (globalVariables) => {
                     .setFooter('© BMO', client.user.avatarURL)
                     .setTimestamp();
                     
-                    message.delete(delauthor)
                     message.edit(clear)
                     message.reactions.removeAll();
                   }
@@ -124,6 +122,19 @@ module.exports = (globalVariables) => {
                     .setDescription(`✅ L'utilisateur a été avertis avec succès !`)
                     .setFooter('© BMO', client.user.avatarURL)
                     .setTimestamp();
+                    
+                    const kickerr = new Discord.MessageEmbed()
+                      .setTitle('Erreur')
+                      .setColor('#FF0000')
+                      .setDescription(`❌ Une erreur s'est produite pendant la tentaive de kick ! (\`\`\`${error}\`\`)`)
+                      .setFooter('© BMO', client.user.avatarURL)
+                      .setTimestamp();
+                    
+
+                    let reason = "Vous avez utiliser un badword, un modérateur vous a donc kické.";
+                    client.users.cache.get(author);
+                    author.send(`Tu as été kické par ${message.author.tag} ===> ${reason}`);
+                    await author.kick(reason).catch(error => message.edit(kickerr));
                   
                     message.edit(kickmsg)
                     message.reactions.removeAll();
