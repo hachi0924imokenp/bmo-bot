@@ -70,9 +70,9 @@ module.exports = (globalVariables) => {
               await message.react("⛔");
               message.react("❌").then(() => {
               setTimeout(function(){
-              const filter = user.id !== client.user.id;
+              
               const collector = message.createReactionCollector((reaction, user) => 
-                filter &&
+                user.id !== message.author.id &&
                   reaction.emoji.name === "🗑️" ||
                   reaction.emoji.name === "🛡️" ||
                   reaction.emoji.name === "🔇" ||
