@@ -35,8 +35,7 @@ module.exports = (globalVariables) => {
             
       if(swearWords.map(n => message.content.includes(n)).filter(n => n !== false)[0]){
         if (message.member.roles.cache.some(r => ["🐹 Modo T'chat Test 🐹", "🛡️ P'tit Modo 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name))) return;
-        
-        const author = message.author.id
+    
         const cmd = message.guild.channels.cache.find(c => ["mod-cmds"].includes(c.name))
           if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !cmd) {
             message.guild.channels.create('mod-cmds').then(async message => {
@@ -62,7 +61,9 @@ module.exports = (globalVariables) => {
               message.channel.send(error) 
               return;
           }   
-          
+          const author = message.author.id;
+          const content = message.content.substr(0);
+
           cmd.send(insultron).then(async message => {
               await message.react("🗑️");
               await message.react("🛡️");
@@ -175,7 +176,7 @@ module.exports = (globalVariables) => {
                       .setTitle('Ignorer')
                       .setColor('#FF0000')
                       .setDescription(`❌ Aucune action n'a été effectué !`)
-                      .addField('Contenu du message :', message.content.substr(0), false)
+                      .addField('Contenu du message :', `${content}`, false)
                       .setFooter('© BMO', client.user.avatarURL)
                       .setTimestamp();
                     
