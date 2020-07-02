@@ -35,7 +35,8 @@ module.exports = (globalVariables) => {
             
       if(swearWords.map(n => message.content.includes(n)).filter(n => n !== false)[0]){
         if (message.member.roles.cache.some(r => ["🐹 Modo T'chat Test 🐹", "🛡️ P'tit Modo 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name))) return;
-      
+        
+        const author = message.author.id
         const cmd = message.guild.channels.cache.find(c => ["mod-cmds"].includes(c.name))
           if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !cmd) {
             message.guild.channels.create('mod-cmds').then(async message => {
@@ -70,7 +71,7 @@ module.exports = (globalVariables) => {
               await message.react("⛔");
               message.react("❌").then(() => {
               setTimeout(function(){
-              
+      
               const collector = message.createReactionCollector((reaction, user) => 
                  user.id !== message.author.id &&
                   reaction.emoji.name === "🗑️" ||
@@ -91,13 +92,12 @@ module.exports = (globalVariables) => {
                 
                     message.edit(clear)
                     message.reactions.removeAll();
-                    
                   }
                   else if(chosen === "🛡️"){
                     const warn = new Discord.MessageEmbed()
                     .setTitle('Succès')
                     .setColor('#00FF00')
-                    .setDescription(`✅ L'utilisateur a été avertis avec succès !`)
+                    .setDescription(`✅ L'utilisateur <@`+author+`> a été avertis avec succès !`)
                     .setFooter('© BMO', client.user.avatarURL)
                     .setTimestamp();
                   
