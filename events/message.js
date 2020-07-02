@@ -68,7 +68,7 @@ module.exports = (globalVariables) => {
               await message.react("🔇");
               await message.react("⚔️");
               await message.react("⛔");
-              await message.react("❌").then(() => {
+              message.react("❌").then(() => {
               setTimeout(function(){
               
               const collector = message.createReactionCollector((reaction, user) => 
@@ -150,7 +150,7 @@ module.exports = (globalVariables) => {
                   }
                   collector.stop();
                 })
-              })
+              }, 3000)
             })
           })     
         }
