@@ -3,7 +3,7 @@ module.exports = (globalVariables) => {
     global[variable] = globalVariables[variable];
   });
   
-  const package = require("package.json")
+  const package = require("../../package.json")
   async function command(message, args){
     message.delete(message.author);
     if (!message.author.id !== ownerID) {
