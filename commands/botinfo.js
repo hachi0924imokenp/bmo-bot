@@ -3,14 +3,15 @@ module.exports = (globalVariables) => {
     global[variable] = globalVariables[variable];
   });
   
-  const package = require("../../package.json")
   async function command(message, args){
     message.delete(message.author);
     if (!message.author.id !== ownerID) {
       return message.channel.send("Vous n'êtes pas mon créateur !");
     }
+    
+    let package = require("../../package.json");
 
-    const stop = new Discord.MessageEmbed()
+    const infobot = new Discord.MessageEmbed()
       .setTitle('Informations du bot')
       .setColor('#17ffe4')
       .setDescription(`Voice les informations`)
@@ -32,7 +33,7 @@ module.exports = (globalVariables) => {
       .setFooter('© BMO', client.user.avatarURL)
       .setTimestamp();
 
-    message.channel.send("Okay :ok_hand:");
+    message.channel.send(infobot);
   }
 
   command.options = {
