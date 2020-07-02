@@ -4,6 +4,7 @@ module.exports = (globalVariables) => {
   });
 
   async function command(message, args){
+    if(message.author.id !== ownerID) return;
     message.channel.send('Réinitialisation de la connexion...').then(msg => client.destroy()).then(() => client.login(process.env.BOT_TOKEN));
   }
 
