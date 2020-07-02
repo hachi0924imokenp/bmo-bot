@@ -6,7 +6,7 @@ module.exports = (globalVariables) => {
   async function command(message, args){
     message.delete(message.author);
     if (!message.author.id !== ownerID) {
-      return message.channel.send("Vous n'êtes pas mon créateur !");
+      return message.channel.send("Vous n'êtes pas mon créateur !")
     }
     
     let package = require("../../package.json");
