@@ -17,16 +17,17 @@ module.exports = (globalVariables) => {
       .setDescription(`Voice les informations`)
       .addFields(
         { name: 'Version de NodeJS', value: 'Not Set' },
-        { name: 'Nom du Package', value: `${package.name}` },
-        { name: 'Description', value: '__**Informations**__ :' },
-        { name: 'Fichier principal (index)', value: '__**Informations**__ :' },
-        { name: 'Version du Bot', value: '__**Informations**__ :' },
-        { name: 'Version de discord.js', value: '__**Informations**__ :' },
-        { name: 'Version de Forever', value: '__**Informations**__ :' },
-        { name: 'moment', value: '__**Informations**__ :' },
-        { name: 'moment-duration-format', value: '__**Informations**__ :' },
-        { name: 'npm', value: '__**Informations**__ :' },
-        { name: 'string-hash', value: '__**Informations**__ :' },
+        { name: 'Nom du Package', value: `\`\`\`BMO\`\`\`` },
+        { name: 'Description', value: '\`\`\`A Discord Bot\`\`\`' },
+        { name: 'Fichier principal (index)', value: '\`\`\`index.js\`\`\`' },
+        { name: 'Version du bot', value: '\`\`\`2.0.0\`\`\`' },
+        { name: 'Version de discord.js', value: '\`\`\`^12.2.0\`\`\`' },
+        { name: 'Version de forever', value: '\`\`\`^3.0.0\`\`\`' },
+        { name: 'Version de moment', value: '\`\`\`^2.26.0\`\`\`' },
+        { name: 'Version de moment-duration-format', value: '\`\`\`^2.3.2\`\`\`' },
+        { name: 'npm', value: '\`\`\`^6.14.15\`\`\`' },
+        { name: 'string-hash', value: '\`\`\`^1.1.3\`\`\`' },
+        { name: 'ms', value: '\`\`\`^2.1.2\`\`\`' },
         { name: 'License type', value: 'MIT' },
 
       )
