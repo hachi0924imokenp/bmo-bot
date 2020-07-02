@@ -85,7 +85,7 @@ module.exports = (globalVariables) => {
                     message.channel.messages.fetch({
                       limit: 2,
                      }).then(message =>{
-                       message.delete()
+                       message.delete(fetched)
                      })
 
                     const clear = new Discord.MessageEmbed()
