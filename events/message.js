@@ -88,9 +88,7 @@ module.exports = (globalVariables) => {
                     .setDescription(`✔️ Le message a été supprimé avec succès !`)
                     .setFooter('© BMO', client.user.avatarURL)
                     .setTimestamp();
-                  
-                  
-                    message.delete()
+                
                     message.edit(clear)
                     message.reactions.removeAll();
                     
@@ -103,8 +101,6 @@ module.exports = (globalVariables) => {
                     .setFooter('© BMO', client.user.avatarURL)
                     .setTimestamp();
                   
-                  
-                    message.delete()
                     message.edit(warn)
                     message.reactions.removeAll();
                   }
@@ -116,8 +112,6 @@ module.exports = (globalVariables) => {
                     .setFooter('© BMO', client.user.avatarURL)
                     .setTimestamp();
                   
-                  
-                    message.delete()
                     message.edit(mute)
                     message.reactions.removeAll();
                   }
@@ -129,8 +123,6 @@ module.exports = (globalVariables) => {
                     .setFooter('© BMO', client.user.avatarURL)
                     .setTimestamp();
                   
-                  
-                    message.delete()
                     message.edit(kickmsg)
                     message.reactions.removeAll();
                   }
@@ -142,8 +134,6 @@ module.exports = (globalVariables) => {
                     .setFooter('© BMO', client.user.avatarURL)
                     .setTimestamp();
                   
-                  
-                    message.delete()
                     message.edit(banmsg)
                     message.reactions.removeAll();
                   } else {
