@@ -84,69 +84,62 @@ module.exports = (globalVariables) => {
                   const chosen = reaction.emoji.name;
                   if(chosen === "🗑️"){
                     const clear = new Discord.MessageEmbed()
-                    .setTitle('Succès')
-                    .setColor('#00FF00')
-                    .setDescription(`✅ Le message a été supprimé avec succès !`)
-                    .setFooter('© BMO', client.user.avatarURL)
-                    .setTimestamp();
+                      .setTitle('Succès')
+                      .setColor('#00FF00')
+                      .setDescription(`✅ Le message a été supprimé avec succès !`)
+                      .setFooter('© BMO', client.user.avatarURL)
+                      .setTimestamp();
                     
                     message.edit(clear)
                     message.reactions.removeAll();
                   }
                   else if(chosen === "🛡️"){
                     const warn = new Discord.MessageEmbed()
-                    .setTitle('Succès')
-                    .setColor('#00FF00')
-                    .setDescription(`✅ L'utilisateur <@`+author+`> a été avertis avec succès !`)
-                    .setFooter('© BMO', client.user.avatarURL)
-                    .setTimestamp();
+                      .setTitle('Succès')
+                      .setColor('#00FF00')
+                      .setDescription(`✅ L'utilisateur <@`+author+`> a été avertis avec succès !`)
+                      .setFooter('© BMO', client.user.avatarURL)
+                      .setTimestamp();
                   
                     message.edit(warn)
                     message.reactions.removeAll();
                   }
                   else if(chosen === "🔇"){
                     const mute = new Discord.MessageEmbed()
-                    .setTitle('Succès')
-                    .setColor('#00FF00')
-                    .setDescription(`✅ L'utilisateur a été avertis avec succès !`)
-                    .setFooter('© BMO', client.user.avatarURL)
-                    .setTimestamp();
+                      .setTitle('Succès')
+                      .setColor('#00FF00')
+                      .setDescription(`✅ L'utilisateur a été avertis avec succès !`)
+                      .setFooter('© BMO', client.user.avatarURL)
+                      .setTimestamp();
                   
                     message.edit(mute)
                     message.reactions.removeAll();
                   }
                   else if(chosen === "⚔️"){                    
                     const kickmsg = new Discord.MessageEmbed()
-                    .setTitle('Succès')
-                    .setColor('#00FF00')
-                    .setDescription(`✅ L'utilisateur a été avertis avec succès !`)
-                    .setFooter('© BMO', client.user.avatarURL)
-                    .setTimestamp();
+                      .setTitle('Succès')
+                      .setColor('#00FF00')
+                      .setDescription(`✅ L'utilisateur a été avertis avec succès !`)
+                      .setFooter('© BMO', client.user.avatarURL)
+                      .setTimestamp();
                     
                     const kickerr = new Discord.MessageEmbed()
                       .setTitle('Erreur')
                       .setColor('#FF0000')
-                      .setDescription(`❌ Une erreur s'est produite pendant la tentaive de kick ! (\`\`\`${error}\`\`)`)
+                      .setDescription(`❌ Une erreur s'est produite pendant la tentaive de kick !`)
                       .setFooter('© BMO', client.user.avatarURL)
                       .setTimestamp();
-                    
-
-                    let reason = "Vous avez utiliser un badword, un modérateur vous a donc kické.";
-                    client.users.cache.get(author);
-                    author.send(`Tu as été kické par ${message.author.tag} ===> ${reason}`);
-                    author.kick(reason).catch(error => message.edit(kickerr));
-                    target.kick()
                   
                     message.edit(kickmsg)
                     message.reactions.removeAll();
                   }
                   else if(chosen === "⛔"){
                     const banmsg = new Discord.MessageEmbed()
-                    .setTitle('Succès')
-                    .setColor('#00FF00')
-                    .setDescription(`✅ L'utilisateur a été avertis avec succès !`)
-                    .setFooter('© BMO', client.user.avatarURL)
-                    .setTimestamp();
+                      .setTitle('Succès')
+                      .setColor('#00FF00')
+                      .setDescription(`✅ L'utilisateur a été avertis avec succès !`)
+                      .setFooter('© BMO', client.user.avatarURL)
+                      .setTimestamp();
                   
                     message.edit(banmsg)
                     message.reactions.removeAll();
