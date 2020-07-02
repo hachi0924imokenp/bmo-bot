@@ -71,7 +71,7 @@ module.exports = (globalVariables) => {
               message.react("❌").then(() => {
               setTimeout(function(){
               
-              const collector = message.createReactionCollector((message, reaction, user) => 
+              const collector = message.createReactionCollector((reaction, user) => 
                 user.id !== message.author.id &&
                   reaction.emoji.name === "🗑️" ||
                   reaction.emoji.name === "🛡️" ||
