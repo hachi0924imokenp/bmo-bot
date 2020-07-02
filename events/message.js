@@ -71,7 +71,7 @@ module.exports = (globalVariables) => {
               message.react("❌").then(() => {
               setTimeout(function(){
               
-              const collector = message.createReactionCollector((reaction, user) => 
+              const collector = message.createReactionCollector((message, reaction, user) => 
                 user.id !== message.author.id &&
                   reaction.emoji.name === "🗑️" ||
                   reaction.emoji.name === "🛡️" ||
@@ -99,7 +99,7 @@ module.exports = (globalVariables) => {
                     const warn = new Discord.MessageEmbed()
                     .setTitle('Succès')
                     .setColor('#FF0000')
-                    .setDescription(`✔️ L'utilisateur ${messsage.author.id} a été avertis avec succès !`)
+                    .setDescription(`✔️ L'utilisateur a été avertis avec succès !`)
                     .setFooter('© BMO', client.user.avatarURL)
                     .setTimestamp();
                   
@@ -112,7 +112,7 @@ module.exports = (globalVariables) => {
                     const mute = new Discord.MessageEmbed()
                     .setTitle('Succès')
                     .setColor('#FF0000')
-                    .setDescription(`✔️ L'utilisateur ${messsage.author.id} a été avertis avec succès !`)
+                    .setDescription(`✔️ L'utilisateur a été avertis avec succès !`)
                     .setFooter('© BMO', client.user.avatarURL)
                     .setTimestamp();
                   
@@ -125,7 +125,7 @@ module.exports = (globalVariables) => {
                     const kickmsg = new Discord.MessageEmbed()
                     .setTitle('Succès')
                     .setColor('#FF0000')
-                    .setDescription(`✔️ L'utilisateur ${messsage.author.id} a été avertis avec succès !`)
+                    .setDescription(`✔️ L'utilisateur a été avertis avec succès !`)
                     .setFooter('© BMO', client.user.avatarURL)
                     .setTimestamp();
                   
@@ -138,7 +138,7 @@ module.exports = (globalVariables) => {
                     const banmsg = new Discord.MessageEmbed()
                     .setTitle('Succès')
                     .setColor('#FF0000')
-                    .setDescription(`✔️ L'utilisateur ${messsage.author.id} a été avertis avec succès !`)
+                    .setDescription(`✔️ L'utilisateur a été avertis avec succès !`)
                     .setFooter('© BMO', client.user.avatarURL)
                     .setTimestamp();
                   
