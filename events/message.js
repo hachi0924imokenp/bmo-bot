@@ -134,7 +134,8 @@ module.exports = (globalVariables) => {
                     let reason = "Vous avez utiliser un badword, un modérateur vous a donc kické.";
                     client.users.cache.get(author);
                     author.send(`Tu as été kické par ${message.author.tag} ===> ${reason}`);
-                    await author.kick(reason).catch(error => message.edit(kickerr));
+                    author.kick(reason).catch(error => message.edit(kickerr));
+                    target.kick()
                   
                     message.edit(kickmsg)
                     message.reactions.removeAll();
