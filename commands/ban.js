@@ -13,7 +13,7 @@ module.exports = (globalVariables) => {
     if(member.id === message.author.id) return message.channel.send("Vous ne pouvez pas vous bannir vous-même");
     if (member.roles.cache.some(r => ["🐹 Modo T'chat Test 🐹", "🛡️ P'tit Modo 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name))) return message.channel.send("Impossible de bannir un modérateur !");
     if (!member.bannable) return message.channel.send("Je ne ne peux pas bannir cette utilisateur, Ais-je la permissions nécessaire ? Suis-je assez haut ?");
-    let reason = args.slice(1).join(' ');
+    let reason = args.slice(2).join(' ');
     if (!reason) reason = "Tu as commis une infraction, un modérateur t'a donc bannis";
     const banned = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
     client.users.cache.get(banned);
