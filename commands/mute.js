@@ -30,7 +30,7 @@ module.exports = (globalVariables) => {
         console.log(e.stack);
       }
     }
-    let mutetime = args[1];
+    let mutetime = args[0];
     if (!mutetime) return message.reply("Vous n'avez pas spécifié le temps !");
     let reason = args.slice(2).join(' ');
     if (!reason) reason = "Tu as commis une infraction, un modérateur t'a donc envoyé(e) en prison";
