@@ -30,9 +30,9 @@ module.exports = (globalVariables) => {
         console.log(e.stack);
       }
     }
-    let mutetime = args[0];
+    let mutetime = args[2];
     if (!mutetime) return message.reply("Vous n'avez pas spécifié le temps !");
-    let reason = args.slice(2).join(' ');
+    let reason = args.slice(3).join(' ');
     if (!reason) reason = "Tu as commis une infraction, un modérateur t'a donc envoyé(e) en prison";
     await (tomute.roles.add(muterole.id));
     client.users.cache.get(tomute);
