@@ -1,3 +1,3 @@
 # MAJOR UPDATE
 
-HANDLER HAS BEEN CHANGED
+__Handler has been changed__
