@@ -6,7 +6,7 @@ module.exports = (globalVariables) => {
   function event(){
     console.log(`-----------------------\nOMO est prêt à fonctionné !`);
     const activities_list = [
-      "o!help",
+      "b!help",
       "mon créateur !",
       "sur un certains serveur secret !",
     ];
