@@ -36,7 +36,7 @@ module.exports = (globalVariables) => {
     if (!reason) reason = "Tu as commis une infraction, un modérateur t'a donc envoyé(e) en prison";
     await (tomute.roles.add(muterole.id));
     client.users.cache.get(tomute);
-    tomute.send(`${message.author.tag} t'envoie en prison ${ms(ms(mutetime))} ===> ${reason}`)
+    tomute.send(`${message.author.tag} t'envoie en prison ${ms(ms(mutetime))} => ${reason}`)
     const info = message.guild.channels.cache.find(c => ["informations"].includes(c.name))
     setTimeout(function() {
       if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !info) {
