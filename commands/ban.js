@@ -17,7 +17,7 @@ module.exports = (globalVariables) => {
     if (!reason) reason = "Tu as commis une infraction, un modérateur t'a donc bannis";
     const banned = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
     client.users.cache.get(banned);
-    banned.send(`Tu as été bannis par ${message.author.tag} ===> ${reason}`);
+    banned.send(`Tu as été bannis par ${message.author.tag} => ${reason}`);
     await member.ban(reason).catch(error => message.channel.send(`Désolé, je ne peux pas bannir cette utilisateur à cause de : ${error}`));
     const info = message.guild.channels.cache.find(c => ["informations"].includes(c.name))
     setTimeout(function() {
