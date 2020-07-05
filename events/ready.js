@@ -7,9 +7,8 @@ module.exports = (globalVariables) => {
     console.log(`-----------------------\nOMO est prêt à fonctionné !`);
     const activities_list = [
       "o!help",
-      "mon frère, BMO",
       "mon créateur !",
-      "sur un certains serveur secret !"
+      "sur un certains serveur secret !",
     ];
     setInterval(() => {
       const index = Math.floor(Math.random() * (activities_list.length - 1) + 1);
