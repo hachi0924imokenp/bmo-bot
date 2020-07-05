@@ -1,3 +1,4 @@
-# MAJOR UPDATE
+# Changelog 
 
-__Handler has been changed__
+__Major update__
+Fixed some stuff like message, create Channel etc..
