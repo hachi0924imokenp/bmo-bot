@@ -4,7 +4,7 @@ module.exports = (globalVariables) => {
   });
 
   function event(){
-    console.log(`-----------------------\nOMO est prêt à fonctionné !`);
+    console.log(`-----------------------\nBMO est prêt à fonctionné !`);
     const activities_list = [
       "b!help",
       "mon créateur !",
