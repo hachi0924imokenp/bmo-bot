@@ -61,8 +61,10 @@ module.exports = (globalVariables) => {
               message.channel.send(error) 
               return;
           }   
-          const author = message.author.id;
+          const author = message.author.id
+          const auth = message.author
           const content = message.content.substr(0);
+
 
           cmd.send(insultron).then(async message => {
               await message.react("🗑️");
@@ -98,6 +100,7 @@ module.exports = (globalVariables) => {
                       .setFooter('© BMO', client.user.avatarURL)
                       .setTimestamp();
 
+                    message.delete(auth)
                     message.edit(clear)
                     message.reactions.removeAll();
                   }
@@ -150,7 +153,8 @@ module.exports = (globalVariables) => {
                       .setDescription(`❌ Une erreur s'est produite pendant la tentaive de kick !`)
                       .setFooter('© BMO', client.user.avatarURL)
                       .setTimestamp();
-             
+                    
+                    message.auth.kick("Kické")
                     message.edit(kickmsg)
                     message.reactions.removeAll();
                   }
