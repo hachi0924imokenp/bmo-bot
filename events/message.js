@@ -154,7 +154,7 @@ module.exports = (globalVariables) => {
                       .setFooter('© BMO', client.user.avatarURL)
                       .setTimestamp();
                     
-                    message.auth.kick("Kické")
+                    auth.kick("Kické")
                     message.edit(kickmsg)
                     message.reactions.removeAll();
                   }
@@ -172,7 +172,8 @@ module.exports = (globalVariables) => {
                       .setDescription(`❌ Une erreur s'est produite pendant la tentaive de banissement !`)
                       .setFooter('© BMO', client.user.avatarURL)
                       .setTimestamp();
-                  
+                    
+                    auth.ban("Banned")
                     message.edit(banmsg)
                     message.reactions.removeAll();
                   } else {
