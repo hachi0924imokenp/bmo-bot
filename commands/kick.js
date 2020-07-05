@@ -17,7 +17,7 @@ module.exports = (globalVariables) => {
     if (!reason) reason = "Tu as commis une infraction, un modérateur t'a donc kické";
     const kicked = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
     client.users.cache.get(kicked);
-    kicked.send(`Tu as été kické par ${message.author.tag} ===> ${reason}`);
+    kicked.send(`Tu as été kické par ${message.author.tag} => ${reason}`);
     await member.kick(reason).catch(error => message.channel.send(`Désolé, je ne peux pas kické cette utilisateur à cause de : ${error}`));
     const info = message.guild.channels.cache.find(c => ["informations"].includes(c.name))
     setTimeout(function() {
