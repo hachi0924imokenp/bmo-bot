@@ -28,9 +28,12 @@ module.exports = (globalVariables) => {
     if (!muterole) {
       try {
         muterole = await message.guild.roles.create({
-          name: "🏝️ No Man's Land",
-          color: "#ffd9000",
-          permissions: []
+          data: {
+            name: "🏝️ No Man's Land",
+            color: "#ffd9000",
+            permissions: []
+          },
+          reason: `Mute an user`
         })
         message.guild.channels.forEach(async (channel, id) => {
           await channel.overwritePermissions([
