@@ -31,7 +31,7 @@ module.exports = (globalVariables) => {
           data: {
             name: "🏝️ No Man's Land",
             color: "#ffbb00",
-            permissions: ['USE_VAD']
+            permissions: []
           },
           reason: `Mute an user`
         })
