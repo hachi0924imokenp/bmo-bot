@@ -38,7 +38,7 @@ module.exports = (globalVariables) => {
         message.guild.channels.cache.forEach(async (channel, id) => {
           await channel.overwritePermissions([
             {
-              id: muterole.id,
+              id: muterole,
 		          deny: ['CREATE_INSTANT_INVITE', 'MANAGE_CHANNELS', 'MANAGE_GUILD, '],
 	          }]);
         });
