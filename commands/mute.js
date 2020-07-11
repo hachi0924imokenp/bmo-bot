@@ -1,13 +1,15 @@
 module.exports = (globalVariables) => {
   Object.keys(globalVariables).map(variable => {
     global[variable] = globalVariables[variable];
-  }); /* */
+  });
 
   async function command(message, args){
     message.delete(message.author);
+
     if (!message.member.roles.cache.some(r => ["🐹 Modo T'chat Test 🐹", "🛡️ P'tit Modo 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name))) 
       return message.channel.send(`Désolé <@` + message.author.id + `>, vous n'avez pas la permission nécessaire à l'utilistion  de cette commande.`);
     
+
     let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]));
     if (!tomute) 
       return message.channel.send("Merci de mentionner un utilisateur sous la forme suivante:\n\nMention : ``@user#1234``\nDiscord ID : ``251455597738721280``");
@@ -21,6 +23,9 @@ module.exports = (globalVariables) => {
     if(tomute.id === message.author.id) 
       return message.channel.send("Vous ne pouvez pas vous envoyer en prison vous-même");
     
+    if(tomute.roles.cache.find(r => "🏝️ No Man's Land").includes(r.name))
+      return message.channel.send(`<${tomute.id}> est déjà en prison !`);
+
     if (tomute.roles.cache.some(r => ["🐹 Modo T'chat Test 🐹", "🛡️ P'tit Modo 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name))) 
       return message.channel.send("Impossible d'envoyer un modérateur en prison !");
     
