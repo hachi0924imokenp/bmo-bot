@@ -27,17 +27,17 @@ module.exports = (globalVariables) => {
     let muterole = message.guild.roles.cache.find(r => ["🏝️ No Man's Land"].includes(r.name));
     if (!muterole) {
       try {
-        muterole = await message.guild.createRole({
+        muterole = await message.guild.roles.create({
           name: "🏝️ No Man's Land",
           color: "#ffd9000",
           permissions: []
         })
         message.guild.channels.forEach(async (channel, id) => {
-          await channel.overwritePermissions(muterole, {
-            SEND_MESSAGES: false,
-            ADD_REACTIONS: false,
-            VIEW_CHANNELS: false
-          });
+          await channel.overwritePermissions([
+            {
+              id: guild.id,
+		          deny: ['CREATE_INSTANT_INVITE', 'MANAGE_CHANNELS', 'MANAGE_GUILD, '],
+	          }]);
         });
       } catch (e) {
         console.log(e.stack);
