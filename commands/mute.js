@@ -38,8 +38,8 @@ module.exports = (globalVariables) => {
         message.guild.channels.cache.forEach(async (channel, id) => {
           await channel.overwritePermissions([
             {
-              id: muterole,
-		          deny: ['CREATE_INSTANT_INVITE', 'MANAGE_CHANNELS', 'MANAGE_GUILD, '],
+              name: "🏝️ No Man's Land",
+		          deny: ['CREATE_INSTANT_INVITE', 'VIEW_CHANNEL', 'SEND_MESSAGES'],
 	          }]);
         });
       } catch (e) {
