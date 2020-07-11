@@ -11,20 +11,22 @@ module.exports = (globalVariables) => {
     
 
     let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]));
+    
     if (!tomute) 
       return message.channel.send("Merci de mentionner un utilisateur sous la forme suivante:\n\nMention : ``@user#1234``\nDiscord ID : ``251455597738721280``");
     
-    if(tomute.id === client.user.id) 
+    if (tomute.id === client.user.id) 
       return message.channel.send("Hahaha, bien essayer mais je ne peux pas m\'envoyer en prison !");
     
     if (tomute.user.bot) 
       return message.channel.send("Impossible d'envoyer un bot en prison !");
     
-    if(tomute.id === message.author.id) 
+    if (tomute.id === message.author.id) 
       return message.channel.send("Vous ne pouvez pas vous envoyer en prison vous-même");
     
-    if(tomute.roles.cache.find(r => "🏝️ No Man's Land").includes(r.name))
+    if (tomute.roles.cache.find(role => role.name === "🏝️ No Man's Land")) {
       return message.channel.send(`<${tomute.id}> est déjà en prison !`);
+    }
 
     if (tomute.roles.cache.some(r => ["🐹 Modo T'chat Test 🐹", "🛡️ P'tit Modo 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name))) 
       return message.channel.send("Impossible d'envoyer un modérateur en prison !");
@@ -38,15 +40,15 @@ module.exports = (globalVariables) => {
             color: "#ffbb00",
             permissions: []
           },
-          reason: `Mute an user`
+          reason: `Envoie d'un utilisateur en prison`
         })
         message.guild.channels.cache.forEach(async (channel, id) => {
           await channel.overwritePermissions([
             {
               id: muterole.id,
-              allow:[],
+              allow: [],
 		          deny: ['CREATE_INSTANT_INVITE', 'VIEW_CHANNEL', 'SEND_MESSAGES', 'SEND_TTS_MESSAGES', 'ADD_REACTIONS', 'CONNECT', 'SPEAK'],
-	          }]);
+            }]);
         });
       } catch (e) {
         console.log(e.stack);
