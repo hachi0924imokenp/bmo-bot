@@ -31,7 +31,7 @@ module.exports = (globalVariables) => {
           data: {
             name: "🏝️ No Man's Land",
             color: "#ffbb00",
-            permissions: []
+            permissions: ['USE_VAD']
           },
           reason: `Mute an user`
         })
@@ -39,7 +39,7 @@ module.exports = (globalVariables) => {
           await channel.overwritePermissions([
             {
               id: muterole.id,
-		          deny: ['CREATE_INSTANT_INVITE', 'VIEW_CHANNEL', 'SEND_MESSAGES'],
+		          deny: ['CREATE_INSTANT_INVITE', 'VIEW_CHANNEL', 'SEND_MESSAGES', 'SEND_TTS_MESSAGES', 'ADD_REACTIONS', ''],
 	          }]);
         });
       } catch (e) {
