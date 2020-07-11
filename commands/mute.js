@@ -30,7 +30,7 @@ module.exports = (globalVariables) => {
         muterole = await message.guild.roles.create({
           data: {
             name: "🏝️ No Man's Land",
-            color: "#ffd9000",
+            color: "#ffbb00",
             permissions: []
           },
           reason: `Mute an user`
