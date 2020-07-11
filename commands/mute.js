@@ -25,7 +25,7 @@ module.exports = (globalVariables) => {
       return message.channel.send("Vous ne pouvez pas vous envoyer en prison vous-même");
     
     if (tomute.roles.cache.find(role => role.name === "🏝️ No Man's Land")) {
-      return message.channel.send(`<${tomute.id}> est déjà en prison !`);
+      return message.channel.send(`${tomute.tag} est déjà en prison !`);
     }
 
     if (tomute.roles.cache.some(r => ["🐹 Modo T'chat Test 🐹", "🛡️ P'tit Modo 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name))) 
