@@ -10,21 +10,8 @@ module.exports = (globalVariables) => {
             member = `<@${message.author.id}>`
 
         const info = new Discord.MessageEmbed()
-            .setTitle('Informations')
-            .setColor('#7dffb3')
-            .setAuthor(`${member.id}`)
-            .setDescription(`Voici les informations de ${member.id}`)
-            .addThumbnail(member.avatarURL)
-            .addFields(
-                { name: 'Pseudo', value: `${member.tag}`, inline: false },
-                { name: 'Tag', value: `${member.discriminator}`, inline: false },
-                { name: 'Mention', value: `${member.tag}`, inline: false },
-                { name: 'ID', value: `<@${member.id}>`, inline: false },
-                { name: `A rejoint ${message.guild.id} le`, value: `${member.joinedAt}`, inline: false },
-                { name: `A rejoint Discord le`, value: `${member.createdAt}`, inline: false },
-            )
-            .setFooter('© BMO', client.user.avatarURL)
-            .setTimestamp();
+          .setTitle('Informations')
+          .setDescription(`Voici la liste des informations pour ${member.id}`);
         
         message.channel.send(info);
     }
