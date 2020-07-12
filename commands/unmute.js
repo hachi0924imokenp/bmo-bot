@@ -22,7 +22,7 @@ async function command(message, args){
             if (tounmute.id === message.author.id) 
                 return message.channel.send("Vous ne pouvez pas exécuter cette commande sur vous-même");
 
-            if (tounmute.roles.cache.find(role => role.name === "🏝️ No Man's Land")) {
+            if (!tounmute.roles.cache.find(role => role.name === "🏝️ No Man's Land")) {
                 return message.channel.send(`Cette utilisateur n'est pas en prison !`);
             }
 
