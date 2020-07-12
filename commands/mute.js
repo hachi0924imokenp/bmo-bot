@@ -55,11 +55,12 @@ module.exports = (globalVariables) => {
       }
     }
     
-    let mutetime = args[2];
-    if(isNaN(mutetime)) return message.channel.send("not a number !");
-    if (!mutetime) return message.channel.send("Vous n'avez pas spécifié le temps !");
-
-    let reason = args.slice(3).join(' ');
+  let mutetime = args[2];
+  mutetime = parseInt(mutetime.replace(/j|h|m|s/g, ""));
+      if(isNaN(mutetime)) return message.channel.send("Merci de préciser un temps avec l'indication suivate \`\`\`\n10j\n10h\n10m\n10s\`\`\`");
+      if (!mutetime) return message.channel.send("Vous n'avez pas spécifié le temps !");
+  
+  let reason = args.slice(3).join(' ');
     if (!reason) reason = "Tu as commis une infraction, un modérateur t'a donc envoyé(e) en prison";
     await (tomute.roles.add(muterole.id));
     client.users.cache.get(tomute);
