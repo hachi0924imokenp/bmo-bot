@@ -13,20 +13,20 @@ async function command(message, args){
             if (!tounmute) 
                 return message.channel.send("Merci de mentionner un utilisateur sous la forme suivante:\n\nMention : ``@user#1234``\nDiscord ID : ``251455597738721280``");
 
-            if (tomute.id === client.user.id) 
+            if (tounmute.id === client.user.id) 
                 return message.channel.send("Je ne peux pas m'auto sortir de prison !");
             
-            if (tomute.user.bot) 
+            if (tounmute.user.bot) 
                 return message.channel.send("Impossible de sortir un bot de prison !");
             
-            if (tomute.id === message.author.id) 
+            if (tounmute.id === message.author.id) 
                 return message.channel.send("Vous ne pouvez pas exécuter cette commande sur vous-même");
 
-            if (tomute.roles.cache.find(role => role.name === "🏝️ No Man's Land")) {
+            if (tounmute.roles.cache.find(role => role.name === "🏝️ No Man's Land")) {
                 return message.channel.send(`Cette utilisateur n'est pas en prison !`);
             }
 
-            if (tomute.roles.cache.some(r => ["🐹 Modo T'chat Test 🐹", "🛡️ P'tit Modo 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name))) 
+            if (tounmute.roles.cache.some(r => ["🐹 Modo T'chat Test 🐹", "🛡️ P'tit Modo 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name))) 
                 return message.channel.send("Impossible d'exécuter cette commande sur un modérateur !");
 
             let muterole = message.guild.roles.cache.find(r => ["🏝️ No Man's Land"].includes(r.name));
@@ -38,7 +38,7 @@ async function command(message, args){
             if (!reason) reason = "Tu as commis une infraction, un modérateur t'a donc envoyé(e) en prison";
                 
                 await (tounmute.roles.remove(muterole.id));
-                client.users.cache.get(tomute);
+                client.users.cache.get(tounmute);
 
             tounmute.send(`${message.author.tag} t'as sortie de prison => ${reason}`)
 
@@ -46,8 +46,8 @@ async function command(message, args){
                 embed: {
                 color: '#fc0703',
                 author: {
-                    name: tomute.user.tag,
-                    icon_url: "https://cdn.discordapp.com/avatars/" + tomute.user.id + "/" + tomute.user.avatar + ".png"
+                    name: tounmute.user.tag,
+                    icon_url: "https://cdn.discordapp.com/avatars/" + tounmute.user.id + "/" + tounmute.user.avatar + ".png"
                 },
                 title: "Unmute",
                 description: "Get Unjailed B*tch :D",
@@ -64,7 +64,7 @@ async function command(message, args){
                     inline: false,
                 }, {
                     name: "ID",
-                    value: `${tomute.user.id}`,
+                    value: `${tounmute.user.id}`,
                     inline: false,
                 }, {
                     name: "Unmute par",
