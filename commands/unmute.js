@@ -41,6 +41,13 @@ async function command(message, args){
                 client.users.cache.get(tounmute);
 
             tounmute.send(`${message.author.tag} t'as sortie de prison => ${reason}`)
+            
+            const logchan = message.guild.channels.cache.find(c => ["𝐦𝐨𝐝-𝐥𝐨𝐠𝐬"].includes(c.name))
+                setTimeout(function() {
+                if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !logchan) {
+                    message.guild.channels.create('𝐦𝐨𝐝-𝐥𝐨𝐠𝐬').catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"𝐦𝐨𝐝-𝐥𝐨𝐠𝐬\" : \`\`${error}\`\``));
+                }
+            }, 2000);
 
             logchan.send({
                 embed: {
