@@ -89,7 +89,7 @@ async function command(message, args){
 }
 
     command.options = {
-          name: ["mute"],
+          name: ["unmute"],
           enable: true
     };
       
