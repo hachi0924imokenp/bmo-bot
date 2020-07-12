@@ -12,7 +12,6 @@ module.exports = (globalVariables) => {
         const info = new Discord.MessageEmbed()
             .setTitle('Informations')
             .setColor('#7dffb3')
-            .setURL('')
             .setAuthor(`${member.id}`)
             .setDescription(`Voici les informations de ${member.id}`)
             .addThumbnail(member.avatarURL)
