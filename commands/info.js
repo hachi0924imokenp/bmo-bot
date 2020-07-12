@@ -7,11 +7,12 @@ module.exports = (globalVariables) => {
 
         let member = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]));
         if(!member) 
-            member = `<@${message.author.id}>`
+            member = message.author;
 
         const info = new Discord.MessageEmbed()
           .setTitle('Informations')
-          .setDescription(`Voici la liste des informations pour ${member.id}`);
+          .setColor("#70f3ff")
+          .setDescription(`Voici la liste des informations pour ${member}`);
         
         message.channel.send(info);
     }
