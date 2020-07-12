@@ -137,6 +137,54 @@ module.exports = (globalVariables) => {
     });
     
     setTimeout(function() {
+      logchan.send({
+        embed: {
+          color: '#fc0703',
+          author: {
+            name: tomute.user.tag,
+            icon_url: "https://cdn.discordapp.com/avatars/" + tomute.user.id + "/" + tomute.user.avatar + ".png"
+          },
+          title: "Unmute",
+          description: "Get Unjailed B*tch :D",
+          thumbnail: {
+            url: "https://cdn.discordapp.com/avatars/" + message.author.id + "/" + message.author.avatar + ".png",
+          },
+          fields: [{
+            name: "Action",
+            value: `Unmute (Auto)`,
+            inline: false,
+          }, {
+            name: "Nom d'utilisateur",
+            value: `${tomute.user.tag}`,
+            inline: false,
+          }, {
+            name: "ID",
+            value: `${tomute.user.id}`,
+            inline: false,
+          }, {
+            name: "Muté par",
+            value: `${message.author.tag}`,
+            inline: false,
+          }, {
+            name: "ID du Modérateur",
+            value: `${message.author.id}`,
+            inline: false,
+          }, {
+            name: "Temps",
+            value: `${mutetime}`,
+            inline: false,
+          }, {
+            name: "Raison",
+            value: `${reason}`,
+            inline: false,
+          }],
+          timestamp: new Date(),
+          footer: {
+            icon_url: client.avatarURL,
+            text: "© BMO"
+          }
+        }
+      });
       tomute.roles.remove(muterole.id);
     }, ms(mutetime));
   }
