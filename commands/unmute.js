@@ -35,7 +35,7 @@ async function command(message, args){
                 }
             
             let reason = args.slice(3).join(' ');
-            if (!reason) reason = "Tu as commis une infraction, un modérateur t'a donc envoyé(e) en prison";
+            if (!reason) reason = "Aucune raison ajouté !";
                 
                 await (tounmute.roles.remove(muterole.id));
                 client.users.cache.get(tounmute);
@@ -63,7 +63,7 @@ async function command(message, args){
                 },
                 fields: [{
                     name: "Action",
-                    value: `Unmute (Auto)`,
+                    value: `Unmute`,
                     inline: false,
                 }, {
                     name: "Nom d'utilisateur",
