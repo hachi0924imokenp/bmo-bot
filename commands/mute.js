@@ -56,7 +56,6 @@ module.exports = (globalVariables) => {
     }
     
     let mutetime = args[2];
-    if(mutetime === NaN) return message.send("Vous n'avez pas spécifié le temps !");
     if (!mutetime) return message.channel.send("Vous n'avez pas spécifié le temps !");
 
     let reason = args.slice(3).join(' ');
