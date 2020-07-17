@@ -10,7 +10,7 @@ module.exports = (globalVariables) => {
       return message.channel.send(`Désolé <@` + message.author.id + `>, vous n'avez pas la permission nécessaire à l'utilistion  de cette commande.`);
     
 
-    let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]));
+    let tomute = message.guild.member(message.mentions.member.first() || message.guild.members.cache.get(args[0]));
     
     if (!tomute) 
       return message.channel.send("Merci de mentionner un utilisateur sous la forme suivante:\n\nMention : ``@user#1234``\nDiscord ID : ``251455597738721280``");
