@@ -38,10 +38,10 @@ module.exports = (globalVariables) => {
       }).catch(error => message.channel.send(`Désolé, je ne peux pas bannir cette utilisateur à cause de : ${error}`));
     }, 2000);
     
-    const info = message.guild.channels.cache.find(c => ["informations"].includes(c.name))
+    const info = message.guild.channels.cache.find(c => [config.info.modlogs].includes(c.name))
     setTimeout(function() {
     if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !info) {
-        message.guild.channels.create('informations').catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"informations\" : ${error}`));
+        message.guild.channels.create(config.info.logs).catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"informations\" : ${error}`));
       }
     }, 2000);
     
@@ -49,10 +49,10 @@ module.exports = (globalVariables) => {
       console.log('Le salon des informations n\'existe pas, et j\'ai essayer de le crée mais je manque de permissions !')
     }
     
-    const logchan = message.guild.channels.cache.find(c => ["𝐦𝐨𝐝-𝐥𝐨𝐠𝐬"].includes(c.name))
+    const logchan = message.guild.channels.cache.find(c => [config.info.modlogs].includes(c.name))
     setTimeout(function() {
       if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !logchan) {
-        message.guild.channels.create('𝐦𝐨𝐝-𝐥𝐨𝐠𝐬').catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"𝐦𝐨𝐝-𝐥𝐨𝐠𝐬\" : ${error}`));
+        message.guild.channels.create(config.info.modlogs).catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"𝐦𝐨𝐝-𝐥𝐨𝐠𝐬\" : ${error}`));
       }
     }, 2000);
     if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !logchan) {
