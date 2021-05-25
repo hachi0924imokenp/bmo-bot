@@ -32,9 +32,11 @@ module.exports = (globalVariables) => {
     const banned = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
     client.users.cache.get(banned);
     banned.send(`Tu as été bannis par ${message.author.tag} => ${reason}`);
-    await member.ban({
-      reason: reason,
-    }).catch(error => message.channel.send(`Désolé, je ne peux pas bannir cette utilisateur à cause de : ${error}`));
+    setTimeout(function() {
+      await member.ban({
+        reason: reason,
+      }).catch(error => message.channel.send(`Désolé, je ne peux pas bannir cette utilisateur à cause de : ${error}`));
+    }, 2000);
     
     const info = message.guild.channels.cache.find(c => ["informations"].includes(c.name))
     setTimeout(function() {
