@@ -30,13 +30,11 @@ module.exports = (globalVariables) => {
     if (!reason) reason = "Tu as commis une infraction, un modérateur t'a donc bannis";
     
     const banned = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
-    client.users.cache.get(banned);
     banned.send(`Tu as été bannis par ${message.author.tag} => ${reason}`);
-    setTimeout(function() {
+    client.users.cache.get(banned);
       await member.ban({
         reason: reason,
       }).catch(error => message.channel.send(`Désolé, je ne peux pas bannir cette utilisateur à cause de : ${error}`));
-    }, 2000);
     
     const info = message.guild.channels.cache.find(c => [config.info.modlogs].includes(c.name))
     setTimeout(function() {
@@ -52,14 +50,14 @@ module.exports = (globalVariables) => {
     const logchan = message.guild.channels.cache.find(c => [config.info.modlogs].includes(c.name))
     setTimeout(function() {
       if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !logchan) {
-        message.guild.channels.create(config.info.modlogs).catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"𝐦𝐨𝐝-𝐥𝐨𝐠𝐬\" : ${error}`));
+        message.guild.channels.create(config.info.modlogs).catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"𝐦𝐨𝐝𝐥𝐨𝐠𝐬\" : ${error}`));
       }
     }, 2000);
     if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !logchan) {
       console.log('Le salon des logs n\'existe pas, et j\'ai essayer de le crée mais je manque de permissions !')
     }
 
-    info.send(`${member.user.tag} a été bannis par ${message.author.tag}`);
+    info.send(`${member.user.tag} a été kické par ${message.author.tag}`);
     logchan.send({
       embed: {
         color: '#fc0703',
