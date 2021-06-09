@@ -1,200 +1,159 @@
 module.exports = (globalVariables) => {
-  Object.keys(globalVariables).map(variable => {
-    global[variable] = globalVariables[variable];
-  });
-
-  async function command(message, args){
-    message.delete(message.author);
-
-    if (!message.member.roles.cache.some(r => ["🐹 Modo T'chat Test 🐹", "🛡️ P'tit Modo 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name))) 
-      return message.channel.send(`Désolé <@` + message.author.id + `>, vous n'avez pas la permission nécessaire à l'utilistion  de cette commande.`);
-    
-
-    let tomute = message.guild.member(message.mentions.members.first() || message.guild.members.cache.get(args[0]));
-    
-    if (!tomute) 
-      return message.channel.send("Merci de mentionner un utilisateur sous la forme suivante:\n\nMention : ``@user#1234``\nDiscord ID : ``251455597738721280``");
-    
-    if (tomute.id === client.user.id) 
-      return message.channel.send("Hahaha, bien essayer mais je ne peux pas m\'envoyer en prison !");
-    
-    if (tomute.user.bot) 
-      return message.channel.send("Impossible d'envoyer un bot en prison !");
-    
-    if (tomute.id === message.author.id) 
-      return message.channel.send("Vous ne pouvez pas vous envoyer en prison vous-même");
-    
-    if (tomute.roles.cache.find(role => role.name === "🏝️ No Man's Land")) {
-      return message.channel.send(`<@${tomute.id}> est déjà en prison !`);
-    }
-
-    if (tomute.roles.cache.some(r => ["🐹 Modo T'chat Test 🐹", "🛡️ P'tit Modo 🛡️", "🌟 Modo T'chat  🌟", "👑 Fondateurs 👑", "👑 Fondateur Principal 👑"].includes(r.name))) 
-      return message.channel.send("Impossible d'envoyer un modérateur en prison !");
-    
-    let muterole = message.guild.roles.cache.find(r => ["🏝️ No Man's Land"].includes(r.name));
-    if (!muterole) {
-      try {
-        muterole = await message.guild.roles.create({
-          data: {
-            name: "🏝️ No Man's Land",
-            color: "#ffbb00",
-            permissions: []
-          },
-          reason: `Envoie d'un utilisateur en prison`
-        })
-        message.guild.channels.cache.forEach(async (channel, id) => {
-          await channel.overwritePermissions([
-            {
-              id: muterole.id,
-              allow: [],
-		          deny: ['CREATE_INSTANT_INVITE', 'VIEW_CHANNEL', 'SEND_MESSAGES', 'SEND_TTS_MESSAGES', 'ADD_REACTIONS', 'CONNECT', 'SPEAK'],
-            }]);
-        });
-      } catch (e) {
-        console.log(e.stack);
-      }
-    }
-    
-  let mutetime = args[2];
-  mutetime = parseInt(mutetime.replace(/j|h|m|s/g, ""));
-      if(isNaN(mutetime)) return message.channel.send("Merci de préciser un temps avec l'indication suivate \`\`\`\n10j\n10h\n10m\n10s\`\`\`");
-      if (!mutetime) return message.channel.send("Vous n'avez pas spécifié le temps !");
-  
-  let reason = args.slice(3).join(' ');
-    if (!reason) reason = "Tu as commis une infraction, un modérateur t'a donc envoyé(e) en prison";
-    await (tomute.roles.add(muterole.id));
-    client.users.cache.get(tomute);
-    
-    tomute.send(`${message.author.tag} t'envoie en prison ${ms(ms(mutetime))} => ${reason}`)
-    
-    const info = message.guild.channels.cache.find(c => ["informations"].includes(c.name))
-    setTimeout(function() {
-    if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !info) {
-        message.guild.channels.create('informations').catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"informations\" : ${error}`));
-      }
-    }, 2000);
-    if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !info) {
-      console.log('Le salon des informations n\'existe pas, et j\'ai essayer de le crée mais je manque de permissions !')
-    }
-    
-    const logchan = message.guild.channels.cache.find(c => ["𝐦𝐨𝐝-𝐥𝐨𝐠𝐬"].includes(c.name))
-    setTimeout(function() {
-    if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !logchan) {
-        message.guild.channels.create('𝐦𝐨𝐝-𝐥𝐨𝐠𝐬').catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon \"𝐦𝐨𝐝-𝐥𝐨𝐠𝐬\" : ${error}`));
-      }
-    }, 2000);
-    
-    if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !logchan) {
-      console.log('Le salon des logs n\'existe pas, et j\'ai essayer de le crée mais je manque de permissions !')
-    }
-    
-    info.send(`${tomute.user.tag} a été mis en prison par ${message.author.tag}`); 
-    logchan.send({
-      embed: {
-        color: '#fc0703',
-        author: {
-          name: tomute.user.tag,
-          icon_url: "https://cdn.discordapp.com/avatars/" + tomute.user.id + "/" + tomute.user.avatar + ".png"
-        },
-        title: "Mute",
-        description: "Get Jailed B*tch :D",
-        thumbnail: {
-          url: "https://cdn.discordapp.com/avatars/" + message.author.id + "/" + message.author.avatar + ".png",
-        },
-        fields: [{
-          name: "Action",
-          value: `Mute`,
-          inline: false,
-        }, {
-          name: "Nom d'utilisateur",
-          value: `${tomute.user.tag}`,
-          inline: false,
-        }, {
-          name: "ID",
-          value: `${tomute.user.id}`,
-          inline: false,
-        }, {
-          name: "Muté par",
-          value: `${message.author.tag}`,
-          inline: false,
-        }, {
-          name: "ID du Modérateur",
-          value: `${message.author.id}`,
-          inline: false,
-        }, {
-          name: "Temps",
-          value: `${mutetime}`,
-          inline: false,
-        }, {
-          name: "Raison",
-          value: `${reason}`,
-          inline: false,
-        }],
-        timestamp: new Date(),
-        footer: {
-          icon_url: client.avatarURL,
-          text: "© BMO"
-        }
-      }
+    Object.keys(globalVariables).map(variable => {
+      global[variable] = globalVariables[variable];
     });
-    
-    setTimeout(function() {
-      logchan.send({
-        embed: {
-          color: '#fc0703',
-          author: {
-            name: tomute.user.tag,
-            icon_url: "https://cdn.discordapp.com/avatars/" + tomute.user.id + "/" + tomute.user.avatar + ".png"
-          },
-          title: "Unmute",
-          description: "Get Unjailed B*tch :D",
-          thumbnail: {
-            url: "https://cdn.discordapp.com/avatars/" + message.author.id + "/" + message.author.avatar + ".png",
-          },
-          fields: [{
-            name: "Action",
-            value: `Unmute (Auto)`,
-            inline: false,
-          }, {
-            name: "Nom d'utilisateur",
-            value: `${tomute.user.tag}`,
-            inline: false,
-          }, {
-            name: "ID",
-            value: `${tomute.user.id}`,
-            inline: false,
-          }, {
-            name: "Muté par",
-            value: `${message.author.tag}`,
-            inline: false,
-          }, {
-            name: "ID du Modérateur",
-            value: `${message.author.id}`,
-            inline: false,
-          }, {
-            name: "Temps",
-            value: `${mutetime}`,
-            inline: false,
-          }, {
-            name: "Raison",
-            value: `${reason}`,
-            inline: false,
-          }],
-          timestamp: new Date(),
-          footer: {
-            icon_url: client.avatarURL,
-            text: "© BMO"
-          }
+  
+        async function command(message, args){
+
+            //;mute @user#1234 1s/m/h/d
+            if (!message.member.roles.cache.some(r => [config.permissions.owner, config.permissions.admins, config.permissions.mods].includes(r.name))) 
+                return message.channel.send(`Désolé` + "<@" + message.author.id + `>, vous n'avez pas la permission nécessaire à l'utilistion de cette commande.`);
+  
+            let member = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]));
+  
+            if (!member) 
+                return message.channel.send("Merci de mentionner un utilisateur sous la forme suivante:\n\nMention : ``@user#1234``\nDiscord ID : ``251455597738721280``");
+        
+            if(member.id === client.user.id)  
+                return message.channel.send("<:objection:846329100683575296> bien essayé mais je ne peux pas me mute moi même !");
+            
+            if (member.user.bot) 
+                return message.channel.send("<:objection:846329100683575296> Impossible de mute un bot !");
+            
+            if(member.id === message.author.id) 
+                return message.channel.send("<:objection:846329100683575296> Vous ne pouvez pas vous mute vous-même");
+        
+            if (member.roles.cache.some(r => [config.permissions.owner, config.permissions.admin, config.permissions.mod].includes(r.name))) 
+                return message.channel.send("<:objection:846329100683575296> Impossible de mute un modérateur !");
+            
+            let muterole = message.guild.roles.cache.find(r => r.name === config.permissions.mute);
+            // Crée un role
+            if(!muterole) {
+                try {
+                    muterole = await message.guild.roles.create({
+                        data: {
+                            name: config.permissions.mute,
+                            color: '#ffa800',
+                            permissions: [] 
+                        }
+                    })
+                    message.guild.channels.cache.forEach(async (channel, id) => {
+                        await channel.overwritePermissions(muterole, {
+                          SEND_MESSAGES: false,
+                          ADD_REACTIONS: false,
+                          CREATE_INSTANT_INVITE: false,
+                          SEND_TTS_MESSAGES: false,
+                          ADD_REACTIONS: false,
+                          CONNECT: false,
+                          SPEAK: false
+                        })
+                    })
+                } catch(e){
+                    console.log(e.stack);
+                }
+            }
+            // Fin de la création du rôle mute
+            
+            // Crée le salon d'info et le salon des logs de modération
+            const info = message.guild.channels.cache.find(c => [config.info.logs].includes(c.name))
+              setTimeout(function() {
+                if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !info) {
+                  message.guild.channels.create(config.info.modlogs).catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon ${config.info.logs} : ${error}`));
+                }
+              }, 2000);
+      
+            if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !info) {
+              console.log('Le salon des informations n\'existe pas, et j\'ai essayer de le crée mais je manque de permissions !')
+            }
+      
+            const logchan = message.guild.channels.cache.find(c => [config.info.modlogs].includes(c.name))
+              setTimeout(function() {
+                if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !logchan) {
+                  message.guild.channels.create(config.info.modlogs).catch(error => message.channel.send(`Une erreur s'est produite durant la création du salon  ${config.info.logs} : ${error}`));
+                }
+              }, 2000);
+  
+            if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !logchan) {
+              console.log('Le salon des logs n\'existe pas, et j\'ai essayer de le crée mais je manque de permissions !')
+            }
+            // Fin de la création des salons
+            
+           if (!args[2]) 
+                return message.channel.send('Merci d\'entrer une valeur de temps inferieur ou égal à 14 jours (1s/m/h/d)');           
+            
+            let time = ms(args[2]); 
+                if (!time || time > 1209600000) 
+                    return message.channel.send('Merci d\'entrer une valeur de temps inferieur ou égal à 14 jours (1s/m/h/d)');
+           
+            let reason = args.slice(3).join(' ');
+            
+            if (!reason) reason = '`Aucune raison ajouter`';
+            if (reason.length > 1024) reason = reason.slice(0, 1021) + '...';
+            
+            if (member.roles.cache.has(muterole.id))
+                return message.channel.send('Cette utilisateur est déjà muet');
+                        
+            try {
+                const mutedembed = new Discord.MessageEmbed()
+                     .setTitle('Mute')
+                     .setColor('#fc0703')
+                     .setDescription(`${member.user.tag} a été mute **${ms(time, { long: true })}**.`)
+                     .setThumbnail("https://cdn.discordapp.com/avatars/" + member.user.id + "/" + member.user.avatar + ".png")
+                     .addFields(
+                        { name: 'Action', value: `Mute` },
+                        { name: 'Modérateur', value: `${message.author.tag}` },
+                        { name: 'ID du Modérateur', value: `${message.author.id}` },
+                        { name: 'Utilisateur', value: `${member.user.tag}` },
+                        { name: 'ID de l\'utilisateur', value: `${member.user.id}` },
+                        { name: 'Temps', value: `${ms(time)}` },
+                        { name: 'Raison', value: `${reason}` },
+                     )
+                    .setFooter(`${client.user.username}`, "https://cdn.discordapp.com/avatars/" + client.user.id + "/" + client.user.avatar + ".png")
+                    .setTimestamp();
+                
+                await member.roles.add(muterole.id);
+                info.send(`<a:slam:846360659004227615> ${member.user.tag} a été mute par ${message.author.tag}`);
+                logchan.send(mutedembed);
+                member.send(`Tu as été mute par ${message.author.tag} => **${ms(time, { long: true })}** ${reason}`)
+            } catch (err) {
+              console.log(err)
+              return message.channel.send('Une erreur est survenue, merci de vérifié la hiérarchie des rôles', err.message);
+            }
+            
+            member.timeout = message.client.setTimeout(async () => {
+                try {
+                    const mutedembed = new Discord.MessageEmbed()
+                     .setTitle('Unmute')
+                     .setColor('#fc0703')
+                     .setDescription(`${member.user.tag} a été unmute.`)
+                     .setThumbnail("https://cdn.discordapp.com/avatars/" + member.user.id + "/" + member.user.avatar + ".png")
+                     .addFields(
+                        { name: 'Action', value: `Unmute` },
+                        { name: 'Modérateur', value: `${message.author.tag}` },
+                        { name: 'ID du Modérateur', value: `${message.author.id}` },
+                        { name: 'Utilisateur', value: `${member.user.tag}` },
+                        { name: 'ID de l\'utilisateur', value: `${member.user.id}` },
+                        { name: 'Temps', value: `${ms(time)}` },
+                        { name: 'Raison', value: `${reason}` },
+                     )
+                    .setFooter(`${client.user.username}`, "https://cdn.discordapp.com/avatars/" + client.user.id + "/" + client.user.avatar + ".png")
+                    .setTimestamp();
+ 
+                    await member.roles.remove(muterole.id);
+                    info.send(`<a:slam:846360659004227615> ${member.user.tag} a été unmute par ${message.author.tag}`);
+                    logchan.send(mutedembed);
+                    member.send(`Tu as été unmute par ${message.author.tag} => ${reason}`);
+                } catch (err) {
+                    console.log(err)
+                    return message.channel.send('Une erreur est survenue, merci de vérifier la hiérarchie des rôles', err.message);
+                }
+            }, time);
         }
-      });
-      tomute.roles.remove(muterole.id);
-    }, ms(mutetime));
-  }
-
-  command.options = {
-    name: ["mute"],
-    enable: true
-  };
-
-  return command;
+    
+    command.options = {
+      name: ["mute", "tempmute"],
+      enable: true
+    };
+    
+     return command;
 }
