@@ -4,6 +4,6 @@ __Major update__
 
 
 # TODO
-major fixes
+major fixes and add
 
 __Nothing here for moment__
